@@ -9,11 +9,29 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        brand: {
+          DEFAULT: "#1D9E75",
+          light: "#E1F5EE",
+          dark: "#167A5A",
+          50: "#f0fdf8",
+          100: "#E1F5EE",
+        },
+      },
+      fontFamily: {
+        sans: ["DM Sans", "system-ui", "sans-serif"],
+        serif: ["DM Serif Display", "Georgia", "serif"],
+      },
+      borderRadius: {
+        card: "12px",
+        pill: "9999px",
+      },
+      boxShadow: {
+        card: "0 4px 20px rgba(0,0,0,0.06)",
+        "card-hover": "0 8px 30px rgba(0,0,0,0.10)",
       },
     },
   },
   plugins: [],
 };
+
 export default config;
