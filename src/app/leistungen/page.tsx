@@ -83,7 +83,7 @@ export default function LeistungenPage() {
         </div>
       </section>
 
-      <section className="py-16 px-4 sm:px-6 bg-brand-darker">
+      <section className="py-16 px-4 sm:px-6 bg-brand-hover">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="font-serif text-4xl text-white mb-4">Welche Leistungen stehen dir konkret zu?</h2>
           <p className="text-white/70 mb-8">Wähle deinen Pflegegrad – wir zeigen dir genau was du beantragen kannst.</p>

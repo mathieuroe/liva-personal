@@ -45,7 +45,7 @@ export default function HomePage() {
             <p className="text-gray-500 text-base max-w-md mb-2">
               Du weißt nicht wo anfangen? Wir zeigen dir Schritt für Schritt was du beantragen musst.
             </p>
-            <div className="grid gap-3 mt-8 sm:mt-4">
+            <div className="grid gap-3 mt-14 sm:mt-4">
               {KARTEN.map((k, i) => (
                 <motion.div
                   key={k.href}
