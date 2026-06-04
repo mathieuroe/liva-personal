@@ -38,7 +38,7 @@ export default function HomePage() {
   return (
     <main>
       {/* HERO – 3 Karten */}
-      <section className="min-h-[calc(100vh-64px)] flex flex-col items-center justify-center px-4 sm:px-6 py-20">
+      <section className="min-h-[calc(100vh-64px)] flex flex-col items-center justify-center px-4 sm:px-6 py-20 bg-gradient-to-b from-[#C8E6D0] via-[#EBF5EF] to-white">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
