@@ -16,7 +16,7 @@ const KARTEN = [
     href: "/funnel/pflegegrad-vorhanden",
     icon: <FileCheck size={28} className="text-brand" />,
     title: "Pflegegrad bereits vorhanden",
-    sub: "Der Bescheid ist da – ich weiß nicht wo ich anfangen soll",
+    sub: "Ich möchte bessere Orientierung – und sichergehen, dass ich nichts vergessen habe.",
   },
 ];
 
