@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowRight, Calculator } from "lucide-react";
 
 const links = [
   { href: "/erste-schritte", label: "Checkliste" },
@@ -29,9 +29,14 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <a href="#funnel" className="hidden md:inline-flex btn-primary text-sm px-5 py-2.5">
-          Kostenlos starten <ArrowRight size={15} />
-        </a>
+        <div className="hidden md:flex items-center gap-3">
+          <Link href="/funnel/pflege-kuendigt-sich-an" className="btn-secondary text-sm px-4 py-2.5">
+            <Calculator size={15} /> Pflegegrad-Rechner
+          </Link>
+          <Link href="/" className="btn-primary text-sm px-5 py-2.5">
+            Kostenlos starten <ArrowRight size={15} />
+          </Link>
+        </div>
 
         <button className="md:hidden p-2 text-gray-600 rounded-lg hover:bg-gray-100" onClick={() => setOpen(!open)}>
           {open ? <X size={22} /> : <Menu size={22} />}
@@ -45,9 +50,12 @@ export default function Navbar() {
               {l.label}
             </Link>
           ))}
-          <a href="#funnel" className="btn-primary mt-3 text-center justify-center" onClick={() => setOpen(false)}>
+          <Link href="/funnel/pflege-kuendigt-sich-an" className="btn-secondary mt-3 text-center justify-center" onClick={() => setOpen(false)}>
+            <Calculator size={15} /> Pflegegrad-Rechner
+          </Link>
+          <Link href="/" className="btn-primary mt-2 text-center justify-center" onClick={() => setOpen(false)}>
             Kostenlos starten <ArrowRight size={15} />
-          </a>
+          </Link>
         </div>
       )}
     </header>

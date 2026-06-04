@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckSquare, Square } from "lucide-react";
+import { Home, Users, HeartHandshake, Building2, Battery, HelpCircle, Shield, HandHelping, Package, Bell, Mail } from "lucide-react";
 import LeadForm from "./LeadForm";
+import Checkliste from "./Checkliste";
 
 const fade = { initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 }, exit: { opacity: 0, y: -8 } };
 
@@ -11,18 +12,24 @@ type PGLeistung = { name: string; betrag: string };
 const PG_LEISTUNGEN: Record<number, PGLeistung[]> = {
   1: [
     { name: "Entlastungsbetrag", betrag: "131 € / Monat" },
+    { name: "Pflegehilfsmittel (Pflegebox)", betrag: "42 € / Monat" },
+    { name: "Hausnotruf-Zuschuss", betrag: "25,50 € / Monat" },
     { name: "Wohnraumanpassung", betrag: "bis 4.180 €" },
   ],
   2: [
     { name: "Pflegegeld", betrag: "332 € / Monat" },
     { name: "Pflegesachleistungen", betrag: "724 € / Monat" },
     { name: "Entlastungsbetrag", betrag: "131 € / Monat" },
+    { name: "Pflegehilfsmittel (Pflegebox)", betrag: "42 € / Monat" },
+    { name: "Hausnotruf-Zuschuss", betrag: "25,50 € / Monat" },
     { name: "Verhinderungspflege", betrag: "bis 1.612 € / Jahr" },
   ],
   3: [
     { name: "Pflegegeld", betrag: "572 € / Monat" },
     { name: "Pflegesachleistungen", betrag: "1.363 € / Monat" },
     { name: "Entlastungsbetrag", betrag: "131 € / Monat" },
+    { name: "Pflegehilfsmittel (Pflegebox)", betrag: "42 € / Monat" },
+    { name: "Hausnotruf-Zuschuss", betrag: "25,50 € / Monat" },
     { name: "Kurzzeitpflege", betrag: "1.774 € / Jahr" },
     { name: "Verhinderungspflege", betrag: "bis 1.612 € / Jahr" },
   ],
@@ -30,6 +37,8 @@ const PG_LEISTUNGEN: Record<number, PGLeistung[]> = {
     { name: "Pflegegeld", betrag: "764 € / Monat" },
     { name: "Pflegesachleistungen", betrag: "1.693 € / Monat" },
     { name: "Entlastungsbetrag", betrag: "131 € / Monat" },
+    { name: "Pflegehilfsmittel (Pflegebox)", betrag: "42 € / Monat" },
+    { name: "Hausnotruf-Zuschuss", betrag: "25,50 € / Monat" },
     { name: "Verhinderungspflege", betrag: "bis 1.612 € / Jahr" },
     { name: "Kurzzeitpflege", betrag: "1.774 € / Jahr" },
   ],
@@ -37,136 +46,27 @@ const PG_LEISTUNGEN: Record<number, PGLeistung[]> = {
     { name: "Pflegegeld", betrag: "946 € / Monat" },
     { name: "Pflegesachleistungen", betrag: "2.095 € / Monat" },
     { name: "Entlastungsbetrag", betrag: "131 € / Monat" },
+    { name: "Pflegehilfsmittel (Pflegebox)", betrag: "42 € / Monat" },
+    { name: "Hausnotruf-Zuschuss", betrag: "25,50 € / Monat" },
     { name: "Verhinderungspflege", betrag: "bis 1.612 € / Jahr" },
     { name: "Kurzzeitpflege", betrag: "1.774 € / Jahr" },
   ],
 };
 
 const WOHNSITUATIONEN = [
-  { id: "selbst", label: "Zuhause – ich pflege selbst", icon: "🏠" },
-  { id: "dienst", label: "Zuhause – ein Pflegedienst kommt", icon: "🤝" },
-  { id: "beides", label: "Zuhause – ich pflege und ein Dienst kommt", icon: "👐" },
-  { id: "heim", label: "Im Pflegeheim", icon: "🏥" },
+  { id: "selbst", label: "Zuhause – ich pflege selbst", icon: <Home size={20} className="text-brand" /> },
+  { id: "dienst", label: "Zuhause – ein Pflegedienst kommt", icon: <HeartHandshake size={20} className="text-brand" /> },
+  { id: "beides", label: "Zuhause – ich pflege und ein Dienst kommt", icon: <Users size={20} className="text-brand" /> },
+  { id: "heim", label: "Im Pflegeheim", icon: <Building2 size={20} className="text-brand" /> },
 ];
 
 const HERAUSFORDERUNGEN = [
-  { id: "erschoepft", label: "Ich bin oft erschöpft und komme kaum zur Ruhe", icon: "😔" },
-  { id: "unsicher", label: "Ich weiß nicht ob wir alles richtig machen", icon: "🤔" },
-  { id: "familie", label: "Die Familie ist sich nicht immer einig", icon: "👨‍👩‍👧" },
-  { id: "sicherheit", label: "Ich mache mir Sorgen ob zuhause alles sicher ist", icon: "🔒" },
-  { id: "unterstuetzung", label: "Ich bräuchte einfach mehr Unterstützung im Alltag", icon: "🙋" },
+  { id: "erschoepft", label: "Ich bin oft erschöpft und komme kaum zur Ruhe", icon: <Battery size={20} className="text-brand" /> },
+  { id: "unsicher", label: "Ich weiß nicht ob wir alles richtig machen", icon: <HelpCircle size={20} className="text-brand" /> },
+  { id: "familie", label: "Die Familie ist sich nicht immer einig", icon: <Users size={20} className="text-brand" /> },
+  { id: "sicherheit", label: "Ich mache mir Sorgen ob zuhause alles sicher ist", icon: <Shield size={20} className="text-brand" /> },
+  { id: "unterstuetzung", label: "Ich bräuchte einfach mehr Unterstützung im Alltag", icon: <HandHelping size={20} className="text-brand" /> },
 ];
-
-interface CheckItem {
-  id: string;
-  text: string;
-  info?: string;
-  priorität: "sofort" | "bald" | "optional";
-}
-
-function buildCheckliste(
-  pflegegrad: number,
-  wohnsituation: string,
-  herausforderung: string
-): CheckItem[] {
-  const items: CheckItem[] = [
-    {
-      id: "pflegebox",
-      text: "Pflegebox beantragen",
-      info: "42 € / Monat kostenlos – geht in 5 Minuten",
-      priorität: "sofort",
-    },
-    {
-      id: "hausnotruf",
-      text: "Hausnotruf anfragen",
-      info: "Pflegekasse zahlt 25,50 € / Monat – oft 0 € Eigenanteil",
-      priorität: "sofort",
-    },
-    {
-      id: "beratung",
-      text: "Kostenlose Pflegeberatung §7a bei der Pflegekasse anfragen",
-      info: "Dein Recht – kostenlos, auch zuhause möglich",
-      priorität: "bald",
-    },
-  ];
-
-  if (pflegegrad >= 2) {
-    items.push({
-      id: "verhinderung",
-      text: "Verhinderungspflege für die nächste Auszeit planen",
-      info: "bis 1.612 € / Jahr – damit du auch mal Luft holst",
-      priorität: herausforderung === "erschoepft" ? "sofort" : "bald",
-    });
-  }
-
-  if (pflegegrad >= 1) {
-    items.push({
-      id: "entlastung",
-      text: "Entlastungsbetrag nutzen – Anbieter suchen",
-      info: "131 € / Monat verfallen wenn du sie nicht nutzt",
-      priorität: herausforderung === "unterstuetzung" ? "sofort" : "bald",
-    });
-  }
-
-  if (wohnsituation === "selbst" || wohnsituation === "beides") {
-    items.push({
-      id: "aufgaben",
-      text: "Aufgabenverteilung in der Familie klären",
-      info: "Wer macht was? Schriftlich festhalten hilft",
-      priorität: herausforderung === "familie" ? "sofort" : "bald",
-    });
-  }
-
-  if (herausforderung === "sicherheit" || wohnsituation === "selbst") {
-    items.push({
-      id: "wohnen",
-      text: "Wohnraumanpassung prüfen",
-      info: "bis 4.180 € Zuschuss – Antrag VOR Umbau stellen",
-      priorität: herausforderung === "sicherheit" ? "sofort" : "optional",
-    });
-  }
-
-  if (pflegegrad >= 2) {
-    items.push({
-      id: "pflegegeld",
-      text: "Pflegegeld beantragen falls noch nicht geschehen",
-      info: `${pflegegrad === 2 ? "332" : pflegegrad === 3 ? "572" : pflegegrad === 4 ? "764" : "946"} € / Monat direkt ausgezahlt`,
-      priorität: "bald",
-    });
-  }
-
-  if (herausforderung === "unsicher") {
-    items.push({
-      id: "mdk",
-      text: "MDK-Bescheid nochmal prüfen – ggf. Widerspruch einlegen",
-      info: "In ~35% der Fälle wird der PG nach Widerspruch heraufgestuft",
-      priorität: "bald",
-    });
-  }
-
-  if (herausforderung === "erschoepft" || herausforderung === "familie") {
-    items.push({
-      id: "austausch",
-      text: "Austausch mit anderen pflegenden Angehörigen suchen",
-      info: "VdK, Caritas oder lokale Selbsthilfegruppen – du bist nicht alleine",
-      priorität: "optional",
-    });
-  }
-
-  return items;
-}
-
-const PRIORITÄT_STYLE: Record<string, string> = {
-  sofort: "bg-brand text-white",
-  bald: "bg-amber-50 text-amber-700 border border-amber-200",
-  optional: "bg-gray-100 text-gray-500",
-};
-
-const PRIORITÄT_LABEL: Record<string, string> = {
-  sofort: "Sofort",
-  bald: "Diese Woche",
-  optional: "Wenn Zeit ist",
-};
 
 const ERGEBNIS_TEXT: Record<string, { titel: string; text: string }> = {
   erschoepft: {
@@ -175,43 +75,46 @@ const ERGEBNIS_TEXT: Record<string, { titel: string; text: string }> = {
   },
   unsicher: {
     titel: "Du machst das besser als du denkst.",
-    text: "Niemand wird als Pflegeexperte geboren. Das Gefühl \"mache ich das richtig?\" kennen fast alle. Lass uns gemeinsam Klarheit schaffen.",
+    text: "Niemand wird als Pflegeexperte geboren. Das Gefühl 'mache ich das richtig?' kennen fast alle. Lass uns gemeinsam Klarheit schaffen.",
   },
   familie: {
     titel: "Pflege bringt Familien an ihre Grenzen – das ist normal.",
-    text: "Wer entscheidet was das Beste ist? Wer übernimmt wie viel? Diese Fragen führen zu echten Konflikten. Eine strukturierte Aufgabenverteilung hilft mehr als man denkt.",
+    text: "Wer entscheidet was das Beste ist? Wer übernimmt wie viel? Eine strukturierte Aufgabenverteilung hilft mehr als man denkt.",
   },
   sicherheit: {
     titel: "Sicherheit zuhause ist kein Luxus.",
-    text: "Sturzgefahr, Orientierungsprobleme, alleine sein – reale Risiken. Die gute Nachricht: es gibt konkrete Maßnahmen die die Situation deutlich verbessern – und viele davon zahlt die Pflegekasse.",
+    text: "Sturzgefahr, Orientierungsprobleme, alleine sein – reale Risiken. Viele davon lassen sich mit den richtigen Mitteln deutlich entschärfen.",
   },
   unterstuetzung: {
     titel: "Mehr Unterstützung annehmen ist keine Schwäche.",
-    text: "Viele Familien organisieren die Pflege komplett alleine – weil sie nicht wissen dass Hilfe möglich ist, oder weil sie Hemmungen haben sie anzunehmen. Beides ist verständlich. Aber: Unterstützung annehmen ist klug.",
+    text: "Viele organisieren die Pflege komplett alleine. Aber: Unterstützung annehmen ist klug – und oft einfacher als gedacht.",
   },
 };
 
 const PG_LABELS = ["", "PG 1", "PG 2", "PG 3", "PG 4", "PG 5"];
+
+function buildMailtoLink(pflegegrad: number): string {
+  const subject = encodeURIComponent("Antrag auf Pflegeleistungen – Bitte um Beratungstermin");
+  const body = encodeURIComponent(
+    `Sehr geehrte Damen und Herren,\n\n` +
+    `ich bin Angehöriger einer pflegebedürftigen Person mit Pflegegrad ${pflegegrad} und möchte sicherstellen, dass alle zustehenden Leistungen beantragt sind.\n\n` +
+    `Ich bitte um folgendes:\n` +
+    `1. Einen kostenlosen Pflegeberatungstermin nach §7a SGB XI\n` +
+    `2. Eine Übersicht aller mir zustehenden Leistungen für Pflegegrad ${pflegegrad}\n` +
+    `3. Informationen zur Beantragung von Pflegehilfsmitteln (§40 SGB XI)\n` +
+    `4. Informationen zum Hausnotruf-Zuschuss (§40 SGB XI)\n\n` +
+    `Bitte nehmen Sie Kontakt mit mir auf.\n\n` +
+    `Mit freundlichen Grüßen`
+  );
+  return `mailto:?subject=${subject}&body=${body}`;
+}
 
 export default function PfadB() {
   const [step, setStep] = useState(0);
   const [pflegegrad, setPflegegrad] = useState<number | null>(null);
   const [wohnsituation, setWohnsituation] = useState<string | null>(null);
   const [herausforderung, setHerausforderung] = useState<string | null>(null);
-  const [checked, setChecked] = useState<Set<string>>(new Set());
-
-  function toggleCheck(id: string) {
-    setChecked((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) { next.delete(id); } else { next.add(id); }
-      return next;
-    });
-  }
-
-  const checkliste =
-    pflegegrad && wohnsituation && herausforderung
-      ? buildCheckliste(pflegegrad, wohnsituation, herausforderung)
-      : [];
+  const [tab, setTab] = useState<"checkliste" | "leistungen">("checkliste");
 
   const ergebnisText = herausforderung ? ERGEBNIS_TEXT[herausforderung] : null;
 
@@ -225,8 +128,7 @@ export default function PfadB() {
             <p className="section-label">Schritt 1 von 3</p>
             <h2 className="font-serif text-3xl text-gray-900 mb-2">Welchen Pflegegrad habt ihr?</h2>
             <p className="text-gray-500 mb-8">Das hilft uns einzuschätzen was euch zusteht.</p>
-
-            <div className="grid grid-cols-5 gap-2 mb-6">
+            <div className="grid grid-cols-5 gap-2">
               {[1, 2, 3, 4, 5].map((pg) => (
                 <button
                   key={pg}
@@ -250,7 +152,6 @@ export default function PfadB() {
             <p className="section-label">Schritt 2 von 3</p>
             <h2 className="font-serif text-3xl text-gray-900 mb-2">Wie ist die Wohnsituation?</h2>
             <p className="text-gray-500 mb-8">Wo lebt die pflegebedürftige Person gerade?</p>
-
             <div className="space-y-3 mb-8">
               {WOHNSITUATIONEN.map((w) => (
                 <button
@@ -262,7 +163,9 @@ export default function PfadB() {
                       : "border-[#E0EDE7] bg-white hover:border-brand/40"
                   }`}
                 >
-                  <span className="text-2xl">{w.icon}</span>
+                  <div className="w-8 h-8 rounded-lg bg-brand-light flex items-center justify-center flex-shrink-0">
+                    {w.icon}
+                  </div>
                   <span className="font-medium text-gray-900 text-sm">{w.label}</span>
                 </button>
               ))}
@@ -276,24 +179,21 @@ export default function PfadB() {
           <motion.div key="step2" {...fade} transition={{ duration: 0.3 }}>
             <p className="section-label">Schritt 3 von 3</p>
             <h2 className="font-serif text-3xl text-gray-900 mb-2">Wie geht es dir gerade?</h2>
-            <p className="text-gray-500 mb-8">Wähle was am ehesten zutrifft – sei ehrlich, hier ist kein Platz für Schönreden.</p>
-
+            <p className="text-gray-500 mb-8">Wähle was am ehesten zutrifft – sei ehrlich.</p>
             <div className="space-y-3 mb-8">
               {HERAUSFORDERUNGEN.map((h) => (
                 <button
                   key={h.id}
-                  onClick={() => {
-                    setHerausforderung(h.id);
-                    setStep(3);
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  }}
+                  onClick={() => { setHerausforderung(h.id); setStep(3); window.scrollTo({ top: 0, behavior: "smooth" }); }}
                   className={`w-full flex items-center gap-4 p-4 rounded-[12px] border-2 text-left transition-all ${
                     herausforderung === h.id
                       ? "border-brand bg-brand-light"
                       : "border-[#E0EDE7] bg-white hover:border-brand/40"
                   }`}
                 >
-                  <span className="text-2xl">{h.icon}</span>
+                  <div className="w-8 h-8 rounded-lg bg-brand-light flex items-center justify-center flex-shrink-0">
+                    {h.icon}
+                  </div>
                   <span className="font-medium text-gray-900 text-sm">{h.label}</span>
                 </button>
               ))}
@@ -303,21 +203,23 @@ export default function PfadB() {
         )}
 
         {/* ERGEBNIS */}
-        {step === 3 && ergebnisText && pflegegrad && wohnsituation && herausforderung && (
+        {step === 3 && ergebnisText && pflegegrad && (
           <motion.div key="step3" {...fade} transition={{ duration: 0.3 }} className="space-y-8">
 
-            {/* PERSÖNLICHER EINSTIEG */}
+            {/* Persönlicher Einstieg */}
             <div className="bg-gray-50 rounded-2xl p-6">
               <h2 className="font-serif text-2xl text-gray-900 mb-3">{ergebnisText.titel}</h2>
               <p className="text-gray-600 leading-relaxed text-sm">{ergebnisText.text}</p>
             </div>
 
-            {/* SOFORT-LEISTUNGEN */}
+            {/* Sofort-Leistungen */}
             <div>
               <p className="section-label mb-3">Als erstes – immer</p>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="card p-5">
-                  <div className="text-3xl mb-3">📦</div>
+                  <div className="w-10 h-10 rounded-xl bg-brand-light flex items-center justify-center mb-3">
+                    <Package size={22} className="text-brand" />
+                  </div>
                   <h3 className="font-semibold text-gray-900 mb-1">Pflegebox</h3>
                   <p className="text-brand font-bold text-sm mb-2">42 € / Monat – kostenlos</p>
                   <p className="text-gray-500 text-xs leading-relaxed">
@@ -325,7 +227,9 @@ export default function PfadB() {
                   </p>
                 </div>
                 <div className="card p-5">
-                  <div className="text-3xl mb-3">🔔</div>
+                  <div className="w-10 h-10 rounded-xl bg-brand-light flex items-center justify-center mb-3">
+                    <Bell size={22} className="text-brand" />
+                  </div>
                   <h3 className="font-semibold text-gray-900 mb-1">Hausnotruf</h3>
                   <p className="text-brand font-bold text-sm mb-2">ab 0 € / Monat</p>
                   <p className="text-gray-500 text-xs leading-relaxed">
@@ -335,72 +239,63 @@ export default function PfadB() {
               </div>
             </div>
 
-            {/* CHECKLISTE */}
+            {/* Tabs: Checkliste | Leistungen */}
             <div>
-              <p className="section-label mb-1">Dein persönlicher Aktionsplan</p>
-              <h3 className="font-serif text-2xl text-gray-900 mb-5">Was ihr als nächstes tun solltet</h3>
-
-              <div className="space-y-3">
-                {checkliste.map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => toggleCheck(item.id)}
-                    className={`w-full flex items-start gap-4 p-4 rounded-[12px] border text-left transition-all ${
-                      checked.has(item.id)
-                        ? "border-brand/30 bg-brand-light/50"
-                        : "border-[#E0EDE7] bg-white hover:border-brand/30"
-                    }`}
-                  >
-                    <div className="flex-shrink-0 mt-0.5">
-                      {checked.has(item.id)
-                        ? <CheckSquare size={20} className="text-brand" />
-                        : <Square size={20} className="text-gray-300" />
-                      }
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-start justify-between gap-3">
-                        <p className={`text-sm font-medium leading-snug ${checked.has(item.id) ? "text-gray-400 line-through" : "text-gray-900"}`}>
-                          {item.text}
-                        </p>
-                        <span className={`text-xs font-semibold px-2 py-0.5 rounded-full flex-shrink-0 ${PRIORITÄT_STYLE[item.priorität]}`}>
-                          {PRIORITÄT_LABEL[item.priorität]}
-                        </span>
-                      </div>
-                      {item.info && (
-                        <p className="text-xs text-gray-400 mt-1">{item.info}</p>
-                      )}
-                    </div>
-                  </button>
-                ))}
+              <div className="flex gap-2 mb-5">
+                <button
+                  onClick={() => setTab("checkliste")}
+                  className={`px-4 py-2 rounded-full text-sm font-semibold border transition-all ${
+                    tab === "checkliste" ? "bg-brand text-white border-brand" : "bg-white text-gray-600 border-[#E0EDE7] hover:border-brand"
+                  }`}
+                >
+                  Checkliste
+                </button>
+                <button
+                  onClick={() => setTab("leistungen")}
+                  className={`px-4 py-2 rounded-full text-sm font-semibold border transition-all ${
+                    tab === "leistungen" ? "bg-brand text-white border-brand" : "bg-white text-gray-600 border-[#E0EDE7] hover:border-brand"
+                  }`}
+                >
+                  Alle Leistungen mit {PG_LABELS[pflegegrad]}
+                </button>
               </div>
 
-              {checked.size > 0 && (
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="text-xs text-brand font-medium mt-3 text-center"
-                >
-                  {checked.size} von {checkliste.length} erledigt – gut gemacht!
-                </motion.p>
+              {tab === "checkliste" && (
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                  <p className="text-sm text-gray-500 mb-4">Was ihr als nächstes angehen solltet – klicke auf einen Punkt für mehr Details.</p>
+                  <Checkliste />
+                </motion.div>
+              )}
+
+              {tab === "leistungen" && (
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                  <div className="space-y-2">
+                    {PG_LEISTUNGEN[pflegegrad]?.map((l) => (
+                      <div key={l.name} className="flex items-center justify-between bg-gray-50 rounded-xl px-4 py-3">
+                        <span className="text-sm text-gray-700">{l.name}</span>
+                        <span className="text-xs text-brand font-bold">{l.betrag}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Mail-Template */}
+                  <div className="mt-5 p-4 bg-brand-light rounded-xl">
+                    <p className="text-sm font-semibold text-brand-darker mb-1">Direkt an deine Pflegekasse schreiben</p>
+                    <p className="text-xs text-gray-600 mb-3 leading-relaxed">
+                      Wir haben ein vorgefertigtes Anschreiben für dich – klicke unten um es in deinem E-Mail-Programm zu öffnen.
+                    </p>
+                    <a
+                      href={buildMailtoLink(pflegegrad)}
+                      className="btn-primary text-sm inline-flex"
+                    >
+                      <Mail size={15} /> Anschreiben öffnen
+                    </a>
+                  </div>
+                </motion.div>
               )}
             </div>
 
-            {/* WEITERE LEISTUNGEN */}
-            <div>
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
-                Alle Leistungen mit {PG_LABELS[pflegegrad]}
-              </p>
-              <div className="grid sm:grid-cols-2 gap-2">
-                {PG_LEISTUNGEN[pflegegrad]?.map((l) => (
-                  <div key={l.name} className="flex items-center justify-between bg-gray-50 rounded-xl px-4 py-2.5">
-                    <span className="text-sm text-gray-700">{l.name}</span>
-                    <span className="text-xs text-brand font-semibold">{l.betrag}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* LEAD FORM */}
+            {/* Lead Form */}
             <div className="border-t border-[#E0EDE7] pt-8">
               <LeadForm
                 title="Wir helfen euch die Checkliste abzuhaken"
