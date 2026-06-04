@@ -10,7 +10,7 @@ const KARTEN = [
     href: "/funnel/pflege-kuendigt-sich-an",
     icon: <Clock size={28} className="text-brand" />,
     title: "Noch kein Pflegegrad",
-    sub: "Ich möchte vorbereitet sein bevor es ernst wird",
+    sub: "Ich stehe ganz am Anfang und weiß nicht genau was auf mich zukommt.",
   },
   {
     href: "/funnel/pflegegrad-vorhanden",
