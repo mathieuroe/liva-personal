@@ -40,7 +40,7 @@ export default function FloatingChatButton() {
       {/* Button */}
       <button
         onClick={() => setOpen(!open)}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-brand text-white flex items-center justify-center shadow-lg hover:bg-brand-dark transition-all hover:scale-105"
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-brand text-white flex items-center justify-center shadow-lg hover:bg-brand transition-all hover:scale-105"
         aria-label="Chat öffnen"
       >
         {open ? <X size={22} /> : <MessageCircle size={22} />}

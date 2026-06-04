@@ -69,7 +69,7 @@ export default function PfadC() {
                     auswahl.includes(o.id) ? "border-brand bg-brand-light shadow-card-active" : "border-[#E0EDE7] bg-white hover:border-brand/40"
                   }`}>
                   <span className="text-2xl">{o.icon}</span>
-                  <span className={`text-sm font-medium ${auswahl.includes(o.id) ? "text-brand-darker" : "text-gray-700"}`}>{o.label}</span>
+                  <span className={`text-sm font-medium ${auswahl.includes(o.id) ? "text-brand-hover" : "text-gray-700"}`}>{o.label}</span>
                 </button>
               ))}
             </div>

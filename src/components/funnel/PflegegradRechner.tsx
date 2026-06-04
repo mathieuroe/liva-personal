@@ -14,7 +14,7 @@ const fade = { initial: { opacity: 0, x: 20 }, animate: { opacity: 1, x: 0 }, ex
 const PG_FARBEN: Record<number, string> = {
   0: "bg-gray-100 text-gray-600",
   1: "bg-blue-50 text-blue-700",
-  2: "bg-brand-light text-brand-dark",
+  2: "bg-brand-light text-brand",
   3: "bg-amber-50 text-amber-700",
   4: "bg-orange-50 text-orange-700",
   5: "bg-red-50 text-red-700",

@@ -49,7 +49,7 @@ export default function ErsteSchrittePage() {
         </div>
       </section>
 
-      <section className="py-16 px-4 sm:px-6 bg-brand-darker">
+      <section className="py-16 px-4 sm:px-6 bg-brand-hover">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="font-serif text-4xl text-white mb-4">Bereit loszulegen?</h2>
           <p className="text-white/70 mb-8">Wir begleiten euch – von Anfang an, kostenlos.</p>

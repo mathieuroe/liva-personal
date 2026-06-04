@@ -9,8 +9,10 @@
 }
 
 @layer components {
+  /* Buttons */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 bg-brand text-white font-semibold px-6 py-3 rounded-full hover:bg-brand-dark transition-all duration-200 text-sm shadow-sm hover:shadow-md;
+    @apply inline-flex items-center justify-center gap-2 bg-brand text-white font-semibold px-6 py-3 rounded-full transition-all duration-200 text-sm shadow-sm hover:shadow-md;
+    &:hover { background-color: #085041; }
   }
   .btn-secondary {
     @apply inline-flex items-center justify-center gap-2 bg-white text-brand font-semibold px-6 py-3 rounded-full border border-brand hover:bg-brand-light transition-all duration-200 text-sm;
@@ -18,13 +20,45 @@
   .btn-ghost {
     @apply inline-flex items-center justify-center gap-2 text-gray-600 font-medium px-4 py-2 rounded-full hover:bg-gray-100 transition-all duration-200 text-sm;
   }
+
+  /* Karten */
   .card {
     @apply bg-white rounded-[12px] border border-[#E0EDE7] shadow-card;
   }
+
+  /* Formular */
   .input {
     @apply w-full border border-[#E0EDE7] rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand transition-colors;
   }
+
+  /* Labels */
   .section-label {
     @apply text-brand text-xs font-bold uppercase tracking-widest mb-2;
+  }
+
+  /* Status Hinweise */
+  .alert-info {
+    @apply flex gap-3 p-4 rounded-xl border text-sm;
+    background-color: #E1F5EE;
+    border-color: #9FE1CB;
+    color: #085041;
+  }
+  .alert-success {
+    @apply flex gap-3 p-4 rounded-xl border text-sm;
+    background-color: #DCFCE7;
+    border-color: #16A34A;
+    color: #15803D;
+  }
+  .alert-warning {
+    @apply flex gap-3 p-4 rounded-xl border text-sm;
+    background-color: #FEF3C7;
+    border-color: #D97706;
+    color: #B45309;
+  }
+  .alert-danger {
+    @apply flex gap-3 p-4 rounded-xl border text-sm;
+    background-color: #FEE2E2;
+    border-color: #DC2626;
+    color: #B91C1C;
   }
 }

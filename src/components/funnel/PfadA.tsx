@@ -151,7 +151,7 @@ export default function PfadA() {
             <p className="section-label">Selbst beantragen – Schritt 1</p>
             <h2 className="font-serif text-3xl text-gray-900 mb-2">Welche Pflegekasse ist zuständig?</h2>
 
-            <div className="bg-brand-light border border-brand/20 rounded-xl p-4 mb-6 text-sm text-brand-darker leading-relaxed">
+            <div className="bg-brand-light border border-brand/20 rounded-xl p-4 mb-6 text-sm text-brand-hover leading-relaxed">
               <strong className="block mb-1">Kurzer Hinweis:</strong>
               Die Pflegekasse ist automatisch dieselbe wie die Krankenkasse. Du musst nichts extra beantragen.
             </div>
@@ -179,7 +179,7 @@ export default function PfadA() {
                   <div className="bg-brand-light rounded-xl p-4 mb-6">
                     <p className="text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">Was du am Telefon sagen kannst:</p>
                     <p className="text-sm text-gray-700 leading-relaxed italic mb-3">&bdquo;{scriptText}&ldquo;</p>
-                    <button onClick={copyScript} className="flex items-center gap-2 text-xs font-semibold text-brand hover:text-brand-dark transition-colors">
+                    <button onClick={copyScript} className="flex items-center gap-2 text-xs font-semibold text-brand hover:text-brand transition-colors">
                       {copied ? <><Check size={14} /> Kopiert!</> : <><Copy size={14} /> Text kopieren</>}
                     </button>
                   </div>

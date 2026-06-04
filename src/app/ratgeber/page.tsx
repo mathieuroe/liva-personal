@@ -36,7 +36,7 @@ export default function RatgeberPage() {
         </div>
       </section>
 
-      <section className="py-14 px-4 sm:px-6 bg-brand-darker">
+      <section className="py-14 px-4 sm:px-6 bg-brand-hover">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="font-serif text-4xl text-white mb-4">Was steht dir konkret zu?</h2>
           <p className="text-white/70 mb-8">Starte den Check – in 2 Minuten weißt du was du beantragen kannst.</p>
