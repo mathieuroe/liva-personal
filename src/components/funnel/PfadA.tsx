@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Copy, Check, ClipboardList, HeartHandshake } from "lucide-react";
 import LeadForm from "./LeadForm";
+import PflegegradRechner from "./PflegegradRechner";
 
 const PFLEGEKASSEN = [
   { name: "TK – Techniker Krankenkasse", tel: "0800 285 8585", email: "pflege@tk.de" },
@@ -13,75 +14,20 @@ const PFLEGEKASSEN = [
   { name: "KKH", tel: "0800 111 3300", email: "service@kkh.de" },
   { name: "hkk", tel: "0421 3655 0", email: "service@hkk.de" },
   { name: "IKK classic", tel: "01802 455 5444", email: "info@ikk-classic.de" },
-  { name: "Sonstige / Weiß ich nicht", tel: "—", email: "—" },
+  { name: "Sonstige / Weiss ich nicht", tel: "—", email: "—" },
 ];
-
-// Einfache Fragen für den Pflegegrad-Rechner
-const FRAGEN = [
-  {
-    id: "bewegung",
-    frage: "Wie selbstständig ist die Person bei der Fortbewegung?",
-    optionen: [
-      { label: "Vollständig selbstständig", punkte: 0 },
-      { label: "Braucht manchmal Hilfe", punkte: 1 },
-      { label: "Braucht regelmäßig Hilfe", punkte: 2 },
-      { label: "Kann sich kaum alleine bewegen", punkte: 3 },
-    ],
-  },
-  {
-    id: "koerperpflege",
-    frage: "Wie viel Hilfe wird bei der Körperpflege benötigt?",
-    optionen: [
-      { label: "Keine Hilfe nötig", punkte: 0 },
-      { label: "Gelegentlich Hilfe", punkte: 1 },
-      { label: "Täglich Hilfe", punkte: 2 },
-      { label: "Vollständige Übernahme nötig", punkte: 3 },
-    ],
-  },
-  {
-    id: "orientierung",
-    frage: "Wie ist die Orientierung und das Gedächtnis?",
-    optionen: [
-      { label: "Keine Einschränkungen", punkte: 0 },
-      { label: "Leichte Vergesslichkeit", punkte: 1 },
-      { label: "Häufige Verwirrtheit", punkte: 2 },
-      { label: "Starke Einschränkungen / Demenz", punkte: 3 },
-    ],
-  },
-  {
-    id: "alltag",
-    frage: "Kann die Person den Alltag selbst organisieren?",
-    optionen: [
-      { label: "Ja, vollständig", punkte: 0 },
-      { label: "Mit kleiner Unterstützung", punkte: 1 },
-      { label: "Braucht viel Hilfe", punkte: 2 },
-      { label: "Vollständig auf Hilfe angewiesen", punkte: 3 },
-    ],
-  },
-];
-
-function berechnePflegegrad(punkte: number): { pg: string; beschreibung: string } {
-  if (punkte <= 2) return { pg: "PG 1", beschreibung: "Geringe Beeinträchtigung der Selbstständigkeit" };
-  if (punkte <= 5) return { pg: "PG 2", beschreibung: "Erhebliche Beeinträchtigung der Selbstständigkeit" };
-  if (punkte <= 8) return { pg: "PG 3", beschreibung: "Schwere Beeinträchtigung der Selbstständigkeit" };
-  if (punkte <= 10) return { pg: "PG 4", beschreibung: "Schwerste Beeinträchtigung der Selbstständigkeit" };
-  return { pg: "PG 5", beschreibung: "Schwerste Beeinträchtigung mit besonderen Anforderungen" };
-}
 
 const fade = { initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 }, exit: { opacity: 0, y: -8 } };
 
 export default function PfadA() {
   const [step, setStep] = useState(0);
-  const [antworten, setAntworten] = useState<Record<string, number>>({});
+  const [pflegegrad, setPflegegrad] = useState<number>(0);
+  const [gesamtpunkte, setGesamtpunkte] = useState<number>(0);
   const [weg, setWeg] = useState<"selbst" | "unterstuetzung" | null>(null);
   const [kasse, setKasse] = useState<typeof PFLEGEKASSEN[0] | null>(null);
   const [copied, setCopied] = useState(false);
 
   const scriptText = "Ich moechte einen Pflegegrad beantragen. Koennen Sie mir bitte einen Antrag zusenden oder mir erklaeren wie ich das online beantragen kann?";
-
-  const gesamtPunkte = Object.values(antworten).reduce((a, b) => a + b, 0);
-  const ergebnis = berechnePflegegrad(gesamtPunkte);
-  const alleBeantwortet = FRAGEN.every((f) => antworten[f.id] !== undefined);
 
   function copyScript() {
     navigator.clipboard.writeText(scriptText);
@@ -89,73 +35,44 @@ export default function PfadA() {
     setTimeout(() => setCopied(false), 2000);
   }
 
+  function handleRechnerErgebnis(pg: number, punkte: number) {
+    setPflegegrad(pg);
+    setGesamtpunkte(punkte);
+    setStep(1);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   return (
     <div className="space-y-8">
       <AnimatePresence mode="wait">
 
-        {/* SCHRITT 1 – Pflegegrad-Rechner */}
+        {/* SCHRITT 0 – Pflegegrad-Rechner */}
         {step === 0 && (
           <motion.div key="step0" {...fade} transition={{ duration: 0.3 }}>
             <p className="section-label">Schritt 1 von 2</p>
-            <h2 className="font-serif text-3xl text-gray-900 mb-2">Welcher Pflegegrad könnte in Frage kommen?</h2>
+            <h2 className="font-serif text-3xl text-gray-900 mb-2">Welcher Pflegegrad könnte passen?</h2>
             <p className="text-gray-500 mb-8 leading-relaxed">
-              Beantworte 4 kurze Fragen – wir geben dir eine erste Einschätzung. Das ersetzt keine offizielle Begutachtung, hilft dir aber bei der Orientierung.
+              Beantworte die Fragen so ehrlich wie möglich – wir orientieren uns am offiziellen NBA-Begutachtungsinstrument des MDK.
             </p>
-
-            <div className="space-y-6">
-              {FRAGEN.map((f) => (
-                <div key={f.id} className="card p-5">
-                  <p className="font-semibold text-gray-900 text-sm mb-3">{f.frage}</p>
-                  <div className="space-y-2">
-                    {f.optionen.map((o) => (
-                      <button
-                        key={o.label}
-                        onClick={() => setAntworten((prev) => ({ ...prev, [f.id]: o.punkte }))}
-                        className={`w-full text-left text-sm px-4 py-2.5 rounded-xl border transition-all ${
-                          antworten[f.id] === o.punkte
-                            ? "bg-brand text-white border-brand"
-                            : "bg-white text-gray-700 border-[#E0EDE7] hover:border-brand/40"
-                        }`}
-                      >
-                        {o.label}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <AnimatePresence>
-              {alleBeantwortet && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="mt-6 bg-brand-light rounded-xl p-5"
-                >
-                  <p className="text-xs font-semibold text-brand uppercase tracking-wider mb-1">Erste Einschätzung</p>
-                  <p className="font-serif text-2xl text-brand mb-1">{ergebnis.pg} könnte passen</p>
-                  <p className="text-sm text-brand/70">{ergebnis.beschreibung}</p>
-                  <p className="text-xs text-gray-500 mt-3">
-                    Dies ist nur eine grobe Einschätzung. Der offizielle Pflegegrad wird vom MDK festgestellt.
-                  </p>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            {alleBeantwortet && (
-              <button onClick={() => setStep(1)} className="btn-primary mt-6">
-                Weiter – wie beantrage ich das? <ArrowRight size={16} />
-              </button>
-            )}
+            <PflegegradRechner onErgebnis={handleRechnerErgebnis} />
           </motion.div>
         )}
 
-        {/* SCHRITT 2 – Wie möchtest du vorgehen? */}
+        {/* SCHRITT 1 – Wie vorgehen? */}
         {step === 1 && (
           <motion.div key="step1" {...fade} transition={{ duration: 0.3 }}>
             <p className="section-label">Schritt 2 von 2</p>
+
+            <div className="bg-brand-light rounded-xl p-5 mb-8">
+              <p className="text-xs font-semibold text-brand uppercase tracking-wider mb-1">Deine Einschätzung</p>
+              <p className="font-serif text-3xl text-brand">
+                {pflegegrad === 0 ? "Kein Pflegegrad" : `Pflegegrad ${pflegegrad}`}
+              </p>
+              <p className="text-sm text-brand/70 mt-0.5">{gesamtpunkte.toFixed(1)} von 100 Punkten</p>
+            </div>
+
             <h2 className="font-serif text-3xl text-gray-900 mb-2">Wie möchtest du vorgehen?</h2>
-            <p className="text-gray-500 mb-8">Wähle was besser zu dir passt.</p>
+            <p className="text-gray-500 mb-6">Wähle was besser zu dir passt.</p>
 
             <div className="grid sm:grid-cols-2 gap-4 mb-8">
               <button
@@ -192,7 +109,7 @@ export default function PfadA() {
           </motion.div>
         )}
 
-        {/* SELBST BEANTRAGEN – Pflegekasse */}
+        {/* SELBST – Pflegekasse */}
         {step === 2 && (
           <motion.div key="step2" {...fade} transition={{ duration: 0.3 }}>
             <p className="section-label">Selbst beantragen – Schritt 1</p>
@@ -241,7 +158,7 @@ export default function PfadA() {
           </motion.div>
         )}
 
-        {/* SELBST BEANTRAGEN – MDK Tipps */}
+        {/* SELBST – MDK Tipps */}
         {step === 3 && (
           <motion.div key="step3" {...fade} transition={{ duration: 0.3 }}>
             <p className="section-label">Selbst beantragen – Schritt 2</p>
@@ -281,7 +198,7 @@ export default function PfadA() {
               subtitle={weg === "unterstuetzung" ? "Kostenlos, persönlich, ohne Druck." : "Meld dich wenn du Unterstützung brauchst."}
               cta="Jetzt kostenlos melden"
               path="pfad-a"
-              pflegegrad={ergebnis.pg}
+              pflegegrad={pflegegrad > 0 ? `PG ${pflegegrad}` : "Kein PG"}
             />
           </motion.div>
         )}
