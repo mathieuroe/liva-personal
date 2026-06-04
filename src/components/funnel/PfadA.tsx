@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Copy, Check, ClipboardList, HeartHandshake } from "lucide-react";
+import { ArrowRight, Copy, Check, ClipboardList, HeartHandshake, Calculator, FileText } from "lucide-react";
 import LeadForm from "./LeadForm";
 import PflegegradRechner from "./PflegegradRechner";
 
@@ -20,7 +20,7 @@ const PFLEGEKASSEN = [
 const fade = { initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 }, exit: { opacity: 0, y: -8 } };
 
 export default function PfadA() {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(-1);
   const [pflegegrad, setPflegegrad] = useState<number>(0);
   const [gesamtpunkte, setGesamtpunkte] = useState<number>(0);
   const [weg, setWeg] = useState<"selbst" | "unterstuetzung" | null>(null);
@@ -46,10 +46,45 @@ export default function PfadA() {
     <div className="space-y-8">
       <AnimatePresence mode="wait">
 
+        {/* EINSTIEG – Auswahl */}
+        {step === -1 && (
+          <motion.div key="einstieg" {...fade} transition={{ duration: 0.3 }}>
+            <h2 className="font-serif text-3xl text-gray-900 mb-2">Wie möchtest du starten?</h2>
+            <p className="text-gray-500 mb-8">Du kannst erst deinen möglichen Pflegegrad ermitteln – oder direkt loslegen und den Antrag stellen.</p>
+
+            <div className="grid sm:grid-cols-2 gap-4">
+              <button
+                onClick={() => setStep(0)}
+                className="flex flex-col text-left p-5 rounded-[12px] border-2 border-[#E0EDE7] bg-white hover:border-brand/50 hover:shadow-card-hover transition-all group"
+              >
+                <Calculator size={24} className="text-brand mb-3" />
+                <p className="font-semibold text-gray-900 mb-1">Pflegegrad erst ermitteln</p>
+                <p className="text-xs text-gray-500 leading-relaxed">Beantworte ein paar Fragen – wir schätzen ein welcher Pflegegrad in Frage kommt.</p>
+                <span className="mt-4 text-xs text-brand font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
+                  Rechner starten <ArrowRight size={13} />
+                </span>
+              </button>
+
+              <button
+                onClick={() => setStep(2)}
+                className="flex flex-col text-left p-5 rounded-[12px] border-2 border-[#E0EDE7] bg-white hover:border-brand/50 hover:shadow-card-hover transition-all group"
+              >
+                <FileText size={24} className="text-brand mb-3" />
+                <p className="font-semibold text-gray-900 mb-1">Direkt Pflegegrad beantragen</p>
+                <p className="text-xs text-gray-500 leading-relaxed">Du weißt schon was du brauchst – wir zeigen dir wie du den Antrag stellst.</p>
+                <span className="mt-4 text-xs text-brand font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
+                  Zur Anleitung <ArrowRight size={13} />
+                </span>
+              </button>
+            </div>
+          </motion.div>
+        )}
+
         {/* SCHRITT 0 – Pflegegrad-Rechner */}
         {step === 0 && (
           <motion.div key="step0" {...fade} transition={{ duration: 0.3 }}>
-            <p className="section-label">Schritt 1 von 2</p>
+            <button onClick={() => setStep(-1)} className="btn-ghost mb-4">← Zurück</button>
+            <p className="section-label">Pflegegrad ermitteln</p>
             <h2 className="font-serif text-3xl text-gray-900 mb-2">Welcher Pflegegrad könnte passen?</h2>
             <p className="text-gray-500 mb-8 leading-relaxed">
               Beantworte die Fragen so ehrlich wie möglich – wir orientieren uns am offiziellen NBA-Begutachtungsinstrument des MDK.
@@ -112,6 +147,7 @@ export default function PfadA() {
         {/* SELBST – Pflegekasse */}
         {step === 2 && (
           <motion.div key="step2" {...fade} transition={{ duration: 0.3 }}>
+            <button onClick={() => setStep(weg ? 1 : -1)} className="btn-ghost mb-4">← Zurück</button>
             <p className="section-label">Selbst beantragen – Schritt 1</p>
             <h2 className="font-serif text-3xl text-gray-900 mb-2">Welche Pflegekasse ist zuständig?</h2>
 
