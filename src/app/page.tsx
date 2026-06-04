@@ -1,40 +1,26 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Clock, FileCheck } from "lucide-react";
+import { motion } from "framer-motion";
+import { Clock, FileCheck, ArrowRight } from "lucide-react";
+import Link from "next/link";
 import Footer from "@/components/layout/Footer";
-import PfadA from "@/components/funnel/PfadA";
-import PfadB from "@/components/funnel/PfadB";
-
-type Pfad = "A" | "B" | null;
 
 const KARTEN = [
   {
-    pfad: "A" as Pfad,
+    href: "/funnel/pflege-kuendigt-sich-an",
     icon: <Clock size={28} className="text-brand" />,
-    title: "Pflege kündigt sich an",
-    sub: "Ich möchte vorbereitet sein bevor es ernst wird",
+    title: "Noch kein Pflegegrad",
+    sub: "Ich stehe ganz am Anfang und weiß nicht genau was auf mich zukommt.",
   },
   {
-    pfad: "B" as Pfad,
+    href: "/funnel/pflegegrad-vorhanden",
     icon: <FileCheck size={28} className="text-brand" />,
     title: "Pflegegrad bereits vorhanden",
-    sub: "Der Bescheid ist da – ich weiß nicht wo ich anfangen soll",
+    sub: "Ich möchte bessere Orientierung – und sichergehen, dass ich nichts vergessen habe.",
   },
 ];
 
 export default function HomePage() {
-  const [aktiverPfad, setAktiverPfad] = useState<Pfad>(null);
-  const funnelRef = useRef<HTMLDivElement>(null);
-
-  function waehlePfad(pfad: Pfad) {
-    setAktiverPfad(pfad);
-    setTimeout(() => {
-      funnelRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 80);
-  }
-
   return (
     <main>
       {/* HERO */}
@@ -63,29 +49,26 @@ export default function HomePage() {
 
             <div className="grid gap-3">
               {KARTEN.map((k, i) => (
-                <motion.button
-                  key={k.pfad}
+                <motion.div
+                  key={k.href}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: 0.1 + i * 0.08 }}
-                  onClick={() => waehlePfad(k.pfad)}
-                  className={`group relative text-left p-5 rounded-[14px] border-2 transition-all duration-200 flex items-center gap-4 ${
-                    aktiverPfad === k.pfad
-                      ? "border-brand bg-brand text-white shadow-lg"
-                      : "border-brand bg-white hover:bg-brand hover:text-white hover:border-brand shadow-md"
-                  }`}
                 >
-                  {aktiverPfad === k.pfad && (
-                    <span className="absolute top-3 right-3 w-2.5 h-2.5 rounded-full bg-white" />
-                  )}
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${aktiverPfad === k.pfad ? "bg-white/20" : "bg-brand-light group-hover:bg-white/20"}`}>
-                    {k.icon}
-                  </div>
-                  <div>
-                    <h2 className="font-serif text-lg">{k.title}</h2>
-                    <p className="text-sm opacity-80">{k.sub}</p>
-                  </div>
-                </motion.button>
+                  <Link
+                    href={k.href}
+                    className="group relative text-left p-5 rounded-[14px] border-2 border-brand bg-white hover:bg-brand hover:text-white transition-all duration-200 flex items-center gap-4 shadow-md"
+                  >
+                    <div className="w-10 h-10 rounded-xl bg-brand-light flex items-center justify-center shrink-0 group-hover:bg-white/20">
+                      {k.icon}
+                    </div>
+                    <div className="flex-1">
+                      <h2 className="font-serif text-lg text-gray-900 group-hover:text-white">{k.title}</h2>
+                      <p className="text-sm text-gray-500 group-hover:text-white/80">{k.sub}</p>
+                    </div>
+                    <ArrowRight size={16} className="text-brand group-hover:text-white group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </motion.div>
               ))}
             </div>
           </motion.div>
@@ -106,44 +89,6 @@ export default function HomePage() {
 
         </div>
       </section>
-
-      {/* FUNNEL */}
-      <AnimatePresence>
-        {aktiverPfad && (
-          <motion.section
-            id="funnel"
-            ref={funnelRef}
-            key={aktiverPfad}
-            initial={{ opacity: 0, y: 32 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.4 }}
-            className="bg-gray-50 border-t border-[#E0EDE7] py-16 px-4 sm:px-6"
-          >
-            <div className="max-w-2xl mx-auto">
-              {/* Pfad-Label */}
-              <div className="flex items-center gap-3 mb-10">
-                <div className="flex gap-2">
-                  {(["A", "B"] as Pfad[]).map((p) => (
-                    <button
-                      key={p}
-                      onClick={() => waehlePfad(p)}
-                      className={`text-xs font-semibold px-3 py-1.5 rounded-full border transition-all ${
-                        aktiverPfad === p ? "bg-brand text-white border-brand" : "bg-white text-gray-500 border-[#E0EDE7] hover:border-brand"
-                      }`}
-                    >
-                      {p === "A" ? "Pflege kündigt sich an" : "Pflegegrad bereits vorhanden"}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {aktiverPfad === "A" && <PfadA />}
-              {aktiverPfad === "B" && <PfadB />}
-            </div>
-          </motion.section>
-        )}
-      </AnimatePresence>
 
       <Footer />
     </main>
