@@ -24,26 +24,23 @@ export default function HomePage() {
   return (
     <main>
       {/* HERO */}
-      <section className="min-h-[calc(100vh-64px)] sm:min-h-0 flex items-center overflow-hidden bg-gradient-to-br from-[#E8F5EC] via-[#F4FAF6] to-white sm:bg-none relative">
+      <section className="flex items-center overflow-hidden bg-gradient-to-br from-[#E8F5EC] via-[#F4FAF6] to-white sm:bg-none relative">
         {/* Mobile background image */}
         <div className="absolute inset-0 sm:hidden" style={{backgroundImage: "url('/hero.jpg')", backgroundSize: "cover", backgroundPosition: "center 85%"}}><div className="absolute inset-0 bg-white/75" /></div>
-        <div className="w-full grid sm:grid-cols-2 gap-0 items-stretch min-h-[calc(100vh-64px)] sm:min-h-[600px] sm:h-[75vh]">
+        <div className="w-full grid sm:grid-cols-2 gap-0 items-stretch sm:min-h-[600px] sm:h-[75vh]">
 
           {/* Linke Seite – Text & Karten */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="flex flex-col justify-center px-8 sm:px-16 relative z-10"
+            className="flex flex-col justify-center px-8 sm:px-16 py-12 sm:py-0 relative z-10"
           >
-            <span className="inline-block bg-brand-light text-brand text-xs font-semibold px-4 py-1.5 rounded-full mb-3">
-              Für Menschen die neu in der Pflege sind
-            </span>
             <h1 className="font-serif text-4xl sm:text-5xl text-gray-900 mb-3">
               Dein erster Tag mit Pflegegrad –<br className="hidden sm:block" /> <span className="text-brand">wir begleiten dich.</span>
             </h1>
             <p className="text-gray-500 text-base max-w-md mb-2">
-              Du weißt nicht wo anfangen? Wir zeigen dir Schritt für Schritt was du beantragen musst.
+              Ob für dich oder einen geliebten Menschen – wir geben dir Orientierung, wenn du sie am meisten brauchst.
             </p>
             <div className="grid gap-3 mt-14 sm:mt-4">
               {KARTEN.map((k, i) => (
