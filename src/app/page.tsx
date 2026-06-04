@@ -2,13 +2,12 @@
 
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Clock, FileCheck, Calendar } from "lucide-react";
+import { Clock, FileCheck } from "lucide-react";
 import Footer from "@/components/layout/Footer";
 import PfadA from "@/components/funnel/PfadA";
 import PfadB from "@/components/funnel/PfadB";
-import PfadC from "@/components/funnel/PfadC";
 
-type Pfad = "A" | "B" | "C" | null;
+type Pfad = "A" | "B" | null;
 
 const KARTEN = [
   {
@@ -16,21 +15,12 @@ const KARTEN = [
     icon: <Clock size={28} className="text-brand" />,
     title: "Pflege kündigt sich an",
     sub: "Ich möchte vorbereitet sein bevor es ernst wird",
-    bg: "hover:border-brand/50",
   },
   {
     pfad: "B" as Pfad,
     icon: <FileCheck size={28} className="text-brand" />,
-    title: "Pflegegrad gerade erhalten",
+    title: "Pflegegrad bereits vorhanden",
     sub: "Der Bescheid ist da – ich weiß nicht wo ich anfangen soll",
-    bg: "hover:border-brand/50",
-  },
-  {
-    pfad: "C" as Pfad,
-    icon: <Calendar size={28} className="text-brand" />,
-    title: "Seit einigen Monaten dabei",
-    sub: "Läuft schon – aber ich frage mich ob ich etwas vergesse",
-    bg: "hover:border-brand/50",
   },
 ];
 
@@ -67,7 +57,7 @@ export default function HomePage() {
           <p className="text-gray-400 text-sm">Wo stehst du gerade?</p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-3 gap-5 max-w-4xl w-full">
+        <div className="grid sm:grid-cols-2 gap-5 max-w-2xl w-full">
           {KARTEN.map((k, i) => (
             <motion.button
               key={k.pfad}
@@ -111,7 +101,7 @@ export default function HomePage() {
               {/* Pfad-Label */}
               <div className="flex items-center gap-3 mb-10">
                 <div className="flex gap-2">
-                  {(["A", "B", "C"] as Pfad[]).map((p) => (
+                  {(["A", "B"] as Pfad[]).map((p) => (
                     <button
                       key={p}
                       onClick={() => waehlePfad(p)}
@@ -119,7 +109,7 @@ export default function HomePage() {
                         aktiverPfad === p ? "bg-brand text-white border-brand" : "bg-white text-gray-500 border-[#E0EDE7] hover:border-brand"
                       }`}
                     >
-                      {p === "A" ? "Pflege kündigt sich an" : p === "B" ? "PG gerade erhalten" : "Seit Monaten dabei"}
+                      {p === "A" ? "Pflege kündigt sich an" : "Pflegegrad bereits vorhanden"}
                     </button>
                   ))}
                 </div>
@@ -127,7 +117,6 @@ export default function HomePage() {
 
               {aktiverPfad === "A" && <PfadA />}
               {aktiverPfad === "B" && <PfadB />}
-              {aktiverPfad === "C" && <PfadC />}
             </div>
           </motion.section>
         )}
