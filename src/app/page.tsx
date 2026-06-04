@@ -55,12 +55,16 @@ export default function HomePage() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h1 className="font-serif text-5xl sm:text-6xl text-gray-900 mb-4">
-            Wo stehst du gerade?
+          <span className="inline-block bg-brand-light text-brand text-xs font-semibold px-4 py-1.5 rounded-full mb-6">
+            Für Menschen die neu in der Pflege sind
+          </span>
+          <h1 className="font-serif text-5xl sm:text-6xl text-gray-900 mb-5">
+            Dein erster Tag mit Pflegegrad –<br className="hidden sm:block" /> wir begleiten dich.
           </h1>
-          <p className="text-gray-500 text-lg max-w-lg mx-auto">
-            In 2 Minuten weißt du genau was dir zusteht – und was du jetzt tun musst.
+          <p className="text-gray-500 text-lg max-w-xl mx-auto mb-8">
+            Du weißt nicht wo anfangen? Wir zeigen dir Schritt für Schritt was du beantragen musst, was dir zusteht und wie alles funktioniert.
           </p>
+          <p className="text-gray-400 text-sm">Wo stehst du gerade?</p>
         </motion.div>
 
         <div className="grid sm:grid-cols-3 gap-5 max-w-4xl w-full">
