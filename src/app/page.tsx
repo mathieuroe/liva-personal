@@ -68,7 +68,7 @@ export default function HomePage() {
               className={`group relative text-left p-6 rounded-[16px] border-2 bg-white transition-all duration-200 shadow-card hover:shadow-card-hover ${
                 aktiverPfad === k.pfad
                   ? "border-brand shadow-card-active"
-                  : "border-[#E0EDE7] " + k.bg
+                  : "border-[#E0EDE7] hover:border-brand/50"
               }`}
             >
               {aktiverPfad === k.pfad && (
