@@ -487,6 +487,11 @@ export const NBA_MODULE: NBAModul[] = [
 ];
 
 // Berechnung nach offizieller NBA-Methode
+// IDs von Items die "nicht relevant" sein können (Modul 5)
+// Bei diesen zählt Antwort 0 nicht als "selbstständig" sondern als "nicht betroffen"
+// → werden aus dem Nenner herausgerechnet wenn 0 beantwortet
+const ENTFAELLT_ITEMS = new Set(["m5_1", "m5_2", "m5_3", "m5_5"]);
+
 export function berechneNBA(antworten: Record<string, number>): {
   gesamtpunkte: number;
   pflegegrad: number;
@@ -497,14 +502,21 @@ export function berechneNBA(antworten: Record<string, number>): {
   const modulProzent: Record<string, number> = {};
 
   for (const modul of NBA_MODULE) {
-    const fragenIds = modul.fragen.map((f) => f.id);
-    const maxPunkte = modul.fragen.length * 3;
-    const erreichtePunkte = fragenIds.reduce((sum, id) => sum + (antworten[id] ?? 0), 0);
+    const fragen = modul.fragen;
+    let erreichtePunkte = 0;
+    let maxPunkte = 0;
 
-    // Prozentualer Anteil innerhalb des Moduls (0–100)
+    for (const frage of fragen) {
+      const antwort = antworten[frage.id] ?? 0;
+      // "Nicht relevant" Items (Antwort 0) aus Modul 5 nicht in Nenner einrechnen
+      if (ENTFAELLT_ITEMS.has(frage.id) && antwort === 0) {
+        continue; // überspringen – zählt weder als gut noch als schlecht
+      }
+      erreichtePunkte += antwort;
+      maxPunkte += 3;
+    }
+
     const modulProzentWert = maxPunkte > 0 ? (erreichtePunkte / maxPunkte) * 100 : 0;
-
-    // Gewichteter Beitrag zum Gesamtergebnis
     modulPunkte[modul.id] = erreichtePunkte;
     modulProzent[modul.id] = modulProzentWert;
   }
