@@ -11,15 +11,16 @@ const config: Config = {
       colors: {
         brand: {
           DEFAULT: "#1D9E75",
+          dark: "#0F6E56",
+          darker: "#085041",
           light: "#E1F5EE",
-          dark: "#167A5A",
+          mid: "#9FE1CB",
           50: "#f0fdf8",
-          100: "#E1F5EE",
         },
       },
       fontFamily: {
-        sans: ["DM Sans", "system-ui", "sans-serif"],
-        serif: ["DM Serif Display", "Georgia", "serif"],
+        sans: ["var(--font-dm-sans)", "system-ui", "sans-serif"],
+        serif: ["var(--font-dm-serif)", "Georgia", "serif"],
       },
       borderRadius: {
         card: "12px",
@@ -27,7 +28,8 @@ const config: Config = {
       },
       boxShadow: {
         card: "0 4px 20px rgba(0,0,0,0.06)",
-        "card-hover": "0 8px 30px rgba(0,0,0,0.10)",
+        "card-hover": "0 8px 32px rgba(0,0,0,0.12)",
+        "card-active": "0 0 0 2px #1D9E75, 0 4px 20px rgba(29,158,117,0.15)",
       },
     },
   },
