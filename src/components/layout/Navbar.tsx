@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Menu, X, ArrowRight } from "lucide-react";
 
 const links = [
-  { href: "/erste-schritte", label: "Erste Schritte" },
+  { href: "/erste-schritte", label: "Checkliste" },
   { href: "/leistungen", label: "Leistungen" },
   { href: "/ratgeber", label: "Ratgeber" },
   { href: "/news", label: "News aus der Pflege" },
