@@ -235,6 +235,13 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
         {step === 4 && pflegegrad && (
           <div className="space-y-8">
 
+            <div className="bg-brand-light rounded-2xl px-5 py-4">
+              <h2 className="font-serif text-2xl text-gray-900 mb-1">Gut, dass ihr euch kümmert.</h2>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Hier sind alle Leistungen die euch mit {PG_LABELS[pflegegrad]} zustehen – viele davon können direkt beantragt werden.
+              </p>
+            </div>
+
             {/* Pflegebox + Hausnotruf */}
             <div>
               <p className="section-label mb-3">Als erstes – immer</p>
