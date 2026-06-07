@@ -243,7 +243,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                 Diese Leistungen werden am häufigsten vergessen
               </h2>
               <p className="text-gray-600 text-sm leading-relaxed">
-                Mit {PG_LABELS[pflegegrad]} stehen dir verschiedene Leistungen zu. Zwei davon werden besonders häufig genutzt und können einfach beantragt werden.
+                Zwei Leistungen werden besonders häufig genutzt und können einfach beantragt werden.
               </p>
             </div>
 
@@ -253,10 +253,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                 <div className="w-10 h-10 rounded-xl bg-brand flex items-center justify-center flex-shrink-0">
                   <Package size={20} className="text-white" />
                 </div>
-                <div>
-                  <h3 className="font-serif text-lg text-gray-900 leading-tight">Pflegehilfsmittelbox</h3>
-                  <p className="text-brand font-semibold text-sm">42 € monatlich – vollständig von der Pflegekasse bezahlt</p>
-                </div>
+                <h3 className="font-serif text-lg text-gray-900 leading-tight">Pflegehilfsmittelbox</h3>
               </div>
               <ul className="space-y-2 mb-4">
                 {[
@@ -270,7 +267,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                   </li>
                 ))}
               </ul>
-              <Link href="/pflegebox" className="btn-primary w-full justify-center py-3.5 text-base">
+              <Link href="/pflegebox" className="btn-primary w-full justify-center py-3.5 text-base text-center">
                 Pflegehilfsmittelbox kostenlos beantragen
               </Link>
             </div>
@@ -281,10 +278,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                 <div className="w-10 h-10 rounded-xl bg-brand-light flex items-center justify-center flex-shrink-0">
                   <Bell size={20} className="text-brand" />
                 </div>
-                <div>
-                  <h3 className="font-serif text-lg text-gray-900 leading-tight">Hausnotruf</h3>
-                  <p className="text-brand font-semibold text-sm">Ab 0 € monatlich möglich</p>
-                </div>
+                <h3 className="font-serif text-lg text-gray-900 leading-tight">Hausnotruf</h3>
               </div>
               <ul className="space-y-2 mb-4">
                 {[
@@ -298,7 +292,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                   </li>
                 ))}
               </ul>
-              <Link href="/hausnotruf" className="btn-secondary w-full justify-center py-3 text-sm">
+              <Link href="/hausnotruf" className="btn-secondary w-full justify-center py-3 text-sm text-center">
                 Hausnotruf prüfen
               </Link>
             </div>
