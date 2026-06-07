@@ -237,15 +237,16 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
         {step === 4 && pflegegrad && (
           <div className="space-y-4">
 
-            {/* Hero */}
-            <div className="bg-brand-light rounded-2xl px-5 py-4">
-              <h2 className="font-serif text-xl text-gray-900 leading-snug">
+            {/* Header – konsistent mit anderen Steps */}
+            <div>
+              <p className="section-label mb-1">Deine Leistungen mit {PG_LABELS[pflegegrad]}</p>
+              <h2 className="font-serif text-3xl text-gray-900 leading-snug">
                 Das steht dir zu – lass es nicht liegen.
               </h2>
             </div>
 
             {/* Subheadline zu den beiden Boxen */}
-            <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider -mb-1">
+            <p className="section-label -mt-1">
               Diese beiden Leistungen werden besonders häufig genutzt
             </p>
 
