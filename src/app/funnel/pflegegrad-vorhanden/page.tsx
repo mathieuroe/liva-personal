@@ -1,31 +1,50 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Clock, Shield, Users, Euro } from "lucide-react";
 import PfadB from "@/components/funnel/PfadB";
 
 export const metadata: Metadata = {
   title: "Pflegegrad vorhanden – liva",
-  description: "Der Bescheid ist da – wir zeigen euch was euch zusteht und wie ihr es beantragen könnt.",
+  description: "Jedes Jahr verpassen Familien tausende Euro an Pflegeleistungen. In unter 2 Minuten weißt du was dir wirklich zusteht.",
 };
+
+const TRUST = [
+  { icon: <Euro size={16} className="text-brand" />, text: "100% kostenlos" },
+  { icon: <Shield size={16} className="text-brand" />, text: "Unverbindlich" },
+  { icon: <Clock size={16} className="text-brand" />, text: "In unter 2 Minuten" },
+  { icon: <Users size={16} className="text-brand" />, text: "Persönliche Begleitung" },
+];
 
 export default function PflegegradVorhandenPage() {
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="bg-gray-50">
       <div className="max-w-2xl mx-auto px-4 sm:px-6 py-12">
         <Link href="/" className="inline-flex items-center gap-1.5 text-sm text-brand hover:underline mb-8">
           <ArrowLeft size={14} /> Zurück
         </Link>
 
         <div className="mb-10">
-          <span className="inline-block bg-brand-light text-brand text-xs font-semibold px-4 py-1.5 rounded-full mb-4">
+          <span className="inline-block bg-brand-light text-brand text-xs font-semibold px-4 py-1.5 rounded-full mb-5">
             Pflegegrad bereits vorhanden
           </span>
-          <h1 className="font-serif text-4xl text-gray-900 mb-3">
-            Der Bescheid ist da – jetzt das Beste rausholen.
+
+          <h1 className="font-serif text-4xl text-gray-900 mb-4 leading-tight">
+            Jedes Jahr verpassen Familien tausende Euro – ohne es zu wissen.
           </h1>
-          <p className="text-gray-500 leading-relaxed">
-            Viele Leistungen werden nie beantragt. Wir zeigen euch was euch zusteht und wie ihr es bekommt.
+
+          <p className="text-gray-600 leading-relaxed mb-6 text-lg">
+            Wer einen Pflegegrad hat, hat Anspruch auf Leistungen die kaum jemand kennt. Pflegebox, Hausnotruf, Entlastungsbetrag, Verhinderungspflege – vieles davon wird nie beantragt. Wir ändern das.
           </p>
+
+          {/* Trust Bar */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {TRUST.map((t) => (
+              <div key={t.text} className="flex items-center gap-2 bg-white rounded-xl px-3 py-2.5 border border-[#E0EDE7]">
+                {t.icon}
+                <span className="text-xs font-semibold text-gray-700">{t.text}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
         <PfadB />
