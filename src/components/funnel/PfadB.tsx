@@ -55,10 +55,10 @@ const PG_LEISTUNGEN: Record<number, PGLeistung[]> = {
 };
 
 const WOHNSITUATIONEN = [
-  { id: "selbst", label: "Zuhause – ich pflege selbst", icon: <Home size={20} className="text-brand" /> },
-  { id: "dienst", label: "Zuhause – ein Pflegedienst kommt", icon: <HeartHandshake size={20} className="text-brand" /> },
-  { id: "beides", label: "Zuhause – ich pflege und ein Dienst kommt", icon: <Users size={20} className="text-brand" /> },
-  { id: "heim", label: "Im Pflegeheim", icon: <Building2 size={20} className="text-brand" /> },
+  { id: "selbst", label: "Zuhause – Angehörige übernehmen die Pflege", icon: <Home size={20} className="text-brand" /> },
+  { id: "dienst", label: "Zuhause – ein Pflegedienst unterstützt", icon: <HeartHandshake size={20} className="text-brand" /> },
+  { id: "beides", label: "Zuhause – Angehörige und Pflegedienst gemeinsam", icon: <Users size={20} className="text-brand" /> },
+  { id: "heim", label: "Pflegeheim oder stationäre Einrichtung", icon: <Building2 size={20} className="text-brand" /> },
 ];
 
 const HERAUSFORDERUNGEN = [
@@ -211,19 +211,20 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
         {step === 2 && (
           <div>
             <p className="section-label">Leistungen – Schritt 1</p>
-            <h2 className="font-serif text-3xl text-gray-900 mb-2">Wie ist die Wohnsituation?</h2>
-            <p className="text-gray-500 mb-8">Wo lebt die pflegebedürftige Person gerade?</p>
-            <div className="space-y-3 mb-8">
+            <h2 className="font-serif text-2xl text-gray-900 mb-1.5">Wie ist die Wohnsituation?</h2>
+            <p className="text-gray-600 text-sm mb-1">Damit wir dir nur die Leistungen zeigen, die wirklich zu eurer Situation passen.</p>
+            <p className="text-gray-400 text-xs mb-6 leading-relaxed">Je nachdem wie die Pflege organisiert ist, können unterschiedliche Leistungen infrage kommen.</p>
+            <div className="space-y-2.5 mb-8">
               {WOHNSITUATIONEN.map((w) => (
                 <button
                   key={w.id}
                   onClick={() => { setWohnsituation(w.id); gotoStep(3); }}
-                  className={`w-full flex items-center gap-4 p-4 rounded-[12px] border-2 text-left transition-all ${
-                    wohnsituation === w.id ? "border-brand bg-brand-light" : "border-[#E0EDE7] bg-white hover:border-brand/40"
+                  className={`w-full flex items-center gap-3 px-4 py-3.5 rounded-[12px] border-2 text-left transition-all ${
+                    wohnsituation === w.id ? "border-brand bg-brand-light" : "border-[#E0EDE7] bg-white hover:border-brand/30"
                   }`}
                 >
                   <div className="w-8 h-8 rounded-lg bg-brand-light flex items-center justify-center flex-shrink-0">{w.icon}</div>
-                  <span className="font-medium text-gray-900 text-sm">{w.label}</span>
+                  <span className="font-medium text-gray-900 text-sm leading-snug">{w.label}</span>
                 </button>
               ))}
             </div>
