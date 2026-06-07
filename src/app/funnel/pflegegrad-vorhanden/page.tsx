@@ -37,11 +37,11 @@ export default function PflegegradVorhandenPage() {
           </p>
 
           {/* Trust Bar */}
-          <div className="flex gap-2">
+          <div className="grid grid-cols-2 sm:flex sm:flex-row gap-2">
             {TRUST.map((t) => (
-              <div key={t.text} className="flex items-center gap-1.5 bg-brand-light rounded-full px-2.5 py-1.5 flex-1 justify-center">
+              <div key={t.text} className="flex items-center gap-1.5 bg-brand-light rounded-full px-3 py-1.5 sm:flex-1 justify-center">
                 {t.icon}
-                <span className="text-[10px] font-semibold text-brand whitespace-nowrap">{t.text}</span>
+                <span className="text-[11px] font-semibold text-brand">{t.text}</span>
               </div>
             ))}
           </div>
