@@ -51,9 +51,9 @@ export default function LeadForm({ title, subtitle, cta, path, pflegegrad }: Pro
       <form onSubmit={handleSubmit} className="space-y-3">
         <input type="email" required placeholder="E-Mail-Adresse" value={form.email}
           onChange={(e) => setForm({ ...form, email: e.target.value })} className="input" />
-        <input type="tel" required placeholder="Telefonnummer" value={form.phone}
+        <input type="tel" placeholder="Telefonnummer (optional)" value={form.phone}
           onChange={(e) => setForm({ ...form, phone: e.target.value })} className="input" />
-        <input type="text" required placeholder="PLZ" maxLength={5} value={form.plz}
+        <input type="text" placeholder="PLZ (optional)" maxLength={5} value={form.plz}
           onChange={(e) => setForm({ ...form, plz: e.target.value })} className="input" />
         <button type="submit" disabled={submitting} className="btn-primary w-full justify-center py-3.5 text-base mt-2">
           {submitting ? "Wird gesendet..." : <>{cta} <ArrowRight size={18} /></>}

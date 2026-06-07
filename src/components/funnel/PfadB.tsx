@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 
-import { Home, Users, HeartHandshake, Building2, Package, Bell, Mail, ListChecks, ClipboardList } from "lucide-react";
+import { Home, Users, HeartHandshake, Building2, Package, Bell, ListChecks, ClipboardList, Check } from "lucide-react";
+import Link from "next/link";
 import LeadForm from "./LeadForm";
 import Checkliste from "./Checkliste";
 
@@ -234,42 +235,85 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
 
         {/* LEISTUNGEN – Ergebnis */}
         {step === 4 && pflegegrad && (
-          <div className="space-y-8">
+          <div className="space-y-6">
 
-            <div className="bg-brand-light rounded-2xl px-5 py-4">
-              <h2 className="font-serif text-2xl text-gray-900 mb-1">Gut, dass du dich kümmerst.</h2>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Hier sind alle Leistungen die dir mit {PG_LABELS[pflegegrad]} zustehen – viele davon können direkt beantragt werden.
+            {/* Hero */}
+            <div className="bg-brand-light rounded-2xl px-5 py-5">
+              <h2 className="font-serif text-2xl text-gray-900 mb-2 leading-snug">
+                Diese Leistungen werden am häufigsten vergessen
+              </h2>
+              <p className="text-gray-600 text-sm leading-relaxed mb-3">
+                Mit {PG_LABELS[pflegegrad]} stehen dir verschiedene Leistungen zu. Zwei davon können besonders einfach beantragt werden und werden von vielen Familien nicht genutzt.
+              </p>
+              <p className="text-xs text-brand font-semibold">
+                Die Pflegekasse übernimmt die Kosten ganz oder teilweise.
               </p>
             </div>
 
-            {/* Pflegebox + Hausnotruf */}
-            <div>
-              <p className="section-label mb-3">Als erstes – immer</p>
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div className="card p-5">
-                  <div className="w-10 h-10 rounded-xl bg-brand-light flex items-center justify-center mb-3">
-                    <Package size={22} className="text-brand" />
-                  </div>
-                  <h3 className="font-semibold text-gray-900 mb-1">Pflegebox</h3>
-                  <p className="text-brand font-bold text-sm mb-2">42 € / Monat – kostenlos</p>
-                  <p className="text-gray-500 text-xs leading-relaxed">Handschuhe, Desinfektion, Bettschutz – jeden Monat nach Hause. Pflegekasse zahlt vollständig.</p>
+            {/* Pflegehilfsmittelbox – Haupt-CTA */}
+            <div className="card p-6 border-2 border-brand">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-11 h-11 rounded-xl bg-brand flex items-center justify-center flex-shrink-0">
+                  <Package size={22} className="text-white" />
                 </div>
-                <div className="card p-5">
-                  <div className="w-10 h-10 rounded-xl bg-brand-light flex items-center justify-center mb-3">
-                    <Bell size={22} className="text-brand" />
-                  </div>
-                  <h3 className="font-semibold text-gray-900 mb-1">Hausnotruf</h3>
-                  <p className="text-brand font-bold text-sm mb-2">ab 0 € / Monat</p>
-                  <p className="text-gray-500 text-xs leading-relaxed">Pflegekasse zahlt 25,50 € / Monat. Bei günstigen Anbietern entstehen keine Kosten.</p>
+                <div>
+                  <h3 className="font-serif text-xl text-gray-900 leading-tight">Pflegehilfsmittelbox</h3>
+                  <p className="text-brand font-semibold text-sm mt-0.5">42 € monatlich – vollständig von der Pflegekasse bezahlt</p>
                 </div>
               </div>
+              <ul className="space-y-2.5 mb-5">
+                {[
+                  "Pflegekasse übernimmt die Kosten",
+                  "In wenigen Minuten beantragt",
+                  "Monatliche Lieferung nach Hause",
+                  "Handschuhe, Desinfektion und weitere Hilfsmittel enthalten",
+                ].map((v) => (
+                  <li key={v} className="flex items-center gap-2.5 text-sm text-gray-700">
+                    <Check size={16} className="text-brand flex-shrink-0" />
+                    {v}
+                  </li>
+                ))}
+              </ul>
+              <Link href="/pflegebox" className="btn-primary w-full justify-center py-4 text-base">
+                Pflegehilfsmittelbox kostenlos beantragen
+              </Link>
             </div>
 
-            {/* Alle Leistungen */}
+            {/* Hausnotruf */}
+            <div className="card p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-11 h-11 rounded-xl bg-brand-light flex items-center justify-center flex-shrink-0">
+                  <Bell size={22} className="text-brand" />
+                </div>
+                <div>
+                  <h3 className="font-serif text-xl text-gray-900 leading-tight">Hausnotruf</h3>
+                  <p className="text-brand font-semibold text-sm mt-0.5">Ab 0 € monatlich möglich</p>
+                </div>
+              </div>
+              <ul className="space-y-2.5 mb-5">
+                {[
+                  "Mehr Sicherheit zuhause",
+                  "Pflegekasse zahlt monatlichen Zuschuss",
+                  "Oft ohne Eigenanteil nutzbar",
+                  "Schnell eingerichtet",
+                ].map((v) => (
+                  <li key={v} className="flex items-center gap-2.5 text-sm text-gray-700">
+                    <Check size={16} className="text-brand flex-shrink-0" />
+                    {v}
+                  </li>
+                ))}
+              </ul>
+              <Link href="/hausnotruf" className="btn-secondary w-full justify-center py-3 text-base">
+                Hausnotruf prüfen
+              </Link>
+            </div>
+
+            {/* Weitere Leistungen */}
             <div>
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Alle Leistungen mit {PG_LABELS[pflegegrad]}</p>
-              <div className="space-y-2 mb-4">
+              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
+                Weitere Leistungen mit {PG_LABELS[pflegegrad]}
+              </p>
+              <div className="space-y-2">
                 {PG_LEISTUNGEN[pflegegrad]?.map((l) => (
                   <div key={l.name} className="flex items-center justify-between bg-gray-50 rounded-xl px-4 py-3">
                     <span className="text-sm text-gray-700">{l.name}</span>
@@ -277,20 +321,19 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                   </div>
                 ))}
               </div>
-              <a href={buildMailtoLink(pflegegrad)} className="btn-secondary text-sm inline-flex">
-                <Mail size={15} /> Anschreiben an Pflegekasse öffnen
-              </a>
             </div>
 
+            {/* Kontaktformular */}
             <div className="border-t border-[#E0EDE7] pt-8">
               <LeadForm
-                title="Wir helfen dir die Leistungen zu beantragen"
-                subtitle="Kostenlos, persönlich – auf dein Tempo."
-                cta="Jetzt kostenlos melden"
+                title="Persönliche Unterstützung gewünscht?"
+                subtitle="Wenn du Hilfe bei Anträgen oder Fragen zu den Leistungen möchtest, begleiten wir dich kostenlos und unverbindlich."
+                cta="Kostenlose Unterstützung anfragen"
                 path="pfad-b"
                 pflegegrad={`PG ${pflegegrad}`}
               />
             </div>
+
             <button onClick={() => gotoStep(2)} className="btn-ghost">← Zurück</button>
           </div>
         )}
