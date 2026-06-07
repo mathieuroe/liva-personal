@@ -5,7 +5,8 @@
 @layer base {
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { @apply font-sans text-gray-900 antialiased bg-white; }
+  body { @apply font-sans text-gray-900 antialiased bg-white flex flex-col min-h-screen; }
+  main { flex: 1; }
 }
 
 @layer components {
