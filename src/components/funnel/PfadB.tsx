@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { Home, Users, HeartHandshake, Building2, Battery, HelpCircle, Shield, HandHelping, Package, Bell, Mail, ListChecks, ClipboardList } from "lucide-react";
+import { Home, Users, HeartHandshake, Building2, Package, Bell, Mail, ListChecks, ClipboardList } from "lucide-react";
 import LeadForm from "./LeadForm";
 import Checkliste from "./Checkliste";
 
@@ -61,36 +61,7 @@ const WOHNSITUATIONEN = [
   { id: "heim", label: "Pflegeheim oder stationäre Einrichtung", icon: <Building2 size={20} className="text-brand" /> },
 ];
 
-const HERAUSFORDERUNGEN = [
-  { id: "erschoepft", label: "Ich bin oft erschöpft und komme kaum zur Ruhe", icon: <Battery size={20} className="text-brand" /> },
-  { id: "unsicher", label: "Ich weiß nicht ob wir alles richtig machen", icon: <HelpCircle size={20} className="text-brand" /> },
-  { id: "familie", label: "Die Familie ist sich nicht immer einig", icon: <Users size={20} className="text-brand" /> },
-  { id: "sicherheit", label: "Ich mache mir Sorgen ob zuhause alles sicher ist", icon: <Shield size={20} className="text-brand" /> },
-  { id: "unterstuetzung", label: "Ich bräuchte einfach mehr Unterstützung im Alltag", icon: <HandHelping size={20} className="text-brand" /> },
-];
 
-const ERGEBNIS_TEXT: Record<string, { titel: string; text: string }> = {
-  erschoepft: {
-    titel: "Du trägst gerade sehr viel.",
-    text: "Pflegende Angehörige sind oft die unsichtbaren Helden – und die, die am seltensten gefragt werden wie es ihnen geht. Das ist keine Schwäche. Es gibt Möglichkeiten die genau für dich gemacht sind.",
-  },
-  unsicher: {
-    titel: "Du machst das besser als du denkst.",
-    text: "Niemand wird als Pflegeexperte geboren. Das Gefühl 'mache ich das richtig?' kennen fast alle. Lass uns gemeinsam Klarheit schaffen.",
-  },
-  familie: {
-    titel: "Pflege bringt Familien an ihre Grenzen – das ist normal.",
-    text: "Wer entscheidet was das Beste ist? Wer übernimmt wie viel? Eine strukturierte Aufgabenverteilung hilft mehr als man denkt.",
-  },
-  sicherheit: {
-    titel: "Sicherheit zuhause ist kein Luxus.",
-    text: "Sturzgefahr, Orientierungsprobleme, alleine sein – reale Risiken. Viele davon lassen sich mit den richtigen Mitteln deutlich entschärfen.",
-  },
-  unterstuetzung: {
-    titel: "Mehr Unterstützung annehmen ist keine Schwäche.",
-    text: "Viele organisieren die Pflege komplett alleine. Aber: Unterstützung annehmen ist klug – und oft einfacher als gedacht.",
-  },
-};
 
 const PG_LABELS = ["", "PG 1", "PG 2", "PG 3", "PG 4", "PG 5"];
 
@@ -114,18 +85,17 @@ interface PfadBProps {
 }
 
 function ProgressBar({ step, modus }: { step: number; modus: Modus }) {
-  // Leistungen: steps 0→1→2→3→4 = 5 Schritte
+  // Leistungen: steps 0→1→2→4 = 4 Schritte
   // Checkliste: steps 0→1→5 = 3 Schritte
   const isCheckliste = modus === "checkliste";
-  const total = isCheckliste ? 3 : 5;
+  const total = isCheckliste ? 3 : 4;
 
   const current = (() => {
     if (step === 0) return 1;
     if (step === 1) return 2;
     if (step === 5) return 3; // Checkliste-Ergebnis
     if (step === 2) return 3;
-    if (step === 3) return 4;
-    if (step === 4) return 5;
+    if (step === 4) return 4;
     return 1;
   })();
 
@@ -157,9 +127,6 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
   const [pflegegrad, setPflegegrad] = useState<number | null>(null);
   const [modus, setModus] = useState<Modus>(null);
   const [wohnsituation, setWohnsituation] = useState<string | null>(null);
-  const [herausforderung, setHerausforderung] = useState<string | null>(null);
-
-  const ergebnisText = herausforderung ? ERGEBNIS_TEXT[herausforderung] : null;
 
   return (
     <div className="space-y-6">
@@ -250,7 +217,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
               {WOHNSITUATIONEN.map((w) => (
                 <button
                   key={w.id}
-                  onClick={() => { setWohnsituation(w.id); gotoStep(3); }}
+                  onClick={() => { setWohnsituation(w.id); gotoStep(4); window.scrollTo({ top: 0, behavior: "smooth" }); }}
                   className={`w-full flex items-center gap-3 px-4 py-3.5 rounded-[12px] border-2 text-left transition-all ${
                     wohnsituation === w.id ? "border-brand bg-brand-light" : "border-[#E0EDE7] bg-white hover:border-brand/30"
                   }`}
@@ -264,36 +231,9 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
           </div>
         )}
 
-        {/* LEISTUNGEN – Herausforderung */}
-        {step === 3 && (
-          <div>
-            <h2 className="font-serif text-3xl text-gray-900 mb-2">Wie geht es dir gerade?</h2>
-            <p className="text-gray-500 mb-8">Wähle was am ehesten zutrifft.</p>
-            <div className="space-y-3 mb-8">
-              {HERAUSFORDERUNGEN.map((h) => (
-                <button
-                  key={h.id}
-                  onClick={() => { setHerausforderung(h.id); gotoStep(4); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                  className={`w-full flex items-center gap-4 p-4 rounded-[12px] border-2 text-left transition-all ${
-                    herausforderung === h.id ? "border-brand bg-brand-light" : "border-[#E0EDE7] bg-white hover:border-brand/40"
-                  }`}
-                >
-                  <div className="w-8 h-8 rounded-lg bg-brand-light flex items-center justify-center flex-shrink-0">{h.icon}</div>
-                  <span className="font-medium text-gray-900 text-sm">{h.label}</span>
-                </button>
-              ))}
-            </div>
-            <button onClick={() => gotoStep(2)} className="btn-ghost">← Zurück</button>
-          </div>
-        )}
-
         {/* LEISTUNGEN – Ergebnis */}
-        {step === 4 && ergebnisText && pflegegrad && (
+        {step === 4 && pflegegrad && (
           <div className="space-y-8">
-            <div className="bg-gray-50 rounded-2xl p-6">
-              <h2 className="font-serif text-2xl text-gray-900 mb-3">{ergebnisText.titel}</h2>
-              <p className="text-gray-600 leading-relaxed text-sm">{ergebnisText.text}</p>
-            </div>
 
             {/* Pflegebox + Hausnotruf */}
             <div>
@@ -343,7 +283,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                 pflegegrad={`PG ${pflegegrad}`}
               />
             </div>
-            <button onClick={() => gotoStep(3)} className="btn-ghost">← Zurück</button>
+            <button onClick={() => gotoStep(2)} className="btn-ghost">← Zurück</button>
           </div>
         )}
 
