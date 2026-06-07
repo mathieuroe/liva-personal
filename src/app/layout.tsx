@@ -26,9 +26,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="de" className={`${dmSans.variable} ${dmSerif.variable}`}>
-      <body>
+      <body className="flex flex-col min-h-screen">
         <Navbar />
-        {children}
+        <div className="flex-1 flex flex-col">
+          {children}
+        </div>
         <FloatingChatButton />
       </body>
     </html>
