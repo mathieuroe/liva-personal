@@ -113,6 +113,40 @@ interface PfadBProps {
   onStepChange?: (step: number) => void;
 }
 
+function ProgressBar({ step, modus }: { step: number; modus: Modus }) {
+  // Leistungen: steps 0→1→2→3→4 = 5 Schritte
+  // Checkliste: steps 0→1→5 = 3 Schritte
+  const isCheckliste = modus === "checkliste";
+  const total = isCheckliste ? 3 : 5;
+
+  const current = (() => {
+    if (step === 0) return 1;
+    if (step === 1) return 2;
+    if (step === 5) return 3; // Checkliste-Ergebnis
+    if (step === 2) return 3;
+    if (step === 3) return 4;
+    if (step === 4) return 5;
+    return 1;
+  })();
+
+  const percent = Math.round((current / total) * 100);
+
+  return (
+    <div className="mb-6">
+      <div className="flex justify-between text-xs text-gray-400 mb-1.5">
+        <span>Schritt {current} von {total}</span>
+        <span>{percent}%</span>
+      </div>
+      <div className="h-1.5 bg-gray-200 rounded-full overflow-hidden">
+        <div
+          className="h-full bg-brand rounded-full transition-all duration-300"
+          style={{ width: `${percent}%` }}
+        />
+      </div>
+    </div>
+  );
+}
+
 export default function PfadB({ onStepChange }: PfadBProps = {}) {
   const [step, setStep] = useState(0);
 
@@ -128,13 +162,13 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
   const ergebnisText = herausforderung ? ERGEBNIS_TEXT[herausforderung] : null;
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
+      <ProgressBar step={step} modus={modus} />
       <>
 
         {/* SCHRITT 1 – Pflegegrad */}
         {step === 0 && (
           <div>
-            <p className="section-label">Schritt 1 von 2</p>
             <h2 className="font-serif text-3xl text-gray-900 mb-2">Welchen Pflegegrad habt ihr?</h2>
             <p className="text-gray-500 mb-8">Das hilft uns einzuschätzen was euch zusteht.</p>
             <div className="grid grid-cols-5 gap-2">
@@ -158,7 +192,6 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
         {/* SCHRITT 2 – Modus wählen */}
         {step === 1 && pflegegrad && (
           <div>
-            <p className="section-label">Schritt 2 von 2</p>
             <h2 className="font-serif text-3xl text-gray-900 mb-1.5">Womit möchtet ihr starten?</h2>
             <p className="text-gray-500 mb-5 text-sm">Wählt den Bereich, der euch gerade am meisten hilft.</p>
 
@@ -210,7 +243,6 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
         {/* LEISTUNGEN – Wohnsituation */}
         {step === 2 && (
           <div>
-            <p className="section-label">Leistungen – Schritt 1</p>
             <h2 className="font-serif text-2xl text-gray-900 mb-1.5">Wie ist die Wohnsituation?</h2>
             <p className="text-gray-600 text-sm mb-1">Damit wir dir nur die Leistungen zeigen, die wirklich zu eurer Situation passen.</p>
             <p className="text-gray-400 text-xs mb-6 leading-relaxed">Je nachdem wie die Pflege organisiert ist, können unterschiedliche Leistungen infrage kommen.</p>
@@ -235,7 +267,6 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
         {/* LEISTUNGEN – Herausforderung */}
         {step === 3 && (
           <div>
-            <p className="section-label">Leistungen – Schritt 2</p>
             <h2 className="font-serif text-3xl text-gray-900 mb-2">Wie geht es dir gerade?</h2>
             <p className="text-gray-500 mb-8">Wähle was am ehesten zutrifft.</p>
             <div className="space-y-3 mb-8">
