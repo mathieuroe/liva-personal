@@ -28,16 +28,16 @@ export default function PflegegradVorhandenPage() {
             Pflegegrad bereits vorhanden
           </span>
 
-          <h1 className="font-serif text-4xl text-gray-900 mb-4 leading-tight">
-            Jedes Jahr verpassen Familien tausende Euro – ohne es zu wissen.
+          <h1 className="font-serif text-4xl text-gray-900 mb-3 leading-tight">
+            Der Bescheid ist da – jetzt das Beste rausholen.
           </h1>
 
-          <p className="text-gray-600 leading-relaxed mb-6 text-lg">
-            Wer einen Pflegegrad hat, hat Anspruch auf Leistungen die kaum jemand kennt. Pflegebox, Hausnotruf, Entlastungsbetrag, Verhinderungspflege – vieles davon wird nie beantragt. Wir ändern das.
+          <p className="text-gray-500 leading-relaxed mb-6">
+            Viele Ansprüche werden nie beantragt. Wir helfen euch dabei, nichts zu vergessen.
           </p>
 
           {/* Trust Bar */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div className="flex flex-wrap gap-3">
             {TRUST.map((t) => (
               <div key={t.text} className="flex items-center gap-2 bg-white rounded-xl px-3 py-2.5 border border-[#E0EDE7]">
                 {t.icon}
