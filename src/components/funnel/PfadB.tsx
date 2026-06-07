@@ -110,8 +110,17 @@ function buildMailtoLink(pflegegrad: number): string {
   return `mailto:?subject=${subject}&body=${body}`;
 }
 
-export default function PfadB() {
+interface PfadBProps {
+  onStepChange?: (step: number) => void;
+}
+
+export default function PfadB({ onStepChange }: PfadBProps = {}) {
   const [step, setStep] = useState(0);
+
+  function gotoStep(s: number) {
+    setStep(s);
+    onStepChange?.(s);
+  }
   const [pflegegrad, setPflegegrad] = useState<number | null>(null);
   const [modus, setModus] = useState<Modus>(null);
   const [wohnsituation, setWohnsituation] = useState<string | null>(null);
@@ -133,7 +142,7 @@ export default function PfadB() {
               {[1, 2, 3, 4, 5].map((pg) => (
                 <button
                   key={pg}
-                  onClick={() => { setPflegegrad(pg); setStep(1); }}
+                  onClick={() => { setPflegegrad(pg); gotoStep(1); }}
                   className={`rounded-full py-2.5 text-sm font-semibold border transition-all ${
                     pflegegrad === pg
                       ? "bg-brand text-white border-brand"
@@ -157,7 +166,7 @@ export default function PfadB() {
             <div className="flex flex-col gap-3 mb-6">
               {/* Box 1 – Leistungen (hervorgehoben) */}
               <button
-                onClick={() => { setModus("leistungen"); setStep(2); }}
+                onClick={() => { setModus("leistungen"); gotoStep(2); }}
                 className={`flex items-start gap-3 text-left px-4 py-3.5 rounded-[12px] border-2 transition-all w-full relative ${
                   modus === "leistungen"
                     ? "border-brand bg-brand-light"
@@ -178,7 +187,7 @@ export default function PfadB() {
 
               {/* Box 2 – Checkliste (neutral) */}
               <button
-                onClick={() => { setModus("checkliste"); setStep(5); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                onClick={() => { setModus("checkliste"); gotoStep(5); window.scrollTo({ top: 0, behavior: "smooth" }); }}
                 className={`flex items-start gap-3 text-left px-4 py-3.5 rounded-[12px] border-2 transition-all w-full ${
                   modus === "checkliste"
                     ? "border-brand bg-brand-light"
@@ -195,7 +204,7 @@ export default function PfadB() {
               </button>
             </div>
 
-            <button onClick={() => setStep(0)} className="btn-ghost">← Zurück</button>
+            <button onClick={() => gotoStep(0)} className="btn-ghost">← Zurück</button>
           </motion.div>
         )}
 
@@ -209,7 +218,7 @@ export default function PfadB() {
               {WOHNSITUATIONEN.map((w) => (
                 <button
                   key={w.id}
-                  onClick={() => { setWohnsituation(w.id); setStep(3); }}
+                  onClick={() => { setWohnsituation(w.id); gotoStep(3); }}
                   className={`w-full flex items-center gap-4 p-4 rounded-[12px] border-2 text-left transition-all ${
                     wohnsituation === w.id ? "border-brand bg-brand-light" : "border-[#E0EDE7] bg-white hover:border-brand/40"
                   }`}
@@ -219,7 +228,7 @@ export default function PfadB() {
                 </button>
               ))}
             </div>
-            <button onClick={() => setStep(1)} className="btn-ghost">← Zurück</button>
+            <button onClick={() => gotoStep(1)} className="btn-ghost">← Zurück</button>
           </motion.div>
         )}
 
@@ -233,7 +242,7 @@ export default function PfadB() {
               {HERAUSFORDERUNGEN.map((h) => (
                 <button
                   key={h.id}
-                  onClick={() => { setHerausforderung(h.id); setStep(4); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                  onClick={() => { setHerausforderung(h.id); gotoStep(4); window.scrollTo({ top: 0, behavior: "smooth" }); }}
                   className={`w-full flex items-center gap-4 p-4 rounded-[12px] border-2 text-left transition-all ${
                     herausforderung === h.id ? "border-brand bg-brand-light" : "border-[#E0EDE7] bg-white hover:border-brand/40"
                   }`}
@@ -243,7 +252,7 @@ export default function PfadB() {
                 </button>
               ))}
             </div>
-            <button onClick={() => setStep(2)} className="btn-ghost">← Zurück</button>
+            <button onClick={() => gotoStep(2)} className="btn-ghost">← Zurück</button>
           </motion.div>
         )}
 
@@ -303,7 +312,7 @@ export default function PfadB() {
                 pflegegrad={`PG ${pflegegrad}`}
               />
             </div>
-            <button onClick={() => setStep(3)} className="btn-ghost">← Zurück</button>
+            <button onClick={() => gotoStep(3)} className="btn-ghost">← Zurück</button>
           </motion.div>
         )}
 
@@ -347,7 +356,7 @@ export default function PfadB() {
                 pflegegrad={`PG ${pflegegrad}`}
               />
             </div>
-            <button onClick={() => setStep(1)} className="btn-ghost">← Zurück</button>
+            <button onClick={() => gotoStep(1)} className="btn-ghost">← Zurück</button>
           </motion.div>
         )}
 
