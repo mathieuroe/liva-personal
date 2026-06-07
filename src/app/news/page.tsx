@@ -12,8 +12,6 @@ export default function NewsPage() {
   const [aktiv, setAktiv] = useState("Alle");
 
   const gefiltert = aktiv === "Alle" ? NEWS : NEWS.filter((n) => n.kategorie === aktiv);
-  const featured = gefiltert[0];
-  const timeline = gefiltert.slice(1);
 
   return (
     <main className="bg-white">

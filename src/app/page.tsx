@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Clock, FileCheck, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import Footer from "@/components/layout/Footer";
 
 const KARTEN = [
@@ -75,10 +76,11 @@ export default function HomePage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="hidden sm:block h-full overflow-hidden relative"
           >
-            <img
+            <Image
               src="/hero.jpg"
               alt="Pflegende Person mit älterer Frau"
-              className="w-full h-full object-cover object-[center_30%] scale-x-[-1]"
+              fill
+              className="object-cover object-[center_30%] scale-x-[-1]"
             />
           </motion.div>
 
