@@ -1,12 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+
 import { Home, Users, HeartHandshake, Building2, Battery, HelpCircle, Shield, HandHelping, Package, Bell, Mail, ListChecks, ClipboardList } from "lucide-react";
 import LeadForm from "./LeadForm";
 import Checkliste from "./Checkliste";
 
-const fade = { initial: { opacity: 0, y: 16 }, animate: { opacity: 1, y: 0 }, exit: { opacity: 0, y: -8 } };
 
 type Modus = "leistungen" | "checkliste" | null;
 
@@ -130,11 +129,11 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
 
   return (
     <div className="space-y-8">
-      <AnimatePresence mode="wait">
+      <>
 
         {/* SCHRITT 1 – Pflegegrad */}
         {step === 0 && (
-          <motion.div key="step0" {...fade} transition={{ duration: 0.3 }}>
+          <div>
             <p className="section-label">Schritt 1 von 2</p>
             <h2 className="font-serif text-3xl text-gray-900 mb-2">Welchen Pflegegrad habt ihr?</h2>
             <p className="text-gray-500 mb-8">Das hilft uns einzuschätzen was euch zusteht.</p>
@@ -153,12 +152,12 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                 </button>
               ))}
             </div>
-          </motion.div>
+          </div>
         )}
 
         {/* SCHRITT 2 – Modus wählen */}
         {step === 1 && pflegegrad && (
-          <motion.div key="step1" {...fade} transition={{ duration: 0.3 }}>
+          <div>
             <p className="section-label">Schritt 2 von 2</p>
             <h2 className="font-serif text-3xl text-gray-900 mb-1.5">Womit möchtet ihr starten?</h2>
             <p className="text-gray-500 mb-5 text-sm">Wählt den Bereich, der euch gerade am meisten hilft.</p>
@@ -205,12 +204,12 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
             </div>
 
             <button onClick={() => gotoStep(0)} className="btn-ghost">← Zurück</button>
-          </motion.div>
+          </div>
         )}
 
         {/* LEISTUNGEN – Wohnsituation */}
         {step === 2 && (
-          <motion.div key="step2" {...fade} transition={{ duration: 0.3 }}>
+          <div>
             <p className="section-label">Leistungen – Schritt 1</p>
             <h2 className="font-serif text-3xl text-gray-900 mb-2">Wie ist die Wohnsituation?</h2>
             <p className="text-gray-500 mb-8">Wo lebt die pflegebedürftige Person gerade?</p>
@@ -229,12 +228,12 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
               ))}
             </div>
             <button onClick={() => gotoStep(1)} className="btn-ghost">← Zurück</button>
-          </motion.div>
+          </div>
         )}
 
         {/* LEISTUNGEN – Herausforderung */}
         {step === 3 && (
-          <motion.div key="step3" {...fade} transition={{ duration: 0.3 }}>
+          <div>
             <p className="section-label">Leistungen – Schritt 2</p>
             <h2 className="font-serif text-3xl text-gray-900 mb-2">Wie geht es dir gerade?</h2>
             <p className="text-gray-500 mb-8">Wähle was am ehesten zutrifft.</p>
@@ -253,12 +252,12 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
               ))}
             </div>
             <button onClick={() => gotoStep(2)} className="btn-ghost">← Zurück</button>
-          </motion.div>
+          </div>
         )}
 
         {/* LEISTUNGEN – Ergebnis */}
         {step === 4 && ergebnisText && pflegegrad && (
-          <motion.div key="step4" {...fade} transition={{ duration: 0.3 }} className="space-y-8">
+          <div className="space-y-8">
             <div className="bg-gray-50 rounded-2xl p-6">
               <h2 className="font-serif text-2xl text-gray-900 mb-3">{ergebnisText.titel}</h2>
               <p className="text-gray-600 leading-relaxed text-sm">{ergebnisText.text}</p>
@@ -313,12 +312,12 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
               />
             </div>
             <button onClick={() => gotoStep(3)} className="btn-ghost">← Zurück</button>
-          </motion.div>
+          </div>
         )}
 
         {/* CHECKLISTE */}
         {step === 5 && pflegegrad && (
-          <motion.div key="step5" {...fade} transition={{ duration: 0.3 }} className="space-y-6">
+          <div className="space-y-6">
             <div>
               <p className="section-label mb-1">Dein persönlicher Aktionsplan</p>
               <h2 className="font-serif text-3xl text-gray-900 mb-2">Was ihr nicht vergessen dürft</h2>
@@ -357,10 +356,10 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
               />
             </div>
             <button onClick={() => gotoStep(1)} className="btn-ghost">← Zurück</button>
-          </motion.div>
+          </div>
         )}
 
-      </AnimatePresence>
+      </>
     </div>
   );
 }
