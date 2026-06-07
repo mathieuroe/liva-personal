@@ -239,21 +239,28 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
 
             {/* Hero */}
             <div className="bg-brand-light rounded-2xl px-5 py-4">
-              <h2 className="font-serif text-xl text-gray-900 mb-1.5 leading-snug">
-                Diese Leistungen werden am häufigsten vergessen
+              <h2 className="font-serif text-xl text-gray-900 leading-snug">
+                Das steht dir zu – lass es nicht liegen.
               </h2>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Zwei Leistungen werden besonders häufig genutzt und können einfach beantragt werden.
-              </p>
             </div>
+
+            {/* Subheadline zu den beiden Boxen */}
+            <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider -mb-1">
+              Diese beiden Leistungen werden besonders häufig genutzt
+            </p>
 
             {/* Pflegehilfsmittelbox – Haupt-CTA */}
             <div className="card p-5 border-2 border-brand">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-xl bg-brand flex items-center justify-center flex-shrink-0">
-                  <Package size={20} className="text-white" />
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-brand flex items-center justify-center flex-shrink-0">
+                    <Package size={20} className="text-white" />
+                  </div>
+                  <h3 className="font-serif text-lg text-gray-900 leading-tight">Pflegehilfsmittelbox</h3>
                 </div>
-                <h3 className="font-serif text-lg text-gray-900 leading-tight">Pflegehilfsmittelbox</h3>
+                <span className="text-[10px] font-bold bg-brand text-white px-2.5 py-1 rounded-full flex-shrink-0">
+                  Empfohlen
+                </span>
               </div>
               <ul className="space-y-2 mb-4">
                 {[
