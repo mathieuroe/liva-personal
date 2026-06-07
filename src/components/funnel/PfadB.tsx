@@ -137,8 +137,8 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
         {/* SCHRITT 1 – Pflegegrad */}
         {step === 0 && (
           <div>
-            <h2 className="font-serif text-3xl text-gray-900 mb-2">Welchen Pflegegrad habt ihr?</h2>
-            <p className="text-gray-500 mb-8">Das hilft uns einzuschätzen was euch zusteht.</p>
+            <h2 className="font-serif text-3xl text-gray-900 mb-2">Welchen Pflegegrad hast du?</h2>
+            <p className="text-gray-500 mb-8">Das hilft uns einzuschätzen was dir zusteht.</p>
             <div className="grid grid-cols-5 gap-2">
               {[1, 2, 3, 4, 5].map((pg) => (
                 <button
@@ -160,8 +160,8 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
         {/* SCHRITT 2 – Modus wählen */}
         {step === 1 && pflegegrad && (
           <div>
-            <h2 className="font-serif text-3xl text-gray-900 mb-1.5">Womit möchtet ihr starten?</h2>
-            <p className="text-gray-500 mb-5 text-sm">Wählt den Bereich, der euch gerade am meisten hilft.</p>
+            <h2 className="font-serif text-3xl text-gray-900 mb-1.5">Womit möchtest du starten?</h2>
+            <p className="text-gray-500 mb-5 text-sm">Wähle den Bereich, der dir gerade am meisten hilft.</p>
 
             <div className="flex flex-col gap-3 mb-6">
               {/* Box 1 – Leistungen (hervorgehoben) */}
@@ -212,7 +212,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
         {step === 2 && (
           <div>
             <h2 className="font-serif text-2xl text-gray-900 mb-1.5">Wie ist die Wohnsituation?</h2>
-            <p className="text-gray-600 text-sm mb-1">Damit wir dir nur die Leistungen zeigen, die wirklich zu eurer Situation passen.</p>
+            <p className="text-gray-600 text-sm mb-1">Damit wir dir nur die Leistungen zeigen, die wirklich zu deiner Situation passen.</p>
             <p className="text-gray-400 text-xs mb-6 leading-relaxed">Je nachdem wie die Pflege organisiert ist, können unterschiedliche Leistungen infrage kommen.</p>
             <div className="space-y-2.5 mb-8">
               {WOHNSITUATIONEN.map((w) => (
@@ -237,9 +237,9 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
           <div className="space-y-8">
 
             <div className="bg-brand-light rounded-2xl px-5 py-4">
-              <h2 className="font-serif text-2xl text-gray-900 mb-1">Gut, dass ihr euch kümmert.</h2>
+              <h2 className="font-serif text-2xl text-gray-900 mb-1">Gut, dass du dich kümmerst.</h2>
               <p className="text-gray-600 text-sm leading-relaxed">
-                Hier sind alle Leistungen die euch mit {PG_LABELS[pflegegrad]} zustehen – viele davon können direkt beantragt werden.
+                Hier sind alle Leistungen die dir mit {PG_LABELS[pflegegrad]} zustehen – viele davon können direkt beantragt werden.
               </p>
             </div>
 
@@ -284,7 +284,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
 
             <div className="border-t border-[#E0EDE7] pt-8">
               <LeadForm
-                title="Wir helfen euch die Leistungen zu beantragen"
+                title="Wir helfen dir die Leistungen zu beantragen"
                 subtitle="Kostenlos, persönlich – auf dein Tempo."
                 cta="Jetzt kostenlos melden"
                 path="pfad-b"
@@ -300,7 +300,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
           <div className="space-y-6">
             <div>
               <p className="section-label mb-1">Dein persönlicher Aktionsplan</p>
-              <h2 className="font-serif text-3xl text-gray-900 mb-2">Was ihr nicht vergessen dürft</h2>
+              <h2 className="font-serif text-3xl text-gray-900 mb-2">Was du nicht vergessen darfst</h2>
               <p className="text-gray-500 text-sm">Klicke auf jeden Punkt für Details und konkrete nächste Schritte.</p>
             </div>
 
@@ -328,7 +328,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
 
             <div className="border-t border-[#E0EDE7] pt-8">
               <LeadForm
-                title="Wir helfen euch die Checkliste abzuhaken"
+                title="Wir helfen dir die Checkliste abzuhaken"
                 subtitle="Kostenlos, persönlich – auf dein Tempo."
                 cta="Jetzt kostenlos melden"
                 path="pfad-b-checkliste"

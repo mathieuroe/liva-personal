@@ -28,7 +28,7 @@ export default function PflegegradVorhandenPage() {
               Der Bescheid ist da – jetzt das Beste rausholen.
             </h1>
             <p className="text-gray-500 leading-relaxed mb-6">
-              Viele Ansprüche werden nie beantragt. Wir helfen euch dabei, nichts zu vergessen.
+              Viele Ansprüche werden nie beantragt. Wir helfen dir dabei, nichts zu vergessen.
             </p>
             <div className="grid grid-cols-2 sm:flex sm:flex-row gap-2">
               {TRUST.map((t) => (

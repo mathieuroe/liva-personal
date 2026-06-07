@@ -60,7 +60,7 @@ const KATEGORIEN: ChecklistKategorie[] = [
       {
         id: "hausnotruf_item",
         titel: "Hausnotruf beantragen",
-        erklaerung: "Pflegekasse zahlt 25,50 € / Monat Zuschuss. Bei günstigen Anbietern entstehen keine Kosten. Gibt euch beiden Sicherheit – du kannst auch mal kurz weg.",
+        erklaerung: "Pflegekasse zahlt 25,50 € / Monat Zuschuss. Bei günstigen Anbietern entstehen keine Kosten. Gibt dir Sicherheit – du kannst auch mal kurz weg.",
         punkte: [
           "Anbieter anfragen",
           "Antrag bei der Pflegekasse stellen (§40 SGB XI)",
@@ -215,7 +215,7 @@ const KATEGORIEN: ChecklistKategorie[] = [
         erklaerung: "Regelmäßige Kontrolle verhindert Fehler – besonders bei vielen Medikamenten oder Demenz.",
         punkte: [
           "Medikamentenplan aktuell halten",
-          "Braucht ihr Pflegedienst für Medikamentengabe?",
+          "Brauchst du Pflegedienst für Medikamentengabe?",
           "Physio, Ergo, Logopädie – alles beantragt?",
           "Hilfsmittel auf Rezept vorhanden?",
         ],
@@ -295,7 +295,7 @@ const KATEGORIEN: ChecklistKategorie[] = [
       {
         id: "beratung_item",
         titel: "Kostenlose Pflegeberatung anfragen",
-        erklaerung: "Die Pflegekasse muss kostenlose Beratung anbieten – auch zuhause. Das ist kein Verkaufsgespräch, das ist euer Recht. Frag aktiv nach §7a SGB XI.",
+        erklaerung: "Die Pflegekasse muss kostenlose Beratung anbieten – auch zuhause. Das ist kein Verkaufsgespräch, das ist dein Recht. Frag aktiv nach §7a SGB XI.",
         punkte: [
           "Pflegeberatung §7a bei der Pflegekasse anfragen",
           "Pflegestützpunkt in der Region suchen",
