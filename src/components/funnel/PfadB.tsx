@@ -289,11 +289,6 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
               </h2>
             </div>
 
-            {/* Subheadline zu den beiden Boxen */}
-            <p className="section-label -mt-1">
-              Diese beiden Leistungen werden besonders häufig genutzt
-            </p>
-
             {/* Pflegehilfsmittelbox – Haupt-CTA */}
             <div className="card p-5 border-2 border-brand relative">
               <button
@@ -349,7 +344,10 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                 <div className="w-10 h-10 rounded-xl bg-brand-light flex items-center justify-center flex-shrink-0">
                   <Bell size={20} className="text-brand" />
                 </div>
-                <h3 className="font-serif text-lg text-gray-900 leading-tight">Hausnotruf</h3>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <h3 className="font-serif text-lg text-gray-900 leading-tight">Hausnotruf</h3>
+                  <span className="text-[10px] font-semibold bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">häufig genutzt</span>
+                </div>
               </div>
               <ul className="space-y-2 mb-4">
                 {[
@@ -413,8 +411,6 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
             </div>
 
             {/* Pflegehilfsmittelbox + Hausnotruf – identisch zur Leistungsseite */}
-            <p className="section-label -mt-2">Diese beiden Leistungen werden besonders häufig genutzt</p>
-
             <div className="card p-5 border-2 border-brand relative">
               <button
                 onClick={() => setInfoPopup("box")}
@@ -468,7 +464,10 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                 <div className="w-10 h-10 rounded-xl bg-brand-light flex items-center justify-center flex-shrink-0">
                   <Bell size={20} className="text-brand" />
                 </div>
-                <h3 className="font-serif text-lg text-gray-900 leading-tight">Hausnotruf</h3>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <h3 className="font-serif text-lg text-gray-900 leading-tight">Hausnotruf</h3>
+                  <span className="text-[10px] font-semibold bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">häufig genutzt</span>
+                </div>
               </div>
               <ul className="space-y-2 mb-4">
                 {[
