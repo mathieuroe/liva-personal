@@ -3,7 +3,6 @@
 import { useState } from "react";
 
 import { Home, Users, HeartHandshake, Building2, Package, Bell, ListChecks, ClipboardList, Check, ArrowRight, Info, X } from "lucide-react";
-import Link from "next/link";
 import LeadForm from "./LeadForm";
 import Checkliste from "./Checkliste";
 
@@ -66,20 +65,6 @@ const WOHNSITUATIONEN = [
 
 const PG_LABELS = ["", "PG 1", "PG 2", "PG 3", "PG 4", "PG 5"];
 
-function buildMailtoLink(pflegegrad: number): string {
-  const subject = encodeURIComponent("Antrag auf Pflegeleistungen – Bitte um Beratungstermin");
-  const body = encodeURIComponent(
-    `Sehr geehrte Damen und Herren,\n\n` +
-    `ich bin Angehöriger einer pflegebedürftigen Person mit Pflegegrad ${pflegegrad} und möchte sicherstellen, dass alle zustehenden Leistungen beantragt sind.\n\n` +
-    `Ich bitte um:\n` +
-    `1. Einen kostenlosen Pflegeberatungstermin nach §7a SGB XI\n` +
-    `2. Eine Übersicht aller Leistungen für Pflegegrad ${pflegegrad}\n` +
-    `3. Informationen zur Beantragung von Pflegehilfsmitteln (§40 SGB XI)\n` +
-    `4. Informationen zum Hausnotruf-Zuschuss (§40 SGB XI)\n\n` +
-    `Bitte nehmen Sie Kontakt mit mir auf.\n\nMit freundlichen Grüßen`
-  );
-  return `mailto:?subject=${subject}&body=${body}`;
-}
 
 interface PfadBProps {
   onStepChange?: (step: number) => void;
