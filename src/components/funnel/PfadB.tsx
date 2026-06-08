@@ -290,7 +290,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
             </div>
 
             {/* Pflegehilfsmittelbox – Haupt-CTA */}
-            <div className="card p-5 relative">
+            <div className="card p-5 border-2 border-brand relative">
               <button
                 onClick={() => setInfoPopup("box")}
                 className="absolute top-4 right-4 text-gray-300 hover:text-brand transition-colors"
@@ -413,7 +413,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
             </div>
 
             {/* Pflegehilfsmittelbox + Hausnotruf – identisch zur Leistungsseite */}
-            <div className="card p-5 relative">
+            <div className="card p-5 border-2 border-brand relative">
               <button
                 onClick={() => setInfoPopup("box")}
                 className="absolute top-4 right-4 text-gray-300 hover:text-brand transition-colors"
