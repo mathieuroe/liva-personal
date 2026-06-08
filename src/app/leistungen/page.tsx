@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Footer from "@/components/layout/Footer";
+import LeistungsBoxen from "@/components/leistungen/LeistungsBoxen";
 
 export const metadata: Metadata = {
   title: "Pflegeleistungen im Überblick | liva",
@@ -21,7 +22,6 @@ const LEISTUNGEN = [
 ];
 
 export default function LeistungenPage() {
-  const featured = LEISTUNGEN.filter((l) => l.featured);
   const rest = LEISTUNGEN.filter((l) => !l.featured);
 
   return (
@@ -40,26 +40,7 @@ export default function LeistungenPage() {
       <section className="py-12 px-4 sm:px-6 bg-brand-light/30">
         <div className="max-w-6xl mx-auto">
           <p className="text-sm font-semibold text-brand mb-6">Die zwei wichtigsten Sofort-Leistungen</p>
-          <div className="grid md:grid-cols-2 gap-6">
-            {featured.map((l) => (
-              <div key={l.id} id={l.id} className="card p-7 border-brand/30">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="text-4xl">{l.icon}</div>
-                  <div>
-                    <h2 className="font-serif text-2xl text-gray-900">{l.name}</h2>
-                    <div className="flex items-center gap-2 mt-0.5">
-                      <span className="text-brand font-bold">{l.betrag}</span>
-                      <span className="text-xs bg-brand-light text-brand px-2 py-0.5 rounded-full font-semibold">{l.pg}</span>
-                    </div>
-                  </div>
-                </div>
-                <p className="text-gray-500 text-sm leading-relaxed mb-5">{l.text}</p>
-                <Link href="/" className="btn-primary text-sm">
-                  Jetzt beantragen <ArrowRight size={15} />
-                </Link>
-              </div>
-            ))}
-          </div>
+          <LeistungsBoxen />
         </div>
       </section>
 
