@@ -310,7 +310,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                 rel="noopener noreferrer"
                 className="btn-secondary w-full justify-center py-3 text-sm text-center"
               >
-                Hausnotruf prüfen
+                Hausnotruf kostenfrei bestellen
               </a>
             </div>
 
