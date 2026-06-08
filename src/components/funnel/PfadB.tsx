@@ -280,7 +280,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                 rel="noopener noreferrer"
                 className="btn-primary w-full justify-center py-3.5 text-base text-center"
               >
-                Pflegehilfsmittelbox kostenlos beantragen <ArrowRight size={16} />
+                Box kostenlos beantragen <ArrowRight size={16} />
               </a>
             </div>
 
