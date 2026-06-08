@@ -16,7 +16,7 @@ export default function PflegegradVorhandenPage() {
 
   return (
     <main className="bg-gray-50">
-      <div className="max-w-2xl mx-auto px-4 sm:px-6 py-12">
+      <div className="max-w-2xl mx-auto px-4 sm:px-6 pt-6 pb-12">
 
         {/* Intro – nur auf Schritt 0 sichtbar */}
         {step === 0 && (
