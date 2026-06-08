@@ -264,9 +264,9 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
               </div>
               <ul className="space-y-2 mb-4">
                 {[
-                  "100% Kostenübernahme durch die Pflegekasse",
-                  "Lieferung direkt nach Hause",
-                  "Antrag online in wenigen Minuten",
+                  "Kostenübernahme durch Pflegekasse",
+                  "Monatlich direkt nach Hause",
+                  "Antrag in unter 2 Minuten",
                 ].map((v) => (
                   <li key={v} className="flex items-center gap-2 text-sm text-gray-700">
                     <Check size={15} className="text-brand flex-shrink-0" />
