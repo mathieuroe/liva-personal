@@ -256,7 +256,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
         {/* LEISTUNGEN – Wohnsituation */}
         {step === 2 && (
           <div>
-            <h2 className="font-serif text-2xl text-gray-900 mb-1.5">Wie ist die Wohnsituation?</h2>
+            <h2 className="font-serif text-3xl text-gray-900 mb-1.5">Wie ist die Wohnsituation?</h2>
             <p className="text-gray-600 text-sm mb-1">Damit wir dir nur die Leistungen zeigen, die wirklich zu deiner Situation passen.</p>
             <p className="text-gray-400 text-xs mb-6 leading-relaxed">Je nachdem wie die Pflege organisiert ist, können unterschiedliche Leistungen infrage kommen.</p>
             <div className="space-y-2.5 mb-8">
