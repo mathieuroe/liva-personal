@@ -256,7 +256,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                   <div className="w-10 h-10 rounded-xl bg-brand flex items-center justify-center flex-shrink-0">
                     <Package size={20} className="text-white" />
                   </div>
-                  <h3 className="font-serif text-lg text-gray-900 leading-tight">Pflegehilfsmittelbox</h3>
+                  <h3 className="font-serif text-lg text-gray-900 leading-tight">Kostenlose Pflegemittel</h3>
                 </div>
                 <span className="text-[10px] font-bold bg-brand text-white px-2.5 py-1 rounded-full flex-shrink-0">
                   Empfohlen
