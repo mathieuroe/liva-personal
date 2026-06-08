@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import { Home, Users, HeartHandshake, Building2, Package, Bell, ListChecks, ClipboardList, Check, ArrowRight, Info, X } from "lucide-react";
 import Link from "next/link";
@@ -130,14 +130,6 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
   const [wohnsituation, setWohnsituation] = useState<string | null>(null);
   const [infoPopup, setInfoPopup] = useState<"box" | "hausnotruf" | null>(null);
 
-  useEffect(() => {
-    if (infoPopup) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => { document.body.style.overflow = ""; };
-  }, [infoPopup]);
 
   const INFO_CONTENT = {
     box: {
