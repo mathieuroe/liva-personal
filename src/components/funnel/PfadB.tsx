@@ -134,11 +134,23 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
   const INFO_CONTENT = {
     box: {
       titel: "Was ist die Pflegehilfsmittelbox?",
-      text: "Die Pflegehilfsmittelbox ist ein monatliches Paket mit Verbrauchsmitteln für die Pflege zuhause – zum Beispiel Einmalhandschuhe, Desinfektionsmittel und Bettschutzeinlagen. Ab Pflegegrad 1 übernimmt die Pflegekasse die Kosten vollständig (bis zu 42 € / Monat). Du bestellst einmal, die Box kommt automatisch jeden Monat.",
+      intro: "Ein monatliches Paket mit Verbrauchsmitteln für die Pflege zuhause – vollständig von der Pflegekasse bezahlt.",
+      fakten: [
+        { label: "Inhalt", wert: "Handschuhe, Desinfektion, Bettschutzeinlagen u.v.m." },
+        { label: "Kosten", wert: "0 € – Pflegekasse übernimmt bis zu 42 € / Monat" },
+        { label: "Ab", wert: "Pflegegrad 1" },
+        { label: "Aufwand", wert: "Einmal bestellen, automatisch jeden Monat" },
+      ],
     },
     hausnotruf: {
       titel: "Was ist ein Hausnotruf?",
-      text: "Ein Hausnotruf ist ein kleines Gerät – meist ein Knopf am Handgelenk oder als Halskette – das im Notfall per Knopfdruck einen Notruf auslöst. So kann die pflegebedürftige Person auch alleine zuhause Hilfe rufen. Die Pflegekasse zahlt ab Pflegegrad 1 einen Zuschuss von 25,50 € / Monat. Bei günstigen Anbietern entstehen damit oft keine Kosten.",
+      intro: "Ein kleines Gerät – meist als Armband oder Halskette – das per Knopfdruck sofort Hilfe ruft.",
+      fakten: [
+        { label: "Funktion", wert: "Notruf per Knopfdruck, auch wenn man alleine ist" },
+        { label: "Zuschuss", wert: "Pflegekasse zahlt 25,50 € / Monat" },
+        { label: "Eigenanteil", wert: "Bei günstigen Anbietern oft 0 €" },
+        { label: "Ab", wert: "Pflegegrad 1" },
+      ],
     },
   };
 
@@ -157,7 +169,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
           className="bg-white rounded-2xl p-6 w-full max-w-sm shadow-xl"
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="flex items-start justify-between mb-3">
+          <div className="flex items-start justify-between mb-2">
             <h3 className="font-serif text-lg text-gray-900 leading-snug pr-4">
               {infoPopup ? INFO_CONTENT[infoPopup].titel : ""}
             </h3>
@@ -165,9 +177,17 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
               <X size={20} />
             </button>
           </div>
-          <p className="text-sm text-gray-600 leading-relaxed">
-            {infoPopup ? INFO_CONTENT[infoPopup].text : ""}
+          <p className="text-sm text-gray-500 leading-relaxed mb-4">
+            {infoPopup ? INFO_CONTENT[infoPopup].intro : ""}
           </p>
+          <div className="space-y-2">
+            {infoPopup && INFO_CONTENT[infoPopup].fakten.map((f) => (
+              <div key={f.label} className="flex gap-3 bg-brand-light/60 rounded-xl px-3 py-2.5">
+                <span className="text-xs font-bold text-brand w-20 flex-shrink-0 pt-0.5">{f.label}</span>
+                <span className="text-xs text-gray-700 leading-relaxed">{f.wert}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
