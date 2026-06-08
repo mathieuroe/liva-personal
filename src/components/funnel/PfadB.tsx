@@ -274,9 +274,14 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                   </li>
                 ))}
               </ul>
-              <Link href="/pflegebox" className="btn-primary w-full justify-center py-3.5 text-base text-center">
+              <a
+                href="https://t.adcell.com/p/click?promoId=273407&slotId=149760&subId=hauptfunnel_box&param0=https%3A%2F%2Fpflegehase.de%2Fpflegehilfsmittel-bestellung%2F"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary w-full justify-center py-3.5 text-base text-center"
+              >
                 Pflegehilfsmittelbox kostenlos beantragen
-              </Link>
+              </a>
             </div>
 
             {/* Hausnotruf */}
