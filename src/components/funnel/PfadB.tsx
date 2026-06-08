@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { Home, Users, HeartHandshake, Building2, Package, Bell, ListChecks, ClipboardList, Check } from "lucide-react";
+import { Home, Users, HeartHandshake, Building2, Package, Bell, ListChecks, ClipboardList, Check, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import LeadForm from "./LeadForm";
 import Checkliste from "./Checkliste";
@@ -280,7 +280,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                 rel="noopener noreferrer"
                 className="btn-primary w-full justify-center py-3.5 text-base text-center"
               >
-                Pflegehilfsmittelbox kostenlos beantragen
+                Pflegehilfsmittelbox kostenlos beantragen <ArrowRight size={16} />
               </a>
             </div>
 
@@ -310,7 +310,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                 rel="noopener noreferrer"
                 className="btn-secondary w-full justify-center py-3 text-sm text-center"
               >
-                Hausnotruf kostenfrei bestellen
+                Hausnotruf kostenfrei bestellen <ArrowRight size={16} />
               </a>
             </div>
 
