@@ -412,24 +412,84 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
               <p className="text-gray-500 text-sm">Klicke auf jeden Punkt für Details und konkrete nächste Schritte.</p>
             </div>
 
-            {/* Pflegebox + Hausnotruf prominent */}
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div className="card p-5 border-brand/30">
-                <div className="w-10 h-10 rounded-xl bg-brand-light flex items-center justify-center mb-3">
-                  <Package size={22} className="text-brand" />
+            {/* Pflegehilfsmittelbox + Hausnotruf – identisch zur Leistungsseite */}
+            <p className="section-label -mt-2">Diese beiden Leistungen werden besonders häufig genutzt</p>
+
+            <div className="card p-5 border-2 border-brand relative">
+              <button
+                onClick={() => setInfoPopup("box")}
+                className="absolute top-4 right-4 text-gray-300 hover:text-brand transition-colors"
+                aria-label="Mehr Infos zur Pflegehilfsmittelbox"
+              >
+                <Info size={17} />
+              </button>
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-brand flex items-center justify-center flex-shrink-0">
+                    <Package size={20} className="text-white" />
+                  </div>
+                  <h3 className="font-serif text-lg text-gray-900 leading-tight">Kostenlose Pflegehilfsmittel</h3>
                 </div>
-                <h3 className="font-semibold text-gray-900 mb-1">Pflegebox</h3>
-                <p className="text-brand font-bold text-sm mb-2">42 € / Monat – kostenlos</p>
-                <p className="text-gray-500 text-xs leading-relaxed">Handschuhe, Desinfektion, Bettschutz. Die Pflegekasse zahlt vollständig. Geht in 5 Minuten.</p>
+                <span className="text-[10px] font-bold bg-brand text-white px-2.5 py-1 rounded-full flex-shrink-0 mr-5">
+                  Empfohlen
+                </span>
               </div>
-              <div className="card p-5 border-brand/30">
-                <div className="w-10 h-10 rounded-xl bg-brand-light flex items-center justify-center mb-3">
-                  <Bell size={22} className="text-brand" />
+              <ul className="space-y-2 mb-4">
+                {[
+                  "Kostenübernahme durch Pflegekasse",
+                  "Monatlich direkt nach Hause",
+                  "Antrag in unter 2 Minuten",
+                ].map((v) => (
+                  <li key={v} className="flex items-center gap-2 text-sm text-gray-700">
+                    <Check size={15} className="text-brand flex-shrink-0" />
+                    {v}
+                  </li>
+                ))}
+              </ul>
+              <a
+                href="https://t.adcell.com/p/click?promoId=273407&slotId=149760&subId=hauptfunnel_box&param0=https%3A%2F%2Fpflegehase.de%2Fpflegehilfsmittel-bestellung%2F"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary w-full justify-center py-3.5 text-base text-center"
+              >
+                Box kostenlos beantragen <ArrowRight size={16} />
+              </a>
+            </div>
+
+            <div className="card p-5 relative">
+              <button
+                onClick={() => setInfoPopup("hausnotruf")}
+                className="absolute top-4 right-4 text-gray-300 hover:text-brand transition-colors"
+                aria-label="Mehr Infos zum Hausnotruf"
+              >
+                <Info size={17} />
+              </button>
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 rounded-xl bg-brand-light flex items-center justify-center flex-shrink-0">
+                  <Bell size={20} className="text-brand" />
                 </div>
-                <h3 className="font-semibold text-gray-900 mb-1">Hausnotruf</h3>
-                <p className="text-brand font-bold text-sm mb-2">ab 0 € / Monat</p>
-                <p className="text-gray-500 text-xs leading-relaxed">Pflegekasse zahlt 25,50 € / Monat. Sicherheit für euch beide – auch wenn du kurz weg bist.</p>
+                <h3 className="font-serif text-lg text-gray-900 leading-tight">Hausnotruf</h3>
               </div>
+              <ul className="space-y-2 mb-4">
+                {[
+                  "Mehr Sicherheit zuhause",
+                  "Pflegekasse zahlt monatlichen Zuschuss",
+                  "Schnell eingerichtet",
+                ].map((v) => (
+                  <li key={v} className="flex items-center gap-2 text-sm text-gray-700">
+                    <Check size={15} className="text-brand flex-shrink-0" />
+                    {v}
+                  </li>
+                ))}
+              </ul>
+              <a
+                href="https://t.adcell.com/p/click?promoId=307657&slotId=149760&subId=hauptfunnel_hausnotruf&param0=https%3A%2F%2Fpflegehase.de%2Fhausnotruf-bestellung%2F"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary w-full justify-center py-3 text-sm text-center"
+              >
+                Hausnotruf kostenfrei bestellen <ArrowRight size={16} />
+              </a>
             </div>
 
             <Checkliste />
