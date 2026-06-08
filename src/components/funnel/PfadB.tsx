@@ -304,9 +304,14 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                   </li>
                 ))}
               </ul>
-              <Link href="/hausnotruf" className="btn-secondary w-full justify-center py-3 text-sm text-center">
+              <a
+                href="https://t.adcell.com/p/click?promoId=307657&slotId=149760&subId=hauptfunnel_hausnotruf&param0=https%3A%2F%2Fpflegehase.de%2Fhausnotruf-bestellung%2F"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary w-full justify-center py-3 text-sm text-center"
+              >
                 Hausnotruf prüfen
-              </Link>
+              </a>
             </div>
 
             {/* Weitere Leistungen */}
