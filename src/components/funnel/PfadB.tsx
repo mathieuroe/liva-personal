@@ -57,9 +57,8 @@ const PG_LEISTUNGEN: Record<number, PGLeistung[]> = {
 
 const WOHNSITUATIONEN = [
   { id: "alleine", label: "Alleine zuhause", icon: <Home size={20} className="text-brand" /> },
-  { id: "selbst", label: "Zuhause, Familie hilft", icon: <Users size={20} className="text-brand" /> },
+  { id: "selbst", label: "Zuhause, Angehörige helfen", icon: <Users size={20} className="text-brand" /> },
   { id: "dienst", label: "Zuhause mit Pflegedienst", icon: <HeartHandshake size={20} className="text-brand" /> },
-  { id: "beides", label: "Zuhause, Familie & Pflegedienst", icon: <Users size={20} className="text-brand" /> },
   { id: "heim", label: "Im Pflegeheim", icon: <Building2 size={20} className="text-brand" /> },
 ];
 
