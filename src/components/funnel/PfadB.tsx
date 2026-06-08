@@ -145,30 +145,31 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
   return (
     <div className="space-y-6">
 
-      {/* Info-Popup */}
-      {infoPopup && (
+      {/* Info-Popup – immer im DOM, nur per CSS sichtbar */}
+      <div
+        className={`fixed inset-0 z-50 flex items-center justify-center px-4 transition-opacity duration-200 ${
+          infoPopup ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+        style={{ backgroundColor: "rgba(0,0,0,0.4)" }}
+        onClick={() => setInfoPopup(null)}
+      >
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4"
-          onClick={() => setInfoPopup(null)}
+          className="bg-white rounded-2xl p-6 w-full max-w-sm shadow-xl"
+          onClick={(e) => e.stopPropagation()}
         >
-          <div
-            className="bg-white rounded-2xl p-6 w-full max-w-sm shadow-xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-start justify-between mb-3">
-              <h3 className="font-serif text-lg text-gray-900 leading-snug pr-4">
-                {INFO_CONTENT[infoPopup].titel}
-              </h3>
-              <button onClick={() => setInfoPopup(null)} className="text-gray-400 hover:text-gray-600 flex-shrink-0">
-                <X size={20} />
-              </button>
-            </div>
-            <p className="text-sm text-gray-600 leading-relaxed">
-              {INFO_CONTENT[infoPopup].text}
-            </p>
+          <div className="flex items-start justify-between mb-3">
+            <h3 className="font-serif text-lg text-gray-900 leading-snug pr-4">
+              {infoPopup ? INFO_CONTENT[infoPopup].titel : ""}
+            </h3>
+            <button onClick={() => setInfoPopup(null)} className="text-gray-400 hover:text-gray-600 flex-shrink-0">
+              <X size={20} />
+            </button>
           </div>
+          <p className="text-sm text-gray-600 leading-relaxed">
+            {infoPopup ? INFO_CONTENT[infoPopup].text : ""}
+          </p>
         </div>
-      )}
+      </div>
 
       <ProgressBar step={step} modus={modus} />
       <>
