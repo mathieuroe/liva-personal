@@ -290,7 +290,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
             </div>
 
             {/* Pflegehilfsmittelbox – Haupt-CTA */}
-            <div className="card p-5 border-2 border-brand relative">
+            <div className="card p-5 relative">
               <button
                 onClick={() => setInfoPopup("box")}
                 className="absolute top-4 right-4 text-gray-300 hover:text-brand transition-colors"
@@ -325,7 +325,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                 href="https://t.adcell.com/p/click?promoId=273407&slotId=149760&subId=hauptfunnel_box&param0=https%3A%2F%2Fpflegehase.de%2Fpflegehilfsmittel-bestellung%2F"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary w-full justify-center py-3.5 text-base text-center"
+                className="btn-primary w-full justify-center py-3 text-sm text-center"
               >
                 Box kostenlos beantragen <ArrowRight size={16} />
               </a>
@@ -413,7 +413,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
             </div>
 
             {/* Pflegehilfsmittelbox + Hausnotruf – identisch zur Leistungsseite */}
-            <div className="card p-5 border-2 border-brand relative">
+            <div className="card p-5 relative">
               <button
                 onClick={() => setInfoPopup("box")}
                 className="absolute top-4 right-4 text-gray-300 hover:text-brand transition-colors"
@@ -448,7 +448,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                 href="https://t.adcell.com/p/click?promoId=273407&slotId=149760&subId=hauptfunnel_box&param0=https%3A%2F%2Fpflegehase.de%2Fpflegehilfsmittel-bestellung%2F"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary w-full justify-center py-3.5 text-base text-center"
+                className="btn-primary w-full justify-center py-3 text-sm text-center"
               >
                 Box kostenlos beantragen <ArrowRight size={16} />
               </a>
