@@ -200,7 +200,7 @@ export default function PfadA() {
             <p className="section-label">Selbst beantragen – Schritt 2</p>
             <h2 className="font-serif text-3xl text-gray-900 mb-3">Der MDK-Besuch – keine Angst davor</h2>
             <p className="text-gray-500 leading-relaxed mb-8">
-              Nach dem Antrag kommt jemand vom Medizinischen Dienst vorbei. Mit der richtigen Vorbereitung bekommt ihr den Pflegegrad der wirklich zutrifft.
+              Nach dem Antrag kommt jemand vom Medizinischen Dienst vorbei. Mit der richtigen Vorbereitung bekommst du den Pflegegrad der wirklich zutrifft.
             </p>
 
             <div className="grid sm:grid-cols-2 gap-4 mb-8">
@@ -230,7 +230,7 @@ export default function PfadA() {
           <motion.div key="step4" {...fade} transition={{ duration: 0.3 }}>
             <button onClick={() => setStep(weg === "selbst" ? 3 : 1)} className="btn-ghost mb-6">← Zurück</button>
             <LeadForm
-              title={weg === "unterstuetzung" ? "Wir begleiten euch durch den Antrag" : "Noch Fragen? Wir sind da."}
+              title={weg === "unterstuetzung" ? "Wir begleiten dich durch den Antrag" : "Noch Fragen? Wir sind da."}
               subtitle={weg === "unterstuetzung" ? "Kostenlos, persönlich, ohne Druck." : "Meld dich wenn du Unterstützung brauchst."}
               cta="Jetzt kostenlos melden"
               path="pfad-a"

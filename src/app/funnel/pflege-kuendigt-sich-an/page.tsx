@@ -5,7 +5,7 @@ import PfadA from "@/components/funnel/PfadA";
 
 export const metadata: Metadata = {
   title: "Noch kein Pflegegrad – liva",
-  description: "Wir begleiten euch durch die ersten Schritte im Pflegesystem. Kostenlos, persönlich, ohne Druck.",
+  description: "Wir begleiten dich durch die ersten Schritte im Pflegesystem. Kostenlos, persönlich, ohne Druck.",
 };
 
 export default function PflegekuendigtPage() {
@@ -21,10 +21,10 @@ export default function PflegekuendigtPage() {
             Noch kein Pflegegrad
           </span>
           <h1 className="font-serif text-4xl text-gray-900 mb-3">
-            Gut, dass ihr euch jetzt kümmert.
+            Gut, dass du dich jetzt kümmerst.
           </h1>
           <p className="text-gray-500 leading-relaxed">
-            Vorbereitung macht den Unterschied. Wir zeigen euch Schritt für Schritt was ihr jetzt tun solltet.
+            Vorbereitung macht den Unterschied. Wir zeigen dir Schritt für Schritt was du jetzt tun solltest.
           </p>
         </div>
 

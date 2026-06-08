@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { CheckCircle2 } from "lucide-react";
-import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import PflegeboxFunnel from "@/components/PflegeboxFunnel";
 
@@ -21,7 +20,6 @@ const boxInhalt = [
 export default function PflegeboxPage() {
   return (
     <>
-      <Navbar />
       <main>
         <section className="bg-white py-16 px-4 sm:px-6 border-b border-[#E0EDE7]">
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
