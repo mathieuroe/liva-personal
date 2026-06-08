@@ -340,14 +340,16 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
               >
                 <Info size={17} />
               </button>
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-xl bg-brand-light flex items-center justify-center flex-shrink-0">
-                  <Bell size={20} className="text-brand" />
-                </div>
-                <div className="flex items-center gap-2 flex-wrap">
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-brand-light flex items-center justify-center flex-shrink-0">
+                    <Bell size={20} className="text-brand" />
+                  </div>
                   <h3 className="font-serif text-lg text-gray-900 leading-tight">Hausnotruf</h3>
-                  <span className="text-[10px] font-semibold bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">häufig genutzt</span>
                 </div>
+                <span className="text-[10px] font-bold bg-gray-100 text-gray-500 px-2.5 py-1 rounded-full flex-shrink-0 mr-5">
+                  häufig genutzt
+                </span>
               </div>
               <ul className="space-y-2 mb-4">
                 {[
@@ -460,14 +462,16 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
               >
                 <Info size={17} />
               </button>
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-xl bg-brand-light flex items-center justify-center flex-shrink-0">
-                  <Bell size={20} className="text-brand" />
-                </div>
-                <div className="flex items-center gap-2 flex-wrap">
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-brand-light flex items-center justify-center flex-shrink-0">
+                    <Bell size={20} className="text-brand" />
+                  </div>
                   <h3 className="font-serif text-lg text-gray-900 leading-tight">Hausnotruf</h3>
-                  <span className="text-[10px] font-semibold bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">häufig genutzt</span>
                 </div>
+                <span className="text-[10px] font-bold bg-gray-100 text-gray-500 px-2.5 py-1 rounded-full flex-shrink-0 mr-5">
+                  häufig genutzt
+                </span>
               </div>
               <ul className="space-y-2 mb-4">
                 {[
