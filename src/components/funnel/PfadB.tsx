@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { Home, Users, HeartHandshake, Building2, Package, Bell, ListChecks, ClipboardList, Check, ArrowRight } from "lucide-react";
+import { Home, Users, HeartHandshake, Building2, Package, Bell, ListChecks, ClipboardList, Check, ArrowRight, Info, X } from "lucide-react";
 import Link from "next/link";
 import LeadForm from "./LeadForm";
 import Checkliste from "./Checkliste";
@@ -128,9 +128,47 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
   const [pflegegrad, setPflegegrad] = useState<number | null>(null);
   const [modus, setModus] = useState<Modus>(null);
   const [wohnsituation, setWohnsituation] = useState<string | null>(null);
+  const [infoPopup, setInfoPopup] = useState<"box" | "hausnotruf" | null>(null);
+
+  const INFO_CONTENT = {
+    box: {
+      titel: "Was ist die Pflegehilfsmittelbox?",
+      text: "Die Pflegehilfsmittelbox ist ein monatliches Paket mit Verbrauchsmitteln für die Pflege zuhause – zum Beispiel Einmalhandschuhe, Desinfektionsmittel und Bettschutzeinlagen. Ab Pflegegrad 1 übernimmt die Pflegekasse die Kosten vollständig (bis zu 42 € / Monat). Du bestellst einmal, die Box kommt automatisch jeden Monat.",
+    },
+    hausnotruf: {
+      titel: "Was ist ein Hausnotruf?",
+      text: "Ein Hausnotruf ist ein kleines Gerät – meist ein Knopf am Handgelenk oder als Halskette – das im Notfall per Knopfdruck einen Notruf auslöst. So kann die pflegebedürftige Person auch alleine zuhause Hilfe rufen. Die Pflegekasse zahlt ab Pflegegrad 1 einen Zuschuss von 25,50 € / Monat. Bei günstigen Anbietern entstehen damit oft keine Kosten.",
+    },
+  };
 
   return (
     <div className="space-y-6">
+
+      {/* Info-Popup */}
+      {infoPopup && (
+        <div
+          className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 px-4 pb-6 sm:pb-0"
+          onClick={() => setInfoPopup(null)}
+        >
+          <div
+            className="bg-white rounded-2xl p-6 w-full max-w-sm shadow-xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-start justify-between mb-3">
+              <h3 className="font-serif text-lg text-gray-900 leading-snug pr-4">
+                {INFO_CONTENT[infoPopup].titel}
+              </h3>
+              <button onClick={() => setInfoPopup(null)} className="text-gray-400 hover:text-gray-600 flex-shrink-0">
+                <X size={20} />
+              </button>
+            </div>
+            <p className="text-sm text-gray-600 leading-relaxed">
+              {INFO_CONTENT[infoPopup].text}
+            </p>
+          </div>
+        </div>
+      )}
+
       <ProgressBar step={step} modus={modus} />
       <>
 
@@ -250,7 +288,14 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
             </p>
 
             {/* Pflegehilfsmittelbox – Haupt-CTA */}
-            <div className="card p-5 border-2 border-brand">
+            <div className="card p-5 border-2 border-brand relative">
+              <button
+                onClick={() => setInfoPopup("box")}
+                className="absolute top-4 right-4 text-gray-300 hover:text-brand transition-colors"
+                aria-label="Mehr Infos zur Pflegehilfsmittelbox"
+              >
+                <Info size={17} />
+              </button>
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-brand flex items-center justify-center flex-shrink-0">
@@ -258,7 +303,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                   </div>
                   <h3 className="font-serif text-lg text-gray-900 leading-tight">Kostenlose Pflegehilfsmittel</h3>
                 </div>
-                <span className="text-[10px] font-bold bg-brand text-white px-2.5 py-1 rounded-full flex-shrink-0">
+                <span className="text-[10px] font-bold bg-brand text-white px-2.5 py-1 rounded-full flex-shrink-0 mr-5">
                   Empfohlen
                 </span>
               </div>
@@ -285,7 +330,14 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
             </div>
 
             {/* Hausnotruf */}
-            <div className="card p-5">
+            <div className="card p-5 relative">
+              <button
+                onClick={() => setInfoPopup("hausnotruf")}
+                className="absolute top-4 right-4 text-gray-300 hover:text-brand transition-colors"
+                aria-label="Mehr Infos zum Hausnotruf"
+              >
+                <Info size={17} />
+              </button>
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-10 h-10 rounded-xl bg-brand-light flex items-center justify-center flex-shrink-0">
                   <Bell size={20} className="text-brand" />
