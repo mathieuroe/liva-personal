@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { Home, Users, HeartHandshake, Building2, Package, Bell, ListChecks, ClipboardList, Check, ArrowRight, Info, X } from "lucide-react";
 import Link from "next/link";
@@ -130,6 +130,21 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
   const [wohnsituation, setWohnsituation] = useState<string | null>(null);
   const [infoPopup, setInfoPopup] = useState<"box" | "hausnotruf" | null>(null);
 
+  useEffect(() => {
+    if (infoPopup) {
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      document.body.style.overflow = "hidden";
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+    } else {
+      document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
+    };
+  }, [infoPopup]);
+
   const INFO_CONTENT = {
     box: {
       titel: "Was ist die Pflegehilfsmittelbox?",
@@ -147,7 +162,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
       {/* Info-Popup */}
       {infoPopup && (
         <div
-          className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 px-4 pb-6 sm:pb-0"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4"
           onClick={() => setInfoPopup(null)}
         >
           <div
