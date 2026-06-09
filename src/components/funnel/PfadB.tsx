@@ -188,7 +188,21 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
               {[1, 2, 3, 4, 5].map((pg) => (
                 <button
                   key={pg}
-                  onClick={() => { setPflegegrad(pg); gotoStep(1); }}
+                  onClick={() => {
+                    setPflegegrad(pg);
+                    if (typeof window !== "undefined") {
+                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                      const dl = (window as any);
+                      dl.dataLayer = dl.dataLayer || [];
+                      dl.dataLayer.push({
+                        event: "has_pg_care_level_selected",
+                        care_level: String(pg),
+                        funnel: "has_pflegegrad",
+                        step: "care_level_selection",
+                      });
+                    }
+                    gotoStep(1);
+                  }}
                   className={`rounded-full py-2.5 text-sm font-semibold border transition-all ${
                     pflegegrad === pg
                       ? "bg-brand text-white border-brand"
