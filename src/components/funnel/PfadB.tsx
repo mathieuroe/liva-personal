@@ -368,9 +368,9 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                 href="https://t.adcell.com/p/click?promoId=273407&slotId=149760&subId=hauptfunnel_box&param0=https%3A%2F%2Fpflegehase.de%2Fpflegehilfsmittel-bestellung%2F"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary w-full justify-center py-3 text-sm text-center group"
+                className="btn-primary w-full justify-center py-3 text-sm text-center"
               >
-                Box kostenlos beantragen <span className="transition-transform duration-200 group-hover:translate-x-1"><ArrowRight size={16} /></span>
+                Box kostenlos beantragen <ArrowRight size={16} />
               </a>
             </div>
 
@@ -410,9 +410,9 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                 href="https://t.adcell.com/p/click?promoId=307657&slotId=149760&subId=hauptfunnel_hausnotruf&param0=https%3A%2F%2Fpflegehase.de%2Fhausnotruf-bestellung%2F"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-secondary w-full justify-center py-3 text-sm text-center group"
+                className="btn-secondary w-full justify-center py-3 text-sm text-center"
               >
-                Hausnotruf kostenfrei bestellen <span className="transition-transform duration-200 group-hover:translate-x-1"><ArrowRight size={16} /></span>
+                Hausnotruf kostenfrei bestellen <ArrowRight size={16} />
               </a>
             </div>
 
@@ -491,9 +491,9 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                 href="https://t.adcell.com/p/click?promoId=273407&slotId=149760&subId=hauptfunnel_box&param0=https%3A%2F%2Fpflegehase.de%2Fpflegehilfsmittel-bestellung%2F"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary w-full justify-center py-3 text-sm text-center group"
+                className="btn-primary w-full justify-center py-3 text-sm text-center"
               >
-                Box kostenlos beantragen <span className="transition-transform duration-200 group-hover:translate-x-1"><ArrowRight size={16} /></span>
+                Box kostenlos beantragen <ArrowRight size={16} />
               </a>
             </div>
 
@@ -532,9 +532,9 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                 href="https://t.adcell.com/p/click?promoId=307657&slotId=149760&subId=hauptfunnel_hausnotruf&param0=https%3A%2F%2Fpflegehase.de%2Fhausnotruf-bestellung%2F"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-secondary w-full justify-center py-3 text-sm text-center group"
+                className="btn-secondary w-full justify-center py-3 text-sm text-center"
               >
-                Hausnotruf kostenfrei bestellen <span className="transition-transform duration-200 group-hover:translate-x-1"><ArrowRight size={16} /></span>
+                Hausnotruf kostenfrei bestellen <ArrowRight size={16} />
               </a>
             </div>
 
