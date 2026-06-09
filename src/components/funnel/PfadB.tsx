@@ -225,7 +225,21 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
             <div className="flex flex-col gap-3 mb-6">
               {/* Box 1 – Leistungen (hervorgehoben) */}
               <button
-                onClick={() => { setModus("leistungen"); gotoStep(2); }}
+                onClick={() => {
+                  setModus("leistungen");
+                  if (typeof window !== "undefined") {
+                    const dl = (window as any); // eslint-disable-line @typescript-eslint/no-explicit-any
+                    dl.dataLayer = dl.dataLayer || [];
+                    dl.dataLayer.push({
+                      event: "has_pg_start_option_selected",
+                      option: "benefits",
+                      care_level: String(pflegegrad),
+                      funnel: "has_pflegegrad",
+                      step: "start_choice",
+                    });
+                  }
+                  gotoStep(2);
+                }}
                 className={`flex items-start gap-3 text-left px-4 py-3.5 rounded-[12px] border-2 transition-all w-full relative ${
                   modus === "leistungen"
                     ? "border-brand bg-brand-light"
@@ -246,7 +260,22 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
 
               {/* Box 2 – Checkliste (neutral) */}
               <button
-                onClick={() => { setModus("checkliste"); gotoStep(5); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                onClick={() => {
+                  setModus("checkliste");
+                  if (typeof window !== "undefined") {
+                    const dl = (window as any); // eslint-disable-line @typescript-eslint/no-explicit-any
+                    dl.dataLayer = dl.dataLayer || [];
+                    dl.dataLayer.push({
+                      event: "has_pg_start_option_selected",
+                      option: "checklist",
+                      care_level: String(pflegegrad),
+                      funnel: "has_pflegegrad",
+                      step: "start_choice",
+                    });
+                  }
+                  gotoStep(5);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
                 className={`flex items-start gap-3 text-left px-4 py-3.5 rounded-[12px] border-2 transition-all w-full ${
                   modus === "checkliste"
                     ? "border-brand bg-brand-light"
