@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { DM_Sans, DM_Serif_Display } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
-import FloatingChatButton from "@/components/layout/FloatingChatButton";
+import SiteShell from "@/components/layout/SiteShell";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -47,9 +46,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
-        <Navbar />
-        {children}
-        <FloatingChatButton />
+        <SiteShell>{children}</SiteShell>
       </body>
     </html>
   );
