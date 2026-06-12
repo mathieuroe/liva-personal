@@ -383,6 +383,20 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                 href="https://t.adcell.com/p/click?promoId=273407&slotId=149760&subId=hauptfunnel_box&param0=https%3A%2F%2Fpflegehase.de%2Fpflegehilfsmittel-bestellung%2F"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => {
+                  if (typeof window !== "undefined") {
+                    const dl = (window as any); // eslint-disable-line @typescript-eslint/no-explicit-any
+                    dl.dataLayer = dl.dataLayer || [];
+                    dl.dataLayer.push({
+                      event: "has_pg_affiliate_click",
+                      product: "pflegebox",
+                      care_level: String(pflegegrad),
+                      living_situation: String(wohnsituation),
+                      funnel: "has_pflegegrad",
+                      placement: "result",
+                    });
+                  }
+                }}
                 className="btn-primary w-full justify-center py-3 text-sm text-center"
               >
                 Box kostenlos beantragen <ArrowRight size={16} />
@@ -425,6 +439,20 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                 href="https://t.adcell.com/p/click?promoId=307657&slotId=149760&subId=hauptfunnel_hausnotruf&param0=https%3A%2F%2Fpflegehase.de%2Fhausnotruf-bestellung%2F"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => {
+                  if (typeof window !== "undefined") {
+                    const dl = (window as any); // eslint-disable-line @typescript-eslint/no-explicit-any
+                    dl.dataLayer = dl.dataLayer || [];
+                    dl.dataLayer.push({
+                      event: "has_pg_affiliate_click",
+                      product: "hausnotruf",
+                      care_level: String(pflegegrad),
+                      living_situation: String(wohnsituation),
+                      funnel: "has_pflegegrad",
+                      placement: "result",
+                    });
+                  }
+                }}
                 className="btn-secondary w-full justify-center py-3 text-sm text-center"
               >
                 Hausnotruf kostenfrei bestellen <ArrowRight size={16} />
