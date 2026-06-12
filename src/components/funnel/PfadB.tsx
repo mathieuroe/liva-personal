@@ -306,7 +306,22 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
               {WOHNSITUATIONEN.map((w) => (
                 <button
                   key={w.id}
-                  onClick={() => { setWohnsituation(w.id); gotoStep(4); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                  onClick={() => {
+                    setWohnsituation(w.id);
+                    if (typeof window !== "undefined") {
+                      const dl = (window as any); // eslint-disable-line @typescript-eslint/no-explicit-any
+                      dl.dataLayer = dl.dataLayer || [];
+                      dl.dataLayer.push({
+                        event: "has_pg_living_situation_selected",
+                        living_situation: String(w.id),
+                        care_level: String(pflegegrad),
+                        funnel: "has_pflegegrad",
+                        step: "living_situation",
+                      });
+                    }
+                    gotoStep(4);
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
                   className={`w-full flex items-center gap-3 px-4 py-3.5 rounded-[12px] border-2 text-left transition-all ${
                     wohnsituation === w.id ? "border-brand bg-brand-light" : "border-[#E0EDE7] bg-white hover:border-brand/30"
                   }`}
