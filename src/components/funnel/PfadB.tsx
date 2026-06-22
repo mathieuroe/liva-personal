@@ -55,10 +55,10 @@ const PG_LEISTUNGEN: Record<number, PGLeistung[]> = {
 };
 
 const WOHNSITUATIONEN = [
-  { id: "alleine", label: "Alleine zuhause", icon: <Home size={20} className="text-brand" /> },
-  { id: "selbst", label: "Zuhause, Angehörige helfen", icon: <Users size={20} className="text-brand" /> },
-  { id: "dienst", label: "Zuhause mit Pflegedienst", icon: <HeartHandshake size={20} className="text-brand" /> },
-  { id: "heim", label: "Im Pflegeheim", icon: <Building2 size={20} className="text-brand" /> },
+  { id: "alleine", label: "Ich lebe alleine zuhause", icon: <Home size={18} className="text-brand" /> },
+  { id: "selbst", label: "Angehörige helfen zuhause", icon: <Users size={18} className="text-brand" /> },
+  { id: "dienst", label: "Ein Pflegedienst unterstützt zuhause", icon: <HeartHandshake size={18} className="text-brand" /> },
+  { id: "heim", label: "Ich lebe im Pflegeheim", icon: <Building2 size={18} className="text-brand" /> },
 ];
 
 
@@ -301,10 +301,9 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
         {/* LEISTUNGEN – Wohnsituation */}
         {step === 2 && (
           <div>
-            <h2 className="font-serif text-3xl text-gray-900 mb-1.5">Wie ist die Wohnsituation?</h2>
-            <p className="text-gray-600 text-sm mb-1">Damit wir dir nur die Leistungen zeigen, die wirklich zu deiner Situation passen.</p>
-            <p className="text-gray-400 text-xs mb-6 leading-relaxed">Je nachdem wie die Pflege organisiert ist, können unterschiedliche Leistungen infrage kommen.</p>
-            <div className="space-y-2.5 mb-8">
+            <h2 className="font-serif text-3xl text-gray-900 mb-2">Wie ist die Pflege aktuell organisiert?</h2>
+            <p className="text-gray-500 text-sm mb-5 leading-relaxed">Damit zeigen wir dir nur Leistungen, die wirklich zu deiner Situation passen.</p>
+            <div className="space-y-2 mb-6">
               {WOHNSITUATIONEN.map((w) => (
                 <button
                   key={w.id}
@@ -314,12 +313,13 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                     gotoStep(4);
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
-                  className={`w-full flex items-center gap-3 px-4 py-3.5 rounded-[12px] border-2 text-left transition-all ${
-                    wohnsituation === w.id ? "border-brand bg-brand-light" : "border-[#E0EDE7] bg-white hover:border-brand/30"
+                  className={`w-full flex items-center gap-3 px-4 py-4 rounded-xl border-2 text-left transition-all ${
+                    wohnsituation === w.id ? "border-brand bg-brand-light" : "border-[#E0EDE7] bg-white hover:border-brand/40"
                   }`}
                 >
                   <div className="w-8 h-8 rounded-lg bg-brand-light flex items-center justify-center flex-shrink-0">{w.icon}</div>
-                  <span className="font-medium text-gray-900 text-sm leading-snug">{w.label}</span>
+                  <span className="font-medium text-gray-900 text-sm leading-snug flex-1">{w.label}</span>
+                  <ArrowRight size={16} className="text-gray-300 flex-shrink-0" />
                 </button>
               ))}
             </div>
