@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Check } from "lucide-react";
 import PfadB from "@/components/funnel/PfadB";
 
 export default function PflegegradVorhandenPage() {
@@ -22,6 +23,14 @@ export default function PflegegradVorhandenPage() {
               Beantworte 3 kurze Fragen. Wir zeigen dir passende Hilfen und Zuschüsse.
             </p>
             <p className="text-sm text-gray-400">Kostenlos · Unverbindlich · 2 Minuten</p>
+          </div>
+        )}
+
+        {step === 1 && (
+          <div className="mb-5">
+            <span className="inline-flex items-center gap-1.5 bg-brand-light text-brand text-xs font-semibold px-4 py-1.5 rounded-full">
+              <Check size={11} strokeWidth={3} /> Pflegegrad vorhanden
+            </span>
           </div>
         )}
 

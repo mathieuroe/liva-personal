@@ -243,36 +243,35 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
         {/* SCHRITT 2 – Modus wählen */}
         {step === 1 && pflegegrad && (
           <div>
-            <h2 className="font-serif text-3xl text-gray-900 mb-1.5">Womit möchtest du starten?</h2>
-            <p className="text-gray-500 mb-5 text-sm">Wähle den Bereich, der dir gerade am meisten hilft.</p>
+            <h2 className="font-serif text-3xl text-gray-900 mb-2">Was möchtest du als Erstes erledigen?</h2>
+            <p className="text-gray-500 mb-6 text-sm leading-relaxed">Wir helfen dir dabei, die wichtigsten Leistungen und nächsten Schritte zu finden.</p>
 
             <div className="flex flex-col gap-3 mb-6">
-              {/* Box 1 – Leistungen (hervorgehoben) */}
+              {/* Karte 1 – Leistungen prüfen */}
               <button
                 onClick={() => {
                   setModus("leistungen");
                   pushDataLayerEvent("has_pg_leistungen_selected");
                   gotoStep(2);
                 }}
-                className={`flex items-start gap-3 text-left px-4 py-3.5 rounded-[12px] border-2 transition-all w-full relative ${
-                  modus === "leistungen"
-                    ? "border-brand bg-brand-light"
-                    : "border-brand/40 bg-brand-light/30 hover:border-brand hover:bg-brand-light/50"
-                }`}
+                className="flex items-center gap-4 text-left px-5 py-5 rounded-2xl border-2 border-brand bg-brand-light/40 hover:bg-brand-light/60 transition-all w-full"
               >
-                <ClipboardList size={20} className="text-brand flex-shrink-0 mt-0.5" />
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-0.5">
-                    <p className="font-semibold text-gray-900 text-sm">Leistungen prüfen</p>
-                    <span className="text-[10px] font-bold bg-brand text-white px-2 py-0.5 rounded-full">Empfohlen</span>
-                  </div>
-                  <p className="text-xs text-gray-500 leading-relaxed">
-                    Zeigt dir Pflegegeld, Hilfsmittel und weitere Ansprüche für deinen Pflegegrad.
-                  </p>
+                <div className="w-12 h-12 rounded-xl bg-brand-light flex items-center justify-center flex-shrink-0">
+                  <ClipboardList size={22} className="text-brand" />
                 </div>
+                <div className="flex-1 min-w-0">
+                  <p className="font-semibold text-gray-900 text-base mb-1">Leistungen prüfen</p>
+                  <p className="text-sm text-gray-500 leading-relaxed mb-2">
+                    Finde heraus, welche Leistungen und Zuschüsse dir mit deinem Pflegegrad zustehen.
+                  </p>
+                  <span className="inline-flex items-center gap-1 text-[11px] font-bold bg-brand text-white px-2.5 py-1 rounded-full">
+                    ★ Empfohlen
+                  </span>
+                </div>
+                <ArrowRight size={18} className="text-gray-400 flex-shrink-0" />
               </button>
 
-              {/* Box 2 – Checkliste (neutral) */}
+              {/* Karte 2 – Checkliste erhalten */}
               <button
                 onClick={() => {
                   setModus("checkliste");
@@ -280,19 +279,18 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                   gotoStep(5);
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
-                className={`flex items-start gap-3 text-left px-4 py-3.5 rounded-[12px] border-2 transition-all w-full ${
-                  modus === "checkliste"
-                    ? "border-brand bg-brand-light"
-                    : "border-[#E0EDE7] bg-white hover:border-brand/40"
-                }`}
+                className="flex items-center gap-4 text-left px-5 py-5 rounded-2xl border-2 border-[#E0EDE7] bg-white hover:border-brand/40 transition-all w-full"
               >
-                <ListChecks size={20} className="text-brand flex-shrink-0 mt-0.5" />
+                <div className="w-12 h-12 rounded-xl bg-brand-light flex items-center justify-center flex-shrink-0">
+                  <ListChecks size={22} className="text-brand" />
+                </div>
                 <div className="flex-1 min-w-0">
-                  <p className="font-semibold text-gray-900 text-sm mb-0.5">Checkliste erhalten</p>
-                  <p className="text-xs text-gray-500 leading-relaxed">
-                    Schritt-für-Schritt Übersicht: Was du jetzt organisieren, prüfen und nicht vergessen solltest.
+                  <p className="font-semibold text-gray-900 text-base mb-1">Checkliste erhalten</p>
+                  <p className="text-sm text-gray-500 leading-relaxed">
+                    Erfahre Schritt für Schritt, was jetzt wichtig ist und nichts Wichtiges vergisst.
                   </p>
                 </div>
+                <ArrowRight size={18} className="text-gray-400 flex-shrink-0" />
               </button>
             </div>
 
