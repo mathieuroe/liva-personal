@@ -191,7 +191,7 @@ const W = {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const ALL_Q: any[] = [];
-MODULES.forEach(m => m.questions.forEach((q: any) => ALL_Q.push({ ...q, mod: m.n })));
+MODULES.forEach(m => m.questions.forEach((q: any) => ALL_Q.push({ ...q, mod: m.n }))); // eslint-disable-line @typescript-eslint/no-explicit-any
 const TOTAL_Q = ALL_Q.length;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -200,7 +200,7 @@ function computeResult(answers: Record<string, number>) {
   const m5  = { a:0, b:0, c:0, d:0 };
   let special = false;
 
-  ALL_Q.forEach((q: any) => {
+  ALL_Q.forEach((q: any) => { // eslint-disable-line @typescript-eslint/no-explicit-any
     const idx = answers[q.id];
     if (idx == null) return;
     const opt = q.o[idx];
@@ -237,7 +237,7 @@ function computeResult(answers: Record<string, number>) {
 const STEPS: any[] = [{ type: "intro" }];
 MODULES.forEach(m => {
   STEPS.push({ type: "modIntro", mod: m });
-  m.questions.forEach((q: any) => STEPS.push({ type: "q", q: { ...q, mod: m.n }, mod: m }));
+  m.questions.forEach((q: any) => STEPS.push({ type: "q", q: { ...q, mod: m.n }, mod: m })); // eslint-disable-line @typescript-eslint/no-explicit-any
 });
 
 /* ─── Globale Styles ──────────────────────────────────────────────────────── */
@@ -378,7 +378,7 @@ function ModIntroScreen({ mod, onNext, onBack, isFirst }: any) {
 /* ─── Frage-Screen ────────────────────────────────────────────────────────── */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function QuestionScreen({ q, mod, selected, onSelect, onBack }: any) {
-  const qNum = ALL_Q.findIndex((x: any) => x.id === q.id) + 1;
+  const qNum = ALL_Q.findIndex((x: any) => x.id === q.id) + 1; // eslint-disable-line @typescript-eslint/no-explicit-any
   return (
     <div style={{ padding:"26px 22px 20px" }}>
       <div style={{ display:"flex", alignItems:"center", gap:9, marginBottom:16,
@@ -394,7 +394,7 @@ function QuestionScreen({ q, mod, selected, onSelect, onBack }: any) {
         color:C.ink, marginBottom: q.hint ? 9 : 18 }}>{q.q}</h2>
       {q.hint && <p style={{ fontSize:".96rem", color:C.inkSoft, marginBottom:18, lineHeight:1.5 }}>{q.hint}</p>}
       <div style={{ display:"flex", flexDirection:"column", gap:9 }}>
-        {q.o.map((opt: any, i: number) => (
+        {q.o.map((opt: any, i: number) => ( // eslint-disable-line @typescript-eslint/no-explicit-any
           <OptionCard key={i} opt={opt} idx={i} selected={selected} onSelect={onSelect} delay={i * 48 + 25}/>
         ))}
       </div>
@@ -421,7 +421,7 @@ export default function PflegegradRechner({ onErgebnis }: Props) {
   const goBack = useCallback(() => { if (step > 0) goTo(step - 1); }, [step, goTo]);
 
   const cur = STEPS[step];
-  const answered = ALL_Q.filter((q: any) => answers[q.id] != null).length;
+  const answered = ALL_Q.filter((q: any) => answers[q.id] != null).length; // eslint-disable-line @typescript-eslint/no-explicit-any
   const showProgress = cur.type === "q" || cur.type === "modIntro";
 
   const selectOpt = useCallback((qid: string, idx: number) => {

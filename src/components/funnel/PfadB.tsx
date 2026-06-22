@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import { Home, Users, HeartHandshake, Building2, Package, Bell, ListChecks, ClipboardList, Check, ArrowRight, Info, X } from "lucide-react";
 import LeadForm from "./LeadForm";
@@ -65,6 +65,21 @@ const WOHNSITUATIONEN = [
 
 const PG_LABELS = ["", "PG 1", "PG 2", "PG 3", "PG 4", "PG 5"];
 
+const WOHN_EVENT_MAP: Record<string, string> = {
+  alleine: "has_pg_living_alone_selected",
+  selbst: "has_pg_living_family_selected",
+  dienst: "has_pg_living_care_service_selected",
+  heim: "has_pg_living_care_home_selected",
+};
+
+function pushDataLayerEvent(eventName: string) {
+  if (typeof window === "undefined") return;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const dl = window as any;
+  dl.dataLayer = dl.dataLayer || [];
+  dl.dataLayer.push({ event: eventName });
+}
+
 
 interface PfadBProps {
   onStepChange?: (step: number) => void;
@@ -115,6 +130,23 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
   const [wohnsituation, setWohnsituation] = useState<string | null>(null);
   const [infoPopup, setInfoPopup] = useState<"box" | "hausnotruf" | null>(null);
 
+  const leistungenResultFired = useRef(false);
+  const checklistResultFired = useRef(false);
+
+  useEffect(() => {
+    pushDataLayerEvent("has_pg_funnel_landing_view");
+  }, []);
+
+  useEffect(() => {
+    if (step === 4 && !leistungenResultFired.current) {
+      leistungenResultFired.current = true;
+      pushDataLayerEvent("has_pg_leistungen_result_viewed");
+    }
+    if (step === 5 && !checklistResultFired.current) {
+      checklistResultFired.current = true;
+      pushDataLayerEvent("has_pg_checklist_result_viewed");
+    }
+  }, [step]);
 
   const INFO_CONTENT = {
     box: {
@@ -192,17 +224,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                   key={pg}
                   onClick={() => {
                     setPflegegrad(pg);
-                    if (typeof window !== "undefined") {
-                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                      const dl = (window as any);
-                      dl.dataLayer = dl.dataLayer || [];
-                      dl.dataLayer.push({
-                        event: "has_pg_care_level_selected",
-                        care_level: String(pg),
-                        funnel: "has_pflegegrad",
-                        step: "care_level_selection",
-                      });
-                    }
+                    pushDataLayerEvent(`has_pg_pg${pg}_selected`);
                     gotoStep(1);
                   }}
                   className={`rounded-full py-2.5 text-sm font-semibold border transition-all ${
@@ -229,17 +251,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
               <button
                 onClick={() => {
                   setModus("leistungen");
-                  if (typeof window !== "undefined") {
-                    const dl = (window as any); // eslint-disable-line @typescript-eslint/no-explicit-any
-                    dl.dataLayer = dl.dataLayer || [];
-                    dl.dataLayer.push({
-                      event: "has_pg_start_option_selected",
-                      option: "benefits",
-                      care_level: String(pflegegrad),
-                      funnel: "has_pflegegrad",
-                      step: "start_choice",
-                    });
-                  }
+                  pushDataLayerEvent("has_pg_leistungen_selected");
                   gotoStep(2);
                 }}
                 className={`flex items-start gap-3 text-left px-4 py-3.5 rounded-[12px] border-2 transition-all w-full relative ${
@@ -264,17 +276,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
               <button
                 onClick={() => {
                   setModus("checkliste");
-                  if (typeof window !== "undefined") {
-                    const dl = (window as any); // eslint-disable-line @typescript-eslint/no-explicit-any
-                    dl.dataLayer = dl.dataLayer || [];
-                    dl.dataLayer.push({
-                      event: "has_pg_start_option_selected",
-                      option: "checklist",
-                      care_level: String(pflegegrad),
-                      funnel: "has_pflegegrad",
-                      step: "start_choice",
-                    });
-                  }
+                  pushDataLayerEvent("has_pg_checklist_selected");
                   gotoStep(5);
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
@@ -310,17 +312,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                   key={w.id}
                   onClick={() => {
                     setWohnsituation(w.id);
-                    if (typeof window !== "undefined") {
-                      const dl = (window as any); // eslint-disable-line @typescript-eslint/no-explicit-any
-                      dl.dataLayer = dl.dataLayer || [];
-                      dl.dataLayer.push({
-                        event: "has_pg_living_situation_selected",
-                        living_situation: String(w.id),
-                        care_level: String(pflegegrad),
-                        funnel: "has_pflegegrad",
-                        step: "living_situation",
-                      });
-                    }
+                    pushDataLayerEvent(WOHN_EVENT_MAP[w.id]);
                     gotoStep(4);
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
@@ -385,20 +377,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                 href="https://t.adcell.com/p/click?promoId=273407&slotId=149760&subId=hauptfunnel_box&param0=https%3A%2F%2Fpflegehase.de%2Fpflegehilfsmittel-bestellung%2F"
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => {
-                  if (typeof window !== "undefined") {
-                    const dl = (window as any); // eslint-disable-line @typescript-eslint/no-explicit-any
-                    dl.dataLayer = dl.dataLayer || [];
-                    dl.dataLayer.push({
-                      event: "has_pg_affiliate_click",
-                      product: "pflegebox",
-                      care_level: String(pflegegrad),
-                      living_situation: String(wohnsituation),
-                      funnel: "has_pflegegrad",
-                      placement: "result",
-                    });
-                  }
-                }}
+                onClick={() => pushDataLayerEvent("has_pg_leistungen_pflegebox_click")}
                 className="btn-primary w-full justify-center py-3 text-sm text-center"
               >
                 Pflegebox jetzt kostenlos beantragen <ArrowRight size={16} />
@@ -442,20 +421,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                 href="https://t.adcell.com/p/click?promoId=307657&slotId=149760&subId=hauptfunnel_hausnotruf&param0=https%3A%2F%2Fpflegehase.de%2Fhausnotruf-bestellung%2F"
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => {
-                  if (typeof window !== "undefined") {
-                    const dl = (window as any); // eslint-disable-line @typescript-eslint/no-explicit-any
-                    dl.dataLayer = dl.dataLayer || [];
-                    dl.dataLayer.push({
-                      event: "has_pg_affiliate_click",
-                      product: "hausnotruf",
-                      care_level: String(pflegegrad),
-                      living_situation: String(wohnsituation),
-                      funnel: "has_pflegegrad",
-                      placement: "result",
-                    });
-                  }
-                }}
+                onClick={() => pushDataLayerEvent("has_pg_leistungen_hausnotruf_click")}
                 className="btn-primary w-full justify-center py-3 text-sm text-center"
               >
                 Hausnotruf kostenlos bestellen <ArrowRight size={16} />
@@ -538,6 +504,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                 href="https://t.adcell.com/p/click?promoId=273407&slotId=149760&subId=hauptfunnel_box&param0=https%3A%2F%2Fpflegehase.de%2Fpflegehilfsmittel-bestellung%2F"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => pushDataLayerEvent("has_pg_checklist_pflegebox_click")}
                 className="btn-primary w-full justify-center py-3 text-sm text-center"
               >
                 Pflegebox jetzt kostenlos beantragen <ArrowRight size={16} />
@@ -580,6 +547,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                 href="https://t.adcell.com/p/click?promoId=307657&slotId=149760&subId=hauptfunnel_hausnotruf&param0=https%3A%2F%2Fpflegehase.de%2Fhausnotruf-bestellung%2F"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => pushDataLayerEvent("has_pg_checklist_hausnotruf_click")}
                 className="btn-primary w-full justify-center py-3 text-sm text-center"
               >
                 Hausnotruf kostenlos bestellen <ArrowRight size={16} />
