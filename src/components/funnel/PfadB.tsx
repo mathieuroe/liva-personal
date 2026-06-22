@@ -104,9 +104,8 @@ function ProgressBar({ step, modus }: { step: number; modus: Modus }) {
 
   return (
     <div className="mb-6">
-      <div className="flex justify-between text-xs text-gray-400 mb-1.5">
-        <span>Schritt {current} von {total}</span>
-        <span>{percent}%</span>
+      <div className="mb-1.5">
+        <span className="text-xs text-gray-400">Schritt {current} von {total}</span>
       </div>
       <div className="h-1.5 bg-gray-200 rounded-full overflow-hidden">
         <div
@@ -216,9 +215,9 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
         {/* SCHRITT 1 – Pflegegrad */}
         {step === 0 && (
           <div>
-            <h2 className="font-serif text-3xl text-gray-900 mb-2">Welchen Pflegegrad hast du?</h2>
-            <p className="text-gray-500 mb-8">Das hilft uns einzuschätzen was dir zusteht.</p>
-            <div className="grid grid-cols-5 gap-2">
+            <h2 className="font-serif text-2xl text-gray-900 mb-2">Welchen Pflegegrad hast du?</h2>
+            <p className="text-gray-500 text-sm mb-5">Davon hängt ab, welche Leistungen für dich infrage kommen.</p>
+            <div className="flex flex-col gap-2">
               {[1, 2, 3, 4, 5].map((pg) => (
                 <button
                   key={pg}
@@ -227,13 +226,14 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                     pushDataLayerEvent(`has_pg_pg${pg}_selected`);
                     gotoStep(1);
                   }}
-                  className={`rounded-full py-2.5 text-sm font-semibold border transition-all ${
+                  className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl border-2 text-sm font-semibold transition-all ${
                     pflegegrad === pg
                       ? "bg-brand text-white border-brand"
                       : "bg-white text-gray-700 border-[#E0EDE7] hover:border-brand hover:text-brand"
                   }`}
                 >
-                  PG {pg}
+                  <span>Pflegegrad {pg}</span>
+                  <ArrowRight size={16} className="flex-shrink-0 opacity-40" />
                 </button>
               ))}
             </div>
