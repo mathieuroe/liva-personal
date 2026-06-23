@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Footer from "@/components/layout/Footer";
 import LeistungsBoxen from "@/components/leistungen/LeistungsBoxen";
 
@@ -103,11 +103,6 @@ export default function LeistungenPage() {
             <p className="text-gray-500 text-lg max-w-xl leading-relaxed mb-8">
               Die Pflegeversicherung zahlt mehr als die meisten wissen – viele Leistungen werden nie beantragt. Hier ist alles erklärt, ohne Bürokratie-Deutsch.
             </p>
-            <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-400 mb-8">
-              <span className="flex items-center gap-1.5"><CheckCircle2 size={14} className="text-brand" /> Aktuell: Stand Juni 2026</span>
-              <span className="flex items-center gap-1.5"><CheckCircle2 size={14} className="text-brand" /> Inkl. kombiniertes Budget ab 01.07.2025</span>
-              <span className="flex items-center gap-1.5"><CheckCircle2 size={14} className="text-brand" /> Alle Pflegegrade PG 1–5</span>
-            </div>
             <Link href="/pflegegrad-rechner" className="btn-secondary inline-flex text-sm px-5 py-2.5">
               Pflegegrad noch unklar? Jetzt kostenlos ermitteln <ArrowRight size={15} />
             </Link>
