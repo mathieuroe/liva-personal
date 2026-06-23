@@ -12,6 +12,7 @@ export default function Footer() {
             <Link href="/leistungen#entlastung" className="hover:text-white transition-colors">Entlastungsbetrag</Link>
           </div>
           <div className="flex gap-3 sm:gap-4">
+            <Link href="/datenschutz" className="hover:text-white transition-colors">Datenschutz</Link>
             <Link href="/impressum" className="hover:text-white transition-colors">Impressum</Link>
             <span>© 2026 liva.</span>
           </div>
