@@ -30,7 +30,7 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
-          <Link href="/funnel/pflege-kuendigt-sich-an" className="btn-secondary text-sm px-4 py-2.5">
+          <Link href="/pflegegrad-rechner" className="btn-secondary text-sm px-4 py-2.5">
             <Calculator size={15} /> Pflegegrad-Rechner
           </Link>
           <Link href="/" className="btn-primary text-sm px-5 py-2.5">
@@ -50,7 +50,7 @@ export default function Navbar() {
               {l.label}
             </Link>
           ))}
-          <Link href="/funnel/pflege-kuendigt-sich-an" className="btn-secondary mt-3 text-center justify-center" onClick={() => setOpen(false)}>
+          <Link href="/pflegegrad-rechner" className="btn-secondary mt-3 text-center justify-center" onClick={() => setOpen(false)}>
             <Calculator size={15} /> Pflegegrad-Rechner
           </Link>
           <Link href="/" className="btn-primary mt-2 text-center justify-center" onClick={() => setOpen(false)}>
