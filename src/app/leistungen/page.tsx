@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, Check, Info } from "lucide-react";
 import Footer from "@/components/layout/Footer";
 import LeistungsBoxen from "@/components/leistungen/LeistungsBoxen";
+import LeistungenGrid from "@/components/leistungen/LeistungenGrid";
+import PflegegradTabelle from "@/components/leistungen/PflegegradTabelle";
 
 export const metadata: Metadata = {
   title: "Pflegeleistungen 2026 – Was dir mit deinem Pflegegrad zusteht | liva",
@@ -30,75 +32,6 @@ const schemaItemList = {
   ],
 };
 
-const LEISTUNGEN = [
-  {
-    id: "entlastung",
-    name: "Entlastungsbetrag",
-    betrag: "131 € / Monat",
-    pg: "Ab PG 1",
-    text: "Monatlich 131 € für qualifizierte Unterstützung im Alltag – Alltagsbegleitung, Haushaltshilfe, Fahrdienste oder Betreuungsgruppen. Nicht genutzte Beträge können quartalsweise mitgenommen werden, insgesamt bis zu 1.572 € im Jahr. Der Anbieter muss nach Landesrecht anerkannt sein.",
-    beantragen: "Anerkannten Anbieter kontaktieren, Leistungen in Anspruch nehmen, Rechnung bei der Pflegekasse einreichen.",
-  },
-  {
-    id: "pflegegeld",
-    name: "Pflegegeld",
-    betrag: "332 – 946 € / Monat",
-    pg: "Ab PG 2",
-    highlight: true,
-    text: "Direktzahlung an dich, wenn Angehörige oder nahestehende Personen die Pflege übernehmen. Kein Nachweis einzelner Leistungen nötig – einfach bei der Pflegekasse beantragen. PG 2: 332 €, PG 3: 572 €, PG 4: 764 €, PG 5: 946 € pro Monat.",
-    beantragen: "Formloser Antrag bei der Pflegekasse – schriftlich, telefonisch oder online über das Kassenportal.",
-  },
-  {
-    id: "sachleistung",
-    name: "Pflegesachleistungen",
-    betrag: "bis 2.095 € / Monat",
-    pg: "Ab PG 2",
-    text: "Für professionelle Pflege durch einen ambulanten Pflegedienst. Die Pflegekasse zahlt direkt an den Dienst – du wählst den Anbieter. PG 2: bis 761 €, PG 3: bis 1.363 €, PG 4: bis 1.693 €, PG 5: bis 2.095 € monatlich.",
-    beantragen: "Ambulanten Pflegedienst wählen, Pflegevertrag abschließen – der Dienst rechnet direkt mit der Pflegekasse ab.",
-  },
-  {
-    id: "verhinderung",
-    name: "Verhinderungs- & Kurzzeitpflege",
-    betrag: "bis 3.539 € / Jahr",
-    pg: "Ab PG 2",
-    highlight: true,
-    text: "Seit 01.07.2025 gibt es ein gemeinsames Budget aus Verhinderungs- und Kurzzeitpflege: bis zu 3.539 € pro Jahr. Verhinderungspflege greift wenn die Hauptpflegeperson Urlaub oder eine Auszeit braucht, Kurzzeitpflege für vorübergehende stationäre Aufenthalte. Beides flexibel kombinierbar.",
-    beantragen: "Vertretung oder Einrichtung organisieren, Antrag mit Nachweis bei der Pflegekasse einreichen – Erstattung in 2–4 Wochen.",
-  },
-  {
-    id: "tagespflege",
-    name: "Tagespflege",
-    betrag: "bis 1.995 € / Monat",
-    pg: "Ab PG 2",
-    text: "Tagesbetreuung in einer Pflegeeinrichtung – tagsüber betreut, abends wieder zuhause. Wird zusätzlich zu ambulanten Leistungen und Pflegegeld gewährt und kürzt diese nicht. PG 2: bis 689 €, PG 3: bis 1.298 €, PG 4: bis 1.612 €, PG 5: bis 1.995 € monatlich.",
-    beantragen: "Tagespflegeeinrichtung in der Nähe finden, Platz anfragen – die Einrichtung rechnet direkt mit der Pflegekasse ab.",
-  },
-  {
-    id: "wohnraum",
-    name: "Wohnraumanpassung",
-    betrag: "bis 4.180 € / Maßnahme",
-    pg: "Ab PG 1",
-    text: "Zuschuss für barrierefreie Umbauten: Haltegriffe, Duschumbau, Türverbreiterung, Treppenlifte. Bis zu 4.180 € je Maßnahme, mehrere Maßnahmen möglich. Wichtig: Antrag muss vor Beginn der Umbaumaßnahme gestellt werden.",
-    beantragen: "Antrag bei der Pflegekasse stellen, Kostenvoranschlag beifügen – erst nach Genehmigung mit dem Umbau beginnen.",
-  },
-  {
-    id: "pflegebox-karte",
-    name: "Pflegehilfsmittelbox",
-    betrag: "bis 42 € / Monat",
-    pg: "Ab PG 1",
-    text: "Monatlich bis zu 42 € für Pflegeverbrauchsmittel – Einmalhandschuhe, Desinfektionsmittel, Bettschutzeinlagen, Mundschutz. Die Pflegekasse erstattet direkt an den Anbieter, für dich entstehen keine Kosten. Beantragung dauert unter 5 Minuten.",
-    beantragen: "Pflegehilfsmittel-Anbieter kontaktieren – dieser stellt den Antrag bei der Pflegekasse und liefert monatlich.",
-  },
-  {
-    id: "hausnotruf-karte",
-    name: "Hausnotruf",
-    betrag: "27,00 € / Monat + einmalig bis 10,49 €",
-    pg: "Ab PG 1",
-    text: "Kleine Basisstation mit Notrufknopf als Armband oder Halskette – ein Druck genügt, sofort antwortet jemand. Die Pflegekasse zahlt 27,00 € monatlich und einmalig bis zu 10,49 € für die Einrichtung. Bei günstigen Anbietern entstehen keine Kosten.",
-    beantragen: "Hausnotruf-Anbieter wählen, Antrag bei der Pflegekasse stellen – Genehmigung in ca. 3–5 Werktagen.",
-  },
-];
-
 export default function LeistungenPage() {
   return (
     <>
@@ -115,9 +48,22 @@ export default function LeistungenPage() {
             <h1 className="font-serif text-5xl text-gray-900 mb-4 leading-tight">
               Was dir mit deinem<br className="hidden sm:block" /> Pflegegrad zusteht
             </h1>
-            <p className="text-gray-500 text-lg max-w-xl leading-relaxed mb-8">
+            <p className="text-gray-500 text-lg max-w-xl leading-relaxed mb-6">
               Die Pflegeversicherung zahlt mehr als die meisten wissen – viele Leistungen werden nie beantragt. Hier ist alles erklärt, ohne Bürokratie-Deutsch.
             </p>
+            {/* Trust Stats */}
+            <div className="flex flex-wrap gap-4 mb-8">
+              {[
+                { zahl: "6 Mio.", text: "Menschen haben aktuell einen Pflegegrad in Deutschland" },
+                { zahl: "86 %", text: "der Pflegebedürftigen werden zu Hause gepflegt" },
+                { zahl: "≈ 80 %", text: "der Entlastungsleistungen bleiben ungenutzt" },
+              ].map((s) => (
+                <div key={s.zahl} className="bg-brand-light/60 rounded-xl px-4 py-3 flex flex-col min-w-[160px]">
+                  <span className="font-bold text-brand text-xl leading-none mb-0.5">{s.zahl}</span>
+                  <span className="text-xs text-gray-700 leading-snug">{s.text}</span>
+                </div>
+              ))}
+            </div>
             <Link href="/pflegegrad-rechner" className="btn-secondary inline-flex text-sm px-5 py-2.5">
               Pflegegrad noch unklar? Jetzt kostenlos ermitteln <ArrowRight size={15} />
             </Link>
@@ -125,7 +71,7 @@ export default function LeistungenPage() {
         </section>
 
         {/* ── Sofort-Leistungen (fix, unverändert) ───────────────── */}
-        <section className="py-12 px-4 sm:px-6 bg-brand-light/30">
+        <section id="leistungen-sofort" className="py-12 px-4 sm:px-6 bg-brand-light/30">
           <div className="max-w-6xl mx-auto">
             <p className="text-sm font-semibold text-brand mb-2">Sofort beantragen – noch heute</p>
             <p className="text-xs text-gray-500 mb-6">Beide Leistungen gelten ab Pflegegrad 1 und sind in wenigen Minuten beantragt.</p>
@@ -137,30 +83,58 @@ export default function LeistungenPage() {
         <section className="py-12 px-4 sm:px-6 bg-white">
           <div className="max-w-6xl mx-auto">
             <p className="text-sm font-semibold text-gray-900 mb-1">Weitere Leistungen der Pflegekasse</p>
-            <p className="text-xs text-gray-500 mb-6">Je nach Pflegegrad – viele davon werden nie beantragt, obwohl Anspruch besteht.</p>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {LEISTUNGEN.map((l) => (
-                <div
-                  key={l.id}
-                  id={l.id}
-                  className={`card p-5 hover:shadow-card-hover transition-shadow ${l.highlight ? "border-brand/30 border-2" : ""}`}
-                >
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-xs bg-brand-light text-brand px-2 py-0.5 rounded-full font-semibold">{l.pg}</span>
-                    {l.highlight && (
-                      <span className="text-xs bg-amber-50 text-amber-700 px-2 py-0.5 rounded-full font-semibold">Häufig vergessen</span>
-                    )}
+            <p className="text-xs text-gray-500 mb-6">Je nach Pflegegrad – Mehrere Leistungen sind kombinierbar.</p>
+            <LeistungenGrid />
+          </div>
+        </section>
+
+        {/* ── Kombinierbarkeit ────────────────────────────────────── */}
+        <section className="py-12 px-4 sm:px-6 bg-brand-light/30 border-t border-[#E0EDE7]">
+          <div className="max-w-6xl mx-auto">
+            <div className="flex items-start gap-3 mb-4">
+              <div className="w-8 h-8 rounded-xl bg-brand flex items-center justify-center flex-shrink-0 mt-0.5">
+                <Info size={15} className="text-white" />
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-gray-900 mb-0.5">Diese Leistungen kannst du kombinieren</p>
+                <p className="text-xs text-gray-500">Du musst dich nicht entscheiden – viele Leistungen laufen gleichzeitig.</p>
+              </div>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-3 mb-4">
+              {[
+                {
+                  titel: "Pflegegeld + Entlastungsbetrag",
+                  text: "Beide Leistungen laufen unabhängig voneinander – das Pflegegeld kürzt den Entlastungsbetrag nicht.",
+                  beispiel: "Bis zu 463 € / Monat bei PG 2",
+                },
+                {
+                  titel: "Pflegesachleistungen + Entlastungsbetrag",
+                  text: "Auch wer einen Pflegedienst nutzt, bekommt den Entlastungsbetrag zusätzlich.",
+                  beispiel: "Bis zu 892 € / Monat bei PG 2",
+                },
+                {
+                  titel: "Tagespflege + Pflegegeld",
+                  text: "Tagespflege-Budget und Pflegegeld dürfen voll kombiniert werden (§ 41 Abs. 4 SGB XI).",
+                  beispiel: "Bis zu 1.021 € / Monat bei PG 2",
+                },
+                {
+                  titel: "Pflegehilfsmittelbox + Hausnotruf",
+                  text: "Beide Leistungen gelten ab PG 1 und laufen unabhängig voneinander – auch parallel zu Pflegegeld.",
+                  beispiel: "Zusätzlich 69 € / Monat ab PG 1",
+                },
+              ].map((k) => (
+                <div key={k.titel} className="bg-white rounded-2xl px-4 py-4 border border-[#E0EDE7]">
+                  <div className="flex items-start gap-2 mb-2">
+                    <Check size={13} className="text-brand flex-shrink-0 mt-0.5" />
+                    <p className="text-xs font-semibold text-gray-900 leading-snug">{k.titel}</p>
                   </div>
-                  <h3 className="font-semibold text-gray-900 text-sm mb-1">{l.name}</h3>
-                  <p className="text-brand font-bold text-base mb-2">{l.betrag}</p>
-                  <p className="text-gray-500 text-xs leading-relaxed mb-3">{l.text}</p>
-                  <div className="flex items-start gap-1.5 bg-brand-light/60 rounded-lg px-3 py-2">
-                    <ArrowUpRight size={12} className="text-brand flex-shrink-0 mt-0.5" />
-                    <p className="text-xs text-brand leading-relaxed">{l.beantragen}</p>
-                  </div>
+                  <p className="text-xs text-gray-500 leading-relaxed mb-2">{k.text}</p>
+                  <span className="text-[10px] font-semibold text-brand bg-brand-light/70 rounded-full px-2.5 py-1">{k.beispiel}</span>
                 </div>
               ))}
             </div>
+            <PflegegradTabelle />
+            <p className="text-[10px] text-gray-400 mt-3 ml-1">Quellen: §§ 36–45b SGB XI · GKV-Spitzenverband · Bundesministerium für Gesundheit (Stand 2025)</p>
           </div>
         </section>
 

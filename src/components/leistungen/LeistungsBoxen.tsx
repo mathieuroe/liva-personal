@@ -5,25 +5,25 @@ import { Package, Bell, Check, ArrowRight, Info, X } from "lucide-react";
 
 const INFO_CONTENT = {
   box: {
-    titel: "Was ist die Pflegehilfsmittelbox?",
-    intro: "Ein monatliches Paket mit Verbrauchsmitteln für die Pflege zuhause – vollständig von der Pflegekasse bezahlt.",
+    titel: "Pflegehilfsmittelbox – bis zu 42 € / Monat",
+    intro: "Die Pflegekasse übernimmt bis zu 42 € pro Monat für Pflegeverbrauchsmittel. Einmal beantragen – jeden Monat automatisch geliefert, ohne Kosten für dich.",
     fakten: [
-      { label: "Inhalt", wert: "Handschuhe, Desinfektion, Bettschutzeinlagen u.v.m." },
-      { label: "Kosten", wert: "0 € – Pflegekasse übernimmt bis zu 42 € / Monat" },
-      { label: "Ab", wert: "Pflegegrad 1" },
-      { label: "Aufwand", wert: "Einmal bestellen, automatisch jeden Monat" },
-      { label: "Abwicklung", wert: "Unser geprüfter Partner Pflegehase" },
+      { label: "Inhalt", wert: "Einmalhandschuhe, Desinfektion, Bettschutzeinlagen, Mundschutz u.v.m." },
+      { label: "Kosten", wert: "0 € Eigenanteil – Pflegekasse zahlt bis zu 42 € / Monat direkt" },
+      { label: "Voraussetzung", wert: "Pflegegrad 1, 2, 3, 4 oder 5" },
+      { label: "Aufwand", wert: "Einmaliger Antrag – unser Partner Pflegehase erledigt alles" },
+      { label: "Lieferung", wert: "Kostenlos, monatlich, direkt nach Hause" },
     ],
   },
   hausnotruf: {
-    titel: "Was ist ein Hausnotruf?",
-    intro: "Eine kleine Basisstation + Notrufknopf als Armband oder Halskette – Hilfe per Knopfdruck.",
+    titel: "Hausnotruf – 27 € / Monat von der Pflegekasse",
+    intro: "Ein Knopfdruck genügt – sofort ist Hilfe unterwegs. Die Pflegekasse zahlt 27 € pro Monat, bei günstigen Anbietern ohne Eigenanteil.",
     fakten: [
-      { label: "Funktion", wert: "Notruf per Knopfdruck, auch wenn man alleine ist" },
-      { label: "Zuschuss", wert: "Pflegekasse zahlt 27,00 € / Monat + einmalig bis zu 10,49 €" },
-      { label: "Eigenanteil", wert: "Bei günstigen Anbietern oft 0 €" },
-      { label: "Ab", wert: "Pflegegrad 1" },
-      { label: "Abwicklung", wert: "Unser geprüfter Partner Pflegehase" },
+      { label: "Funktion", wert: "Notrufknopf als Armband oder Halskette – 24 h Bereitschaft" },
+      { label: "Zuschuss", wert: "Pflegekasse zahlt 27,00 € / Monat (§ 40 Abs. 4 SGB XI)" },
+      { label: "Eigenanteil", wert: "Bei günstigen Anbietern 0 € – kein Risiko" },
+      { label: "Voraussetzung", wert: "Pflegegrad 1, 2, 3, 4 oder 5" },
+      { label: "Einrichtung", wert: "Genehmigung in 3–5 Werktagen, Lieferung inklusive" },
     ],
   },
 };
@@ -91,9 +91,9 @@ export default function LeistungsBoxen() {
           </div>
           <ul className="space-y-2 mb-3">
             {[
-              "Pflegekasse übernimmt alle Kosten",
-              "Monatlich kostenlos nach Hause geliefert",
-              "Antrag in unter 2 Minuten – ohne Papierkram",
+              "Bis zu 42 € / Monat – vollständig von der Pflegekasse",
+              "Monatliche Lieferung nach Hause – ohne Papierkram",
+              "Antrag in unter 2 Minuten – unser Partner erledigt den Rest",
             ].map((v) => (
               <li key={v} className="flex items-center gap-2 text-sm text-gray-700">
                 <Check size={15} className="text-brand flex-shrink-0" />
@@ -134,9 +134,9 @@ export default function LeistungsBoxen() {
           </div>
           <ul className="space-y-2 mb-3">
             {[
-              "Sicherheit zuhause – rund um die Uhr",
-              "Pflegekasse zahlt – kein Eigenanteil",
-              "In wenigen Tagen eingerichtet",
+              "27 € / Monat – komplett von der Pflegekasse übernommen",
+              "Notrufknopf: 24/7 Hilfe auf Knopfdruck",
+              "In 3–5 Werktagen eingerichtet – inkl. Lieferung",
             ].map((v) => (
               <li key={v} className="flex items-center gap-2 text-sm text-gray-700">
                 <Check size={15} className="text-brand flex-shrink-0" />

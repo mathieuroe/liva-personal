@@ -309,8 +309,8 @@ function IntroScreen({ onStart }: { onStart: () => void }) {
           Pflegegrad selbst einschätzen
         </span>
       </div>
-      <h1 style={{ fontFamily:"Georgia,'Times New Roman',serif", fontSize:"clamp(1.85rem,5.5vw,2.5rem)",
-        fontWeight:700, lineHeight:1.07, letterSpacing:"-.02em", marginBottom:16, color:C.ink }}>
+      <h1 style={{ fontFamily:"var(--font-dm-serif), Georgia, serif", fontSize:"clamp(1.85rem,5.5vw,2.5rem)",
+        fontWeight:400, lineHeight:1.07, letterSpacing:"-.02em", marginBottom:16, color:C.ink }}>
         In wenigen Minuten zu deinem{" "}
         <em style={{ fontStyle:"italic", color:C.primary }}>voraussichtlichen Pflegegrad</em>
       </h1>
@@ -351,9 +351,9 @@ function ModIntroScreen({ mod, onNext, onBack, isFirst }: any) {
         background:`linear-gradient(150deg,${C.primarySoft},#fff)`,
         border:`1.5px solid ${C.primaryBorder}`, display:"grid", placeItems:"center",
         boxShadow:"0 2px 10px rgba(47,93,79,.12)" }}>
-        <span style={{ fontFamily:"Georgia,serif", fontWeight:700, fontSize:"1.9rem", color:C.primary }}>{mod.n}</span>
+        <span style={{ fontFamily:"var(--font-dm-serif), Georgia, serif", fontWeight:700, fontSize:"1.9rem", color:C.primary }}>{mod.n}</span>
       </div>
-      <h2 style={{ fontFamily:"Georgia,serif", fontWeight:700, fontSize:"1.75rem", lineHeight:1.12,
+      <h2 style={{ fontFamily:"var(--font-dm-serif), Georgia, serif", fontWeight:700, fontSize:"1.75rem", lineHeight:1.12,
         letterSpacing:"-.015em", marginBottom:10 }}>{mod.title}</h2>
       <p style={{ fontSize:"1.04rem", color:C.inkSoft, maxWidth:"42ch", margin:"0 auto 8px" }}>{mod.lead}</p>
       {mod.intro && <p style={{ fontSize:".93rem", color:C.inkSoft, fontStyle:"italic", maxWidth:"44ch", margin:"0 auto 8px" }}>{mod.intro}</p>}
@@ -389,7 +389,7 @@ function QuestionScreen({ q, mod, selected, onSelect, onBack }: any) {
         <span style={{ width:4, height:4, borderRadius:"50%", background:C.line, display:"inline-block" }}/>
         <span>Frage {qNum} / {TOTAL_Q}</span>
       </div>
-      <h2 style={{ fontFamily:"Georgia,'Times New Roman',serif", fontWeight:700,
+      <h2 style={{ fontFamily:"var(--font-dm-serif), Georgia, serif", fontWeight:700,
         fontSize:"clamp(1.4rem,4vw,1.8rem)", lineHeight:1.15, letterSpacing:"-.015em",
         color:C.ink, marginBottom: q.hint ? 9 : 18 }}>{q.q}</h2>
       {q.hint && <p style={{ fontSize:".96rem", color:C.inkSoft, marginBottom:18, lineHeight:1.5 }}>{q.hint}</p>}
@@ -451,7 +451,7 @@ export default function PflegegradRechner({ onErgebnis }: Props) {
   }, [cur, selectOpt, goBack, goNext]);
 
   return (
-    <div style={{ fontFamily:"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif", color:C.ink }}>
+    <div style={{ fontFamily:"inherit", color:C.ink }}>
       <style>{GLOBAL_CSS}</style>
 
       {/* Fortschrittsbalken */}

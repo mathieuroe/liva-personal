@@ -83,12 +83,6 @@ export default function PflegegradRechnerPage() {
             Du weißt nicht sicher, ob Anspruch auf Pflegeleistungen besteht – und was dann eigentlich passiert? In 5 Minuten hast du eine klare Einschätzung. Und weißt, welche Leistungen du beantragen kannst.
           </p>
 
-          {/* Trust-Zeile */}
-          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-400">
-            <span className="flex items-center gap-1.5"><CheckCircle2 size={14} className="text-brand" /> Gleiches Verfahren wie der MDK</span>
-            <span className="flex items-center gap-1.5"><CheckCircle2 size={14} className="text-brand" /> Ohne Name, ohne Anmeldung</span>
-            <span className="flex items-center gap-1.5"><CheckCircle2 size={14} className="text-brand" /> Ergebnis sofort – kein Warten</span>
-          </div>
         </div>
       </section>
 

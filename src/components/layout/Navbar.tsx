@@ -5,7 +5,6 @@ import { useState } from "react";
 import { Menu, X, ArrowRight, Calculator } from "lucide-react";
 
 const links = [
-  { href: "/erste-schritte", label: "Checkliste" },
   { href: "/leistungen", label: "Leistungen" },
   { href: "/ratgeber", label: "Ratgeber" },
   { href: "/news", label: "News aus der Pflege" },
@@ -33,8 +32,8 @@ export default function Navbar() {
           <Link href="/pflegegrad-rechner" className="btn-secondary text-sm px-4 py-2.5">
             <Calculator size={15} /> Pflegegrad-Rechner
           </Link>
-          <Link href="/" className="btn-primary text-sm px-5 py-2.5">
-            Kostenlos starten <ArrowRight size={15} />
+          <Link href="/leistungen#leistungen-sofort" className="btn-primary text-sm px-5 py-2.5">
+            Kostenlose Leistungen <ArrowRight size={15} />
           </Link>
         </div>
 
@@ -53,8 +52,8 @@ export default function Navbar() {
           <Link href="/pflegegrad-rechner" className="btn-secondary mt-3 text-center justify-center" onClick={() => setOpen(false)}>
             <Calculator size={15} /> Pflegegrad-Rechner
           </Link>
-          <Link href="/" className="btn-primary mt-2 text-center justify-center" onClick={() => setOpen(false)}>
-            Kostenlos starten <ArrowRight size={15} />
+          <Link href="/leistungen#leistungen-sofort" className="btn-primary mt-2 text-center justify-center" onClick={() => setOpen(false)}>
+            Kostenlose Leistungen <ArrowRight size={15} />
           </Link>
         </div>
       )}
