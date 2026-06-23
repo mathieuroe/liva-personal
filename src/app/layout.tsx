@@ -18,6 +18,7 @@ const dmSerif = DM_Serif_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://liva-pflege.de"),
   title: "liva – Orientierung im Pflegesystem",
   description: "In 2 Minuten weißt du genau was dir zusteht – und was du jetzt tun musst. Kostenlos, bundesweit.",
   keywords: "Pflegegrad, Pflegebox, Hausnotruf, Entlastungsbetrag, Pflegeberatung, kostenlos",
@@ -46,6 +47,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "liva",
+              legalName: "RegioCare UG (haftungsbeschränkt)",
+              url: "https://liva-pflege.de",
+              logo: "https://liva-pflege.de/hero.jpg",
+              email: "info@liva-pflege.de",
+              telephone: "+4976188785990",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "Zita-Kaiser-Straße 3",
+                addressLocality: "Freiburg im Breisgau",
+                postalCode: "79106",
+                addressCountry: "DE",
+              },
+              sameAs: ["https://github.com/mathieuroe/pflegeeins"],
+            }),
+          }}
+        />
         <SiteShell>{children}</SiteShell>
       </body>
     </html>

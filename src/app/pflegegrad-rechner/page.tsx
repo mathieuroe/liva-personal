@@ -5,7 +5,7 @@ import PflegegradRechnerPage from "./PflegegradRechnerPage";
 export const metadata: Metadata = {
   title: "Pflegegrad Rechner 2026 – Kostenlos & anonym | liva",
   description:
-    "Pflegegrad berechnen in 5 Minuten – kostenlos, anonym, ohne Anmeldung. Basiert auf dem offiziellen MDK-Begutachtungsinstrument (NBA). Ergebnis sofort.",
+    "Pflegegrad berechnen in 5 Minuten – kostenlos und anonym. Nutzt dasselbe Verfahren wie der MDK. Ergebnis sofort, ohne Anmeldung.",
   keywords: [
     "Pflegegrad Rechner",
     "Pflegegrad berechnen",
@@ -42,12 +42,29 @@ const schemaWebApp = {
     priceCurrency: "EUR",
   },
   description:
-    "Kostenloser Pflegegrad-Rechner basierend auf dem offiziellen NBA-Begutachtungsinstrument des MDK. Anonym und ohne Anmeldung.",
+    "Kostenloser Pflegegrad-Rechner – ermittle in 5 Minuten welcher Pflegegrad in Frage kommt. Basiert auf dem gleichen Verfahren wie der MDK. Anonym, ohne Anmeldung.",
+  featureList: [
+    "Anonym und kostenlos",
+    "Basiert auf dem offiziellen MDK-Begutachtungsverfahren (NBA)",
+    "Ergebnis sofort – kein Warten",
+    "Kein Login, keine persönlichen Daten nötig",
+    "Persönliche Leistungsübersicht nach Ergebnis",
+  ],
   inLanguage: "de",
+  dateModified: "2026-06-01",
   provider: {
     "@type": "Organization",
-    name: "liva (RegioCare UG)",
+    name: "liva",
+    legalName: "RegioCare UG (haftungsbeschränkt)",
     url: "https://liva-pflege.de",
+    email: "info@liva-pflege.de",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Zita-Kaiser-Straße 3",
+      addressLocality: "Freiburg im Breisgau",
+      postalCode: "79106",
+      addressCountry: "DE",
+    },
   },
 };
 
@@ -57,34 +74,26 @@ const schemaFAQ = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "Wie genau ist der Pflegegrad Rechner?",
+      name: "Wie genau ist das Ergebnis des Pflegegrad Rechners?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Unser Rechner basiert auf dem offiziellen NBA-Begutachtungsinstrument des Medizinischen Dienstes (MDK). Er gibt eine fundierte Einschätzung, ist aber kein Ersatz für die offizielle Begutachtung. In der Praxis weicht das Ergebnis oft um einen halben bis einen Pflegegrad ab.",
+        text: "Der Pflegegrad Rechner nutzt das gleiche Verfahren wie der Medizinische Dienst (MDK) – das offizielle NBA-Begutachtungsinstrument. Das Ergebnis ist eine fundierte Einschätzung, kein offizieller Bescheid. In der Praxis liegt es oft sehr nah am tatsächlichen MDK-Ergebnis – manchmal um einen halben Pflegegrad daneben. Als Vorbereitung auf den MDK-Termin ist er sehr gut geeignet.",
       },
     },
     {
       "@type": "Question",
-      name: "Ist der Rechner anonym und kostenlos?",
+      name: "Muss ich beim Pflegegrad Rechner meinen Namen oder persönliche Daten angeben?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Ja – der Rechner ist vollständig kostenlos und anonym. Es sind keine Angaben zur Person erforderlich, keine Anmeldung, keine Kreditkarte.",
+        text: "Nein. Der Pflegegrad Rechner ist vollständig anonym. Keine Anmeldung, kein Name, keine Krankenversicherungsnummer. Die Antworten werden nicht gespeichert. Du kannst ihn so oft nutzen wie du möchtest.",
       },
     },
     {
       "@type": "Question",
-      name: "Wie lange dauert die Berechnung?",
+      name: "Wie lange dauert der Pflegegrad Rechner?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Die Beantwortung der Fragen dauert in der Regel 5–10 Minuten. Du bekommst das Ergebnis sofort nach Abschluss angezeigt.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Was sind die 5 Pflegegrade?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Pflegegrad 1 (geringe Beeinträchtigung, 12,5–27 Punkte), Pflegegrad 2 (erhebliche Beeinträchtigung, 27–47,5 Punkte), Pflegegrad 3 (schwere Beeinträchtigung, 47,5–70 Punkte), Pflegegrad 4 (schwerste Beeinträchtigung, 70–90 Punkte), Pflegegrad 5 (schwerste Beeinträchtigung mit besonderen Anforderungen, 90–100 Punkte).",
+        text: "Die meisten schließen den Rechner in 5–8 Minuten ab. Das Ergebnis wird sofort angezeigt – kein Warten, keine E-Mail nötig.",
       },
     },
     {
@@ -92,15 +101,31 @@ const schemaFAQ = {
       name: "Was bekomme ich mit Pflegegrad 1?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Mit Pflegegrad 1 hast du Anspruch auf: Entlastungsbetrag (125 € / Monat), Pflegehilfsmittelbox (bis 42 € / Monat), Hausnotruf-Zuschuss (27,00 € / Monat + einmalig bis zu 10,49 €) und Beratungsleistungen. Pflegegeld gibt es erst ab Pflegegrad 2.",
+        text: "Mit Pflegegrad 1 hast du Anspruch auf: Entlastungsbetrag (125 € / Monat für Alltagshilfe), die kostenlose Pflegehilfsmittelbox (bis 42 € / Monat) und den Hausnotruf-Zuschuss der Pflegekasse (27,00 € / Monat + einmalig bis zu 10,49 €). Pflegegeld gibt es erst ab Pflegegrad 2.",
       },
     },
     {
       "@type": "Question",
-      name: "Was tun nach dem Rechner-Ergebnis?",
+      name: "Was sind die 5 Pflegegrade?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Wenn das Ergebnis auf einen Pflegegrad hinweist: Stelle einen Antrag bei deiner Pflegekasse. Das geht schriftlich, telefonisch oder online. Der MDK kommt dann zur Begutachtung. Mit unserem Ergebnis-PDF bist du optimal vorbereitet.",
+        text: "Pflegegrad 1 (geringe Beeinträchtigung, 12,5–27 Punkte), Pflegegrad 2 (erhebliche Beeinträchtigung, 27–47,5 Punkte), Pflegegrad 3 (schwere Beeinträchtigung, 47,5–70 Punkte), Pflegegrad 4 (schwerste Beeinträchtigung, 70–90 Punkte), Pflegegrad 5 (schwerste Beeinträchtigung mit besonderen Anforderungen an die Pflege, 90–100 Punkte).",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Was tun wenn das Ergebnis des Pflegegrad Rechners niedriger ist als erwartet?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Nach dem offiziellen MDK-Bescheid kannst du innerhalb eines Monats Widerspruch einlegen – ohne Angabe von Gründen. In rund 35 % aller Widersprüche wird der Pflegegrad heraufgestuft. Eine gute Vorbereitung auf den MDK-Termin erhöht die Chancen auf eine korrekte Einstufung.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Was sind die nächsten Schritte nach dem Pflegegrad Rechner?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Stelle einen Antrag bei deiner Pflegekasse – schriftlich, telefonisch oder online. Der Medizinische Dienst (MDK) kommt dann zur Begutachtung. Mit der kostenlosen persönlichen Leistungsübersicht von liva weißt du vorab genau, welche Leistungen dir zustehen und wie du dich am besten vorbereitest.",
       },
     },
   ],

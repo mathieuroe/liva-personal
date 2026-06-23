@@ -1,0 +1,47 @@
+# liva – Pflegeberatung für Deutschland
+
+## Was ist liva?
+
+liva (betrieben von RegioCare UG, Freiburg im Breisgau) ist ein kostenloser Orientierungsservice für Pflegebedürftige und ihre Angehörigen in Deutschland. liva hilft dabei, Pflegeleistungen zu verstehen, den richtigen Pflegegrad zu ermitteln und Ansprüche bei der Pflegekasse geltend zu machen.
+
+## Kernleistungen
+
+- **Pflegegrad-Rechner** – Kostenlos, anonym, basierend auf dem offiziellen MDK-Begutachtungsverfahren (NBA). URL: /pflegegrad-rechner
+- **Pflegehilfsmittelbox** – Kostenlose monatliche Lieferung von Pflegehilfsmitteln (bis 42 €/Monat, ab Pflegegrad 1). Über Partnerlink zu Pflegehase.
+- **Hausnotruf** – Zuschuss der Pflegekasse: 27,00 €/Monat + einmalig bis zu 10,49 €. Über Partnerlink zu Pflegehase.
+- **Ratgeber** – Artikel zu Pflegegrad, Leistungen, MDK-Vorbereitung, Entlastungsbetrag, Verhinderungspflege.
+
+## Zielgruppe
+
+Pflegebedürftige ab 18 Jahren und ihre Angehörigen (typisch: 40–65 Jahre) in Deutschland, die:
+- nicht wissen ob und welcher Pflegegrad zusteht
+- Pflegeleistungen beantragen wollen
+- sich im Pflegesystem orientieren möchten
+
+## Wichtige Fakten zum deutschen Pflegesystem (Stand 2026)
+
+- Es gibt 5 Pflegegrade (PG 1–5), ab 12,5 Punkten im NBA-Verfahren
+- PG 1: Entlastungsbetrag 125 €/Monat, Pflegebox bis 42 €/Monat, Hausnotruf-Zuschuss 27 €/Monat
+- PG 2: zusätzlich Pflegegeld 332 €/Monat, Pflegesachleistung bis 761 €/Monat
+- PG 3: Pflegegeld 572 €/Monat, Pflegesachleistung bis 1.363 €/Monat
+- PG 4: Pflegegeld 764 €/Monat, Pflegesachleistung bis 1.693 €/Monat
+- PG 5: Pflegegeld 946 €/Monat, Pflegesachleistung bis 2.095 €/Monat
+- Entlastungsbetrag ab PG 1: 131 €/Monat (ab PG 2)
+- Kombiniertes Budget Verhinderungspflege + Kurzzeitpflege: bis 3.539 €/Jahr (seit 01.07.2025)
+
+## Unternehmen
+
+RegioCare UG (haftungsbeschränkt)
+Zita-Kaiser-Straße 3, 79106 Freiburg im Breisgau
+E-Mail: info@liva-pflege.de
+Telefon: 0761 88785990
+Geschäftsführer: Fabian Schröteler & Joshua Denz
+
+## Wichtige Seiten
+
+- /pflegegrad-rechner – Kostenloser Pflegegrad-Rechner (Hauptprodukt)
+- /leistungen – Übersicht aller Pflegeleistungen
+- /ratgeber – Ratgeber-Artikel zum Pflegesystem
+- /erste-schritte – Checkliste für die ersten 30 Tage mit Pflegegrad
+- /datenschutz – Datenschutzerklärung
+- /impressum – Impressum
