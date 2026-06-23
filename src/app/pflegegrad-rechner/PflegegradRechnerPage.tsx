@@ -131,7 +131,7 @@ export default function PflegegradRechnerPage() {
                 <>
                   <p className="text-xs font-bold text-brand uppercase tracking-widest mb-2">Nächster Schritt</p>
                   <h3 className="font-serif text-2xl text-gray-900 mb-1.5">
-                    Wir schicken dir deine persönliche Leistungsübersicht als PDF
+                    Wir schicken dir kostenlos deine persönliche Leistungsübersicht zu
                   </h3>
                   <p className="text-sm text-gray-500 mb-6 leading-relaxed">
                     Dein Ergebnis als PDF – inklusive aller Leistungen, Beträge und konkreten nächsten Schritte für {pg!.titel}.
@@ -148,7 +148,8 @@ export default function PflegegradRechnerPage() {
                     />
                     <input
                       type="tel"
-                      placeholder="Telefonnummer (optional)"
+                      required
+                      placeholder="Telefonnummer"
                       value={form.phone}
                       onChange={(e) => setForm({ ...form, phone: e.target.value })}
                       className="input flex-1 min-w-0"
