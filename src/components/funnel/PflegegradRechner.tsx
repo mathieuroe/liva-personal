@@ -54,13 +54,13 @@ const INKONT = [
 const MODULES = [
   {
     n: 1, title: "Mobilität",
-    lead: "Wie gut können Sie sich bewegen?", weight: "10 %",
+    lead: "Wie gut kannst du dich bewegen?", weight: "10 %",
     questions: [
-      { id: "1.1", q: "Können Sie im Bett selbst die Position verändern?", hint: "Sich drehen oder aus dem Liegen aufrichten.", o: SELBST },
-      { id: "1.2", q: "Können Sie aufrecht sitzen bleiben?", hint: "Auf Bett, Stuhl oder Sessel ohne Hilfe aufrecht halten.", o: SELBST },
-      { id: "1.3", q: "Können Sie sich selbst umsetzen?", hint: "Von einer Sitzgelegenheit aufstehen und sich woanders hinsetzen.", o: SELBST },
-      { id: "1.4", q: "Können Sie sich in der Wohnung fortbewegen?", hint: "Sicher zwischen den Zimmern bewegen (mindestens 8 Meter).", o: SELBST },
-      { id: "1.5", q: "Können Sie Treppen steigen?", hint: "Eine Treppe zwischen zwei Etagen überwinden.", o: SELBST },
+      { id: "1.1", q: "Kannst du im Bett selbst die Position verändern?", hint: "Sich drehen oder aus dem Liegen aufrichten.", o: SELBST },
+      { id: "1.2", q: "Kannst du aufrecht sitzen bleiben?", hint: "Auf Bett, Stuhl oder Sessel ohne Hilfe aufrecht halten.", o: SELBST },
+      { id: "1.3", q: "Kannst du dich selbst umsetzen?", hint: "Von einer Sitzgelegenheit aufstehen und sich woanders hinsetzen.", o: SELBST },
+      { id: "1.4", q: "Kannst du dich in der Wohnung fortbewegen?", hint: "Sicher zwischen den Zimmern bewegen (mindestens 8 Meter).", o: SELBST },
+      { id: "1.5", q: "Kannst du Treppen steigen?", hint: "Eine Treppe zwischen zwei Etagen überwinden.", o: SELBST },
       { id: "1.6", role: "special", q: "Sind beide Arme UND beide Beine dauerhaft nicht gebrauchsfähig?",
         hint: "Diese seltene Situation führt unabhängig von der Punktzahl automatisch zu Pflegegrad 5.",
         o: [{ lab: "Nein", v: 0 }, { lab: "Ja, beide Arme und Beine sind gebrauchsunfähig", v: 0 }] },
@@ -70,17 +70,17 @@ const MODULES = [
     n: 2, title: "Kognition & Kommunikation",
     lead: "Wie gut funktionieren Denken, Erinnern und Verständigung?", weight: "15 %",
     questions: [
-      { id: "2.1",  q: "Erkennen Sie Menschen aus Ihrem näheren Umfeld?",      hint: "Personen mit regelmäßigem Kontakt.", o: FAEHIG },
-      { id: "2.2",  q: "Finden Sie sich örtlich zurecht?",                      hint: "Wissen, wo Sie sind, und gezielt andere Orte ansteuern.", o: FAEHIG },
-      { id: "2.3",  q: "Finden Sie sich zeitlich zurecht?",                     hint: "Tageszeit, Wochentag, Jahreszeit erkennen.", o: FAEHIG },
-      { id: "2.4",  q: "Erinnern Sie sich an wichtige Ereignisse?",             hint: "An kürzlich und länger Zurückliegendes.", o: FAEHIG },
-      { id: "2.5",  q: "Können Sie mehrschrittige Handlungen steuern?",         hint: "Alltagsabläufe mit mehreren Schritten zielgerichtet durchführen.", o: FAEHIG },
-      { id: "2.6",  q: "Können Sie Alltagsentscheidungen treffen?",             hint: "Sinnvolle, passende Entscheidungen im Alltag.", o: FAEHIG },
-      { id: "2.7",  q: "Verstehen Sie Sachverhalte und Informationen?",         hint: "Dinge inhaltlich einordnen können.", o: FAEHIG },
-      { id: "2.8",  q: "Erkennen Sie Risiken und Gefahren?",                   hint: "", o: FAEHIG },
-      { id: "2.9",  q: "Können Sie elementare Bedürfnisse mitteilen?",          hint: "Z.B. Hunger, Durst, Schmerzen – verbal oder nonverbal.", o: FAEHIG },
-      { id: "2.10", q: "Verstehen Sie Aufforderungen?",                         hint: "Bitten rund um alltägliche Grundbedürfnisse.", o: FAEHIG },
-      { id: "2.11", q: "Können Sie sich an einem Gespräch beteiligen?",         hint: "Inhalte aufnehmen, sinnvoll antworten, weiterführen.", o: FAEHIG },
+      { id: "2.1",  q: "Erkennst du Menschen aus deinem näheren Umfeld?",      hint: "Personen mit regelmäßigem Kontakt.", o: FAEHIG },
+      { id: "2.2",  q: "Findest du dich örtlich zurecht?",                      hint: "Wissen, wo du bist, und gezielt andere Orte ansteuern.", o: FAEHIG },
+      { id: "2.3",  q: "Findest du dich zeitlich zurecht?",                     hint: "Tageszeit, Wochentag, Jahreszeit erkennen.", o: FAEHIG },
+      { id: "2.4",  q: "Erinnerst du dich an wichtige Ereignisse?",             hint: "An kürzlich und länger Zurückliegendes.", o: FAEHIG },
+      { id: "2.5",  q: "Kannst du mehrschrittige Handlungen steuern?",         hint: "Alltagsabläufe mit mehreren Schritten zielgerichtet durchführen.", o: FAEHIG },
+      { id: "2.6",  q: "Kannst du Alltagsentscheidungen treffen?",             hint: "Sinnvolle, passende Entscheidungen im Alltag.", o: FAEHIG },
+      { id: "2.7",  q: "Verstehst du Sachverhalte und Informationen?",         hint: "Dinge inhaltlich einordnen können.", o: FAEHIG },
+      { id: "2.8",  q: "Erkennst du Risiken und Gefahren?",                   hint: "", o: FAEHIG },
+      { id: "2.9",  q: "Kannst du elementare Bedürfnisse mitteilen?",          hint: "Z.B. Hunger, Durst, Schmerzen – verbal oder nonverbal.", o: FAEHIG },
+      { id: "2.10", q: "Verstehst du Aufforderungen?",                         hint: "Bitten rund um alltägliche Grundbedürfnisse.", o: FAEHIG },
+      { id: "2.11", q: "Kannst du dich an einem Gespräch beteiligen?",         hint: "Inhalte aufnehmen, sinnvoll antworten, weiterführen.", o: FAEHIG },
     ],
   },
   {
@@ -105,29 +105,29 @@ const MODULES = [
   },
   {
     n: 4, title: "Selbstversorgung",
-    lead: "Wie selbstständig sind Sie bei Körperpflege, Anziehen und Essen?", weight: "40 %",
+    lead: "Wie selbstständig bist du bei Körperpflege, Anziehen und Essen?", weight: "40 %",
     questions: [
-      { id: "4.1",  q: "Können Sie sich den vorderen Oberkörper waschen?",              hint: "Hände, Gesicht, Hals, Arme, Achseln, Brust.", o: SELBST },
-      { id: "4.2",  q: "Können Sie sich um den Kopfbereich kümmern?",                   hint: "Kämmen, Zähne/Prothese, Rasieren.", o: SELBST },
-      { id: "4.3",  q: "Können Sie den Intimbereich waschen?",                          hint: "", o: SELBST },
-      { id: "4.4",  q: "Können Sie duschen oder baden (inkl. Haarewaschen)?",           hint: "", o: SELBST },
-      { id: "4.5",  q: "Können Sie den Oberkörper an- und auskleiden?",                 hint: "Bereitliegende Kleidung anziehen und ausziehen.", o: SELBST },
-      { id: "4.6",  q: "Können Sie den Unterkörper an- und auskleiden?",                hint: "Inklusive Strümpfe und Schuhe.", o: SELBST },
-      { id: "4.7",  q: "Können Sie Essen mundgerecht zubereiten und Getränke eingießen?", hint: "Z.B. Essen klein schneiden, Getränk einschenken.", o: SELBST },
-      { id: "4.8",  q: "Können Sie selbstständig essen?",
+      { id: "4.1",  q: "Kannst du dir den vorderen Oberkörper waschen?",              hint: "Hände, Gesicht, Hals, Arme, Achseln, Brust.", o: SELBST },
+      { id: "4.2",  q: "Kannst du dich um den Kopfbereich kümmern?",                   hint: "Kämmen, Zähne/Prothese, Rasieren.", o: SELBST },
+      { id: "4.3",  q: "Kannst du den Intimbereich waschen?",                          hint: "", o: SELBST },
+      { id: "4.4",  q: "Kannst du duschen oder baden (inkl. Haarewaschen)?",           hint: "", o: SELBST },
+      { id: "4.5",  q: "Kannst du den Oberkörper an- und auskleiden?",                 hint: "Bereitliegende Kleidung anziehen und ausziehen.", o: SELBST },
+      { id: "4.6",  q: "Kannst du den Unterkörper an- und auskleiden?",                hint: "Inklusive Strümpfe und Schuhe.", o: SELBST },
+      { id: "4.7",  q: "Kannst du Essen mundgerecht zubereiten und Getränke eingießen?", hint: "Z.B. Essen klein schneiden, Getränk einschenken.", o: SELBST },
+      { id: "4.8",  q: "Kannst du selbstständig essen?",
         hint: "Bereitgestellte, mundgerecht zubereitete Speisen essen.",
         o: [{ lab: "Selbstständig", v: 0 }, { lab: "Überwiegend selbstständig", v: 3 }, { lab: "Überwiegend unselbstständig", v: 6 }, { lab: "Unselbstständig", v: 9 }] },
-      { id: "4.9",  q: "Können Sie selbstständig trinken?",
+      { id: "4.9",  q: "Kannst du selbstständig trinken?",
         hint: "Bereitstehende Getränke aufnehmen, ggf. mit Strohhalm/Spezialbecher.",
         o: [{ lab: "Selbstständig", v: 0 }, { lab: "Überwiegend selbstständig", v: 2 }, { lab: "Überwiegend unselbstständig", v: 4 }, { lab: "Unselbstständig", v: 6 }] },
-      { id: "4.10", q: "Können Sie die Toilette selbstständig benutzen?",
+      { id: "4.10", q: "Kannst du die Toilette selbstständig benutzen?",
         hint: "Zur Toilette gehen, hinsetzen/aufstehen, Hygiene, Kleidung richten.",
         o: [{ lab: "Selbstständig", v: 0 }, { lab: "Überwiegend selbstständig", v: 2 }, { lab: "Überwiegend unselbstständig", v: 4 }, { lab: "Unselbstständig", v: 6 }] },
-      { id: "4.11", q: "Wie kommen Sie mit Blasenschwäche oder Blasenkatheter/Urostoma zurecht?",
+      { id: "4.11", q: "Wie kommst du mit Blasenschwäche oder Blasenkatheter/Urostoma zurecht?",
         hint: "Inkontinenz-/Stomasysteme verwenden, wechseln, entsorgen.", o: INKONT },
-      { id: "4.12", q: "Wie kommen Sie mit Darmschwäche oder einem Stoma zurecht?",
+      { id: "4.12", q: "Wie kommst du mit Darmschwäche oder einem Stoma zurecht?",
         hint: "Inkontinenz-/Stomasysteme verwenden, wechseln, entsorgen.", o: INKONT },
-      { id: "4.13", q: "Werden Sie über eine Sonde oder einen Zugang ernährt?",
+      { id: "4.13", q: "Wirst du über eine Sonde oder einen Zugang ernährt?",
         hint: "Z.B. Port oder PEG. Hinweis: 'täglich zusätzlich zum Essen' zählt hier am stärksten.",
         o: [
           { lab: "Nein / Ernähre mich normal / versorge das selbst", v: 0 },
@@ -139,41 +139,41 @@ const MODULES = [
   },
   {
     n: 5, title: "Krankheitsbewältigung",
-    lead: "Wie viel Unterstützung brauchen Sie bei Behandlungen?", weight: "20 %",
+    lead: "Wie viel Unterstützung brauchst du bei Behandlungen?", weight: "20 %",
     intro: "Gewertet werden ärztlich angeordnete Maßnahmen, die voraussichtlich mindestens 6 Monate nötig sind.",
     questions: [
       { id: "5A", role: "5A",
-        q: "Wie oft am Tag brauchen Sie Hilfe bei einfachen medizinischen Maßnahmen?",
+        q: "Wie oft am Tag brauchst du Hilfe bei einfachen medizinischen Maßnahmen?",
         hint: "Z.B. Medikamente, Injektionen, Sauerstoff, Blutdruck-/Blutzuckermessen, An-/Ablegen von Prothese, Hörgerät oder Kompressionsstrümpfen – alle zusammenzählen.",
         o: [{ lab: "Gar nicht oder seltener als 1× täglich", v: 0 }, { lab: "1- bis 3-mal täglich", v: 1 }, { lab: "4- bis 8-mal täglich", v: 2 }, { lab: "Mehr als 8-mal täglich", v: 3 }] },
       { id: "5B", role: "5B",
-        q: "Wie oft brauchen Sie Hilfe bei aufwändigeren Maßnahmen?",
+        q: "Wie oft brauchst du Hilfe bei aufwändigeren Maßnahmen?",
         hint: "Z.B. Verbandswechsel, Stoma-Versorgung, Katheter/Abführen, Therapien zu Hause (Krankengymnastik, Atemübungen).",
         o: [{ lab: "Gar nicht oder seltener als 1× pro Woche", v: 0 }, { lab: "1-mal bis mehrmals pro Woche", v: 1 }, { lab: "1- bis unter 3-mal täglich", v: 2 }, { lab: "Mindestens 3-mal täglich", v: 3 }] },
       { id: "5C1", role: "5C",
-        q: "Brauchen Sie sehr aufwändige Behandlungen zu Hause oder lange Termine über 3 Stunden?",
+        q: "Brauchst du sehr aufwändige Behandlungen zu Hause oder lange Termine über 3 Stunden?",
         hint: "Z.B. Dialyse oder Beatmung mit ständiger Überwachung zu Hause – oder lange Behandlungen in einer Einrichtung.",
         o: [{ lab: "Nein", v: 0 }, { lab: "Ja, etwa 1× pro Woche", v: 8.6 }, { lab: "Ja, etwa 2× pro Woche", v: 17.2 }, { lab: "Ja, etwa 3× pro Woche", v: 25.8 }, { lab: "Ja, (fast) täglich", v: 60 }] },
       { id: "5C2", role: "5C",
-        q: "Wie oft brauchen Sie Begleitung zu Arzt- oder Therapieterminen (bis 3 Stunden)?",
-        hint: "Z.B. Hausarzt, Facharzt, Physiotherapie, Logopädie – wenn Sie dabei Begleitung benötigen.",
+        q: "Wie oft brauchst du Begleitung zu Arzt- oder Therapieterminen (bis 3 Stunden)?",
+        hint: "Z.B. Hausarzt, Facharzt, Physiotherapie, Logopädie – wenn du dabei Begleitung benötigst.",
         o: [{ lab: "Selten oder nie", v: 0 }, { lab: "Etwa 1× pro Woche", v: 4.3 }, { lab: "Etwa 2× pro Woche", v: 8.6 }, { lab: "Etwa 3× pro Woche", v: 12.9 }, { lab: "4× pro Woche oder öfter", v: 17.2 }] },
       { id: "5.16", role: "516",
-        q: "Müssen Sie eine Diät oder andere ärztlich verordnete Verhaltensregeln einhalten?",
-        hint: "Und wie viel Unterstützung brauchen Sie dabei?",
+        q: "Musst du eine Diät oder andere ärztlich verordnete Verhaltensregeln einhalten?",
+        hint: "Und wie viel Unterstützung brauchst du dabei?",
         o: [{ lab: "Nicht nötig / halte sie selbstständig ein", v: 0 }, { lab: "Brauche gelegentlich Erinnerung oder Anleitung", v: 1 }, { lab: "Brauche mehrmals täglich Anleitung/Aufsicht", v: 2 }, { lab: "Brauche durchgehend Anleitung/Aufsicht", v: 3 }] },
     ],
   },
   {
     n: 6, title: "Alltag & soziale Kontakte",
-    lead: "Wie selbstständig gestalten Sie Alltag und soziale Kontakte?", weight: "15 %",
+    lead: "Wie selbstständig gestaltest du Alltag und soziale Kontakte?", weight: "15 %",
     questions: [
-      { id: "6.1", q: "Können Sie Ihren Tagesablauf selbst gestalten?",                         hint: "Den Tag einteilen und sich an Veränderungen anpassen.", o: SELBST },
-      { id: "6.2", q: "Können Sie für Ruhe und Schlaf sorgen?",                                 hint: "Einen Tag-Nacht-Rhythmus einhalten.", o: SELBST },
-      { id: "6.3", q: "Können Sie sich selbst beschäftigen?",                                   hint: "Die Zeit mit Aktivitäten füllen, die Ihnen entsprechen.", o: SELBST },
-      { id: "6.4", q: "Können Sie über den Tag hinaus planen?",                                 hint: "Längere Zeitabschnitte überschauen und planen.", o: SELBST },
-      { id: "6.5", q: "Können Sie mit Menschen im direkten Kontakt umgehen?",                   hint: "Kontakt aufnehmen, ansprechen, auf Ansprache reagieren.", o: SELBST },
-      { id: "6.6", q: "Können Sie Kontakte außerhalb des direkten Umfelds pflegen?",            hint: "Z.B. zu Freunden, Bekannten, Nachbarn.", o: SELBST },
+      { id: "6.1", q: "Kannst du deinen Tagesablauf selbst gestalten?",                         hint: "Den Tag einteilen und sich an Veränderungen anpassen.", o: SELBST },
+      { id: "6.2", q: "Kannst du für Ruhe und Schlaf sorgen?",                                 hint: "Einen Tag-Nacht-Rhythmus einhalten.", o: SELBST },
+      { id: "6.3", q: "Kannst du dich selbst beschäftigen?",                                   hint: "Die Zeit mit Aktivitäten füllen, die dir entsprechen.", o: SELBST },
+      { id: "6.4", q: "Kannst du über den Tag hinaus planen?",                                 hint: "Längere Zeitabschnitte überschauen und planen.", o: SELBST },
+      { id: "6.5", q: "Kannst du mit Menschen im direkten Kontakt umgehen?",                   hint: "Kontakt aufnehmen, ansprechen, auf Ansprache reagieren.", o: SELBST },
+      { id: "6.6", q: "Kannst du Kontakte außerhalb des direkten Umfelds pflegen?",            hint: "Z.B. zu Freunden, Bekannten, Nachbarn.", o: SELBST },
     ],
   },
 ] as const;
@@ -311,11 +311,11 @@ function IntroScreen({ onStart }: { onStart: () => void }) {
       </div>
       <h1 style={{ fontFamily:"Georgia,'Times New Roman',serif", fontSize:"clamp(1.85rem,5.5vw,2.5rem)",
         fontWeight:700, lineHeight:1.07, letterSpacing:"-.02em", marginBottom:16, color:C.ink }}>
-        In wenigen Minuten zu Ihrem{" "}
+        In wenigen Minuten zu deinem{" "}
         <em style={{ fontStyle:"italic", color:C.primary }}>voraussichtlichen Pflegegrad</em>
       </h1>
       <p style={{ fontSize:"1.05rem", color:C.inkSoft, maxWidth:"46ch", margin:"0 auto 26px", lineHeight:1.55 }}>
-        Beantworten Sie einfache Fragen aus sechs Lebensbereichen – für sich selbst oder eine Person, die Sie pflegen.
+        Beantworte einfache Fragen aus sechs Lebensbereichen – für dich selbst oder eine Person, die du pflegst.
       </p>
       <div style={{ display:"flex", flexWrap:"wrap", gap:10, justifyContent:"center", marginBottom:30 }}>
         {([[<Layers key="l" size={14}/>, "6 Lebensbereiche"], [<Clock key="c" size={14}/>, "ca. 5 Minuten"], [<Lock key="k" size={14}/>, "Anonym & ohne Speicherung"]] as [React.ReactNode, string][]).map(([icon, txt], i) => (
@@ -333,7 +333,7 @@ function IntroScreen({ onStart }: { onStart: () => void }) {
         Einschätzung starten <ArrowRight size={18}/>
       </button>
       <p style={{ marginTop:20, fontSize:".81rem", color:C.inkFaint, lineHeight:1.5 }}>
-        Ihre Angaben werden nur in Ihrem Browser verarbeitet – keine Speicherung oder Übertragung.
+        Deine Angaben werden nur in deinem Browser verarbeitet – keine Speicherung oder Übertragung.
       </p>
     </div>
   );
