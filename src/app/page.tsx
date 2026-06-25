@@ -81,10 +81,10 @@ export default function HomePage() {
             className="flex flex-col justify-center px-8 sm:px-16 py-12 sm:py-0 relative z-10"
           >
             <h1 className="font-serif text-4xl sm:text-5xl text-gray-900 mb-3 leading-tight">
-              Pflege beginnt –<br className="hidden sm:block" />
-              <span className="text-brand">liva begleitet dich ab Tag 1.</span>
-              <br className="hidden sm:block" />
-              Schritt für Schritt.
+              Pflege beginnt –<br />
+              <span className="text-brand">liva begleitet dich ab Tag 1</span>
+              <br />
+              Schritt für Schritt
             </h1>
             <p className="text-gray-500 text-base max-w-md mb-2">
               Ob für dich oder einen geliebten Menschen – wir geben dir Orientierung, wenn du sie am meisten brauchst.
