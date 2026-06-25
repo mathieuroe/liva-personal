@@ -292,6 +292,135 @@ In städtischen Gebieten: oft 3–5 Wochen. In ländlichen Regionen: vereinzelt 
 
 **In der Zwischenzeit:** Leistungen die nicht an den MDK-Besuch gebunden sind (z.B. Pflegebox, Hausnotruf) können bereits jetzt beantragt werden.`,
   },
+  {
+    slug: "widerspruch-pflegegrad",
+    titel: "Pflegegrad zu niedrig? So legst du erfolgreich Widerspruch ein",
+    beschreibung: "Rund 35 Prozent aller Widersprüche gegen einen Pflegegrad-Bescheid führen zu einer Höherstufung. So gehst du vor – Schritt für Schritt.",
+    kategorie: "MDK",
+    lesezeit: "4 Min.",
+    datum: "Mai 2026",
+    typ: "news",
+    inhalt: `## Widerspruch gegen den Pflegegrad – wann und wie es sich lohnt
+
+Du hast den Bescheid bekommen und das Ergebnis fühlt sich falsch an? Das passiert häufiger als man denkt. Laut Statistiken der Pflegekassen führt rund **ein Drittel aller Widersprüche** zu einer Höherstufung. Es lohnt sich also, diesen Weg zu gehen.
+
+### Wann ist Widerspruch sinnvoll?
+
+- Der zuerkannte Pflegegrad entspricht nicht dem tatsächlichen Hilfebedarf
+- Der Gutachter des Medizinischen Dienstes hat wesentliche Einschränkungen nicht oder falsch erfasst
+- Die Pflegesituation hat sich seit dem Besuch verschlechtert
+- Du hattest keinen Beistand beim MDK-Besuch und fühlst dich übergangen
+
+### Die Frist: 1 Monat
+
+Widerspruch muss innerhalb von **einem Monat** nach Zustellung des Bescheids eingelegt werden. Die genaue Frist steht im Bescheid selbst unter "Rechtsbehelfsbelehrung".
+
+### So formulierst du den Widerspruch
+
+Ein Widerspruch muss nicht begründet werden – er muss nur rechtzeitig da sein. Diese kurze Formulierung reicht vollständig aus:
+
+**"Ich lege hiermit Widerspruch gegen den Bescheid vom [Datum], Aktenzeichen [AZ], ein."**
+
+Schicke das Schreiben **per Einschreiben mit Rückschein** an deine Pflegekasse – so hast du einen Nachweis.
+
+### Was danach passiert
+
+1. Die Pflegekasse prüft den Bescheid intern
+2. In vielen Fällen wird ein erneuter MDK-Besuch angesetzt
+3. Du kannst jetzt eine detaillierte Begründung nachreichen – dazu solltest du den "schlechten Tag" schriftlich dokumentieren
+4. Entscheidung in der Regel innerhalb von 3 Monaten
+
+### Tipp: Pflegegutachten anfordern
+
+Du hast das Recht, das MDK-Gutachten einzusehen (§ 18 Abs. 4 SGB XI). Forder es schriftlich bei deiner Pflegekasse an. Darin steht genau was bewertet wurde – und was nicht.
+
+### Wenn der Widerspruch abgelehnt wird
+
+Dann bleibt noch der Weg vor das Sozialgericht. Das klingt nach viel – ist aber kostenlos und du brauchst keinen Anwalt. Sozialverbände wie der VdK oder der Sozialverband Deutschland (SoVD) helfen oft kostengünstig dabei.`,
+  },
+  {
+    slug: "pflegebeitraege-2025",
+    titel: "Pflegebeiträge 2025: Was Arbeitnehmer, Eltern und Rentner zahlen",
+    beschreibung: "Der Pflegebeitragssatz liegt bei 3,4 Prozent – Kinderlose zahlen 4,0 Prozent. Alle aktuellen Sätze und was sich je nach Lebenssituation ändert.",
+    kategorie: "Finanzen",
+    lesezeit: "3 Min.",
+    datum: "März 2026",
+    typ: "news",
+    inhalt: `## Pflegebeiträge 2025 – wer wie viel zahlt
+
+Seit dem 1. Juli 2023 gilt der aktuelle Pflegebeitragssatz von **3,4 Prozent**. Für Kinderlose über 23 Jahre kommt ein Zuschlag von 0,6 Prozentpunkten dazu – sie zahlen insgesamt **4,0 Prozent**.
+
+### Beitragssätze nach Kinderzahl (2025)
+
+Die Beiträge werden je zur Hälfte von Arbeitnehmer und Arbeitgeber getragen (je 1,7 %). Der Kinderabschlag reduziert ausschließlich den Arbeitnehmeranteil:
+
+- **Kinderlose (über 23 J.):** 4,0 % gesamt – AN 2,3 %, AG 1,7 %
+- **1 Kind:** 3,4 % – AN 1,7 %, AG 1,7 %
+- **2 Kinder:** 3,15 % – AN 1,45 %, AG 1,7 %
+- **3 Kinder:** 2,90 % – AN 1,20 %, AG 1,7 %
+- **4 Kinder:** 2,65 % – AN 0,95 %, AG 1,7 %
+- **5 oder mehr Kinder:** 2,40 % – AN 0,70 %, AG 1,7 %
+
+Kinder werden berücksichtigt bis zum vollendeten 25. Lebensjahr.
+
+### Besonderheit Sachsen
+
+In Sachsen zahlen Arbeitnehmer historisch bedingt einen höheren Anteil, weil der Buß- und Bettag als Feiertag erhalten blieb: AN 2,2 %, AG 1,2 % (für Kinderlose: AN 2,8 %, AG 1,2 %).
+
+### Was zahlen Rentner?
+
+Rentnerinnen und Rentner zahlen den vollen Pflegebeitrag selbst – die gesetzliche Rentenversicherung übernimmt die Hälfte wie ein Arbeitgeber. Kinderlose Rentner über 23 zahlen also ebenfalls 4,0 % vom Rentenbetrag.
+
+### Warum steigen die Beiträge?
+
+Die Pflegeversicherung ist eine Umlageversicherung: Was heute eingezahlt wird, finanziert die heutigen Leistungen. Da die Zahl der Pflegebedürftigen steigt und die Leistungsbeträge erhöht wurden, steigen die Beitragssätze. Experten erwarten bis 2030 einen weiteren Anstieg auf bis zu 4,5 Prozent.`,
+  },
+  {
+    slug: "entlastungsbetrag-richtig-nutzen",
+    titel: "Entlastungsbetrag: 131 € pro Monat – und die meisten nutzen ihn falsch",
+    beschreibung: "1.572 € pro Jahr stehen dir zu – doch viele Familien schöpfen das Budget nicht aus oder beantragen es falsch. Was du wissen musst.",
+    kategorie: "Leistungen",
+    lesezeit: "4 Min.",
+    datum: "Februar 2026",
+    typ: "news",
+    inhalt: `## Entlastungsbetrag 2025 – 131 € pro Monat richtig einsetzen
+
+Der Entlastungsbetrag (§ 45b SGB XI) ist eine der am häufigsten ungenutzten Leistungen im Pflegesystem. **Jeder mit Pflegegrad 1 bis 5 hat Anspruch** – unabhängig davon ob Pflegegeld oder Pflegesachleistungen bezogen werden.
+
+Aktuell: **131 € pro Monat**, also bis zu **1.572 € pro Jahr**.
+
+### Wofür kannst du ihn nutzen?
+
+Der Betrag ist zweckgebunden – aber der Spielraum ist groß:
+
+- Alltagsbegleitung und Betreuung (z.B. Vorlesen, Spazierengehen, Gesellschaft leisten)
+- Hauswirtschaftliche Unterstützung durch anerkannte Anbieter (Einkaufen, Kochen, Putzen)
+- Tages- und Nachtpflege
+- Kurzzeitpflege (ergänzend zum kombinierten Budget)
+- Fahrdienste zu Arzt- oder Therapieterminen
+
+**Wichtig:** Der Anbieter muss nach Landesrecht anerkannt sein. Informelle Nachbarschaftshilfe oder Familienmitglieder aus dem eigenen Haushalt zählen nicht.
+
+### Was passiert mit ungenutzten Beträgen?
+
+Nicht genutzte Beträge verfallen nicht sofort. Sie können **bis zum Ende des darauffolgenden Kalenderhalbjahres** übertragen werden. Wer also im ersten Halbjahr 2025 nichts nutzt, kann das Geld noch bis Ende 2025 einsetzen.
+
+Das bedeutet in der Praxis: Maximal können bis zu **1.965 € auf einmal** abrufbar sein (1,5 × 131 € × 10 Monate).
+
+### So bekommst du das Geld
+
+1. Anerkannten Anbieter beauftragen (deine Pflegekasse hat eine Liste)
+2. Leistung in Anspruch nehmen
+3. Rechnung sammeln
+4. Bei der Pflegekasse einreichen
+5. Erstattung in 2–4 Wochen
+
+**Alternativ:** Einige Anbieter rechnen direkt mit der Pflegekasse ab – dann musst du nichts vorstrecken.
+
+### Der häufigste Fehler
+
+Viele Familien denken: "Wir schaffen das selbst, wir brauchen keine Hilfe." Der Entlastungsbetrag ist aber kein Zeichen von Schwäche – er ist ein finanzielles Recht. Und die Dienstleister die ihn abrechnen, können echte Erleichterung in den Alltag bringen.`,
+  },
 ];
 
 export function getBySlug(slug: string): ContentItem | undefined {
