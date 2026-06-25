@@ -149,22 +149,22 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
 
   const INFO_CONTENT = {
     box: {
-      titel: "Was ist die Pflegehilfsmittelbox?",
-      intro: "Ein monatliches Paket mit Verbrauchsmitteln für die Pflege zuhause – vollständig von der Pflegekasse bezahlt.",
+      titel: "Pflegehilfsmittelbox – bis zu 42 € / Monat",
+      intro: "Die Pflegekasse übernimmt bis zu 42 € pro Monat für Pflegeverbrauchsmittel. Einmal beantragen – jeden Monat automatisch geliefert, ohne Kosten für dich.",
       fakten: [
-        { label: "Inhalt", wert: "Handschuhe, Desinfektion, Bettschutzeinlagen u.v.m." },
-        { label: "Kosten", wert: "0 € – Pflegekasse übernimmt bis zu 42 € / Monat" },
-        { label: "Ab", wert: "Pflegegrad 1" },
-        { label: "Aufwand", wert: "Einmal bestellen, automatisch jeden Monat" },
-        { label: "Abwicklung", wert: "Unser geprüfter Partner Pflegehase" },
+        { label: "Inhalt", wert: "Einmalhandschuhe, Desinfektion, Bettschutzeinlagen, Mundschutz u.v.m." },
+        { label: "Kosten", wert: "0 € Eigenanteil – Pflegekasse zahlt bis zu 42 € / Monat direkt" },
+        { label: "Voraussetzung", wert: "Pflegegrad 1, 2, 3, 4 oder 5" },
+        { label: "Aufwand", wert: "Einmaliger Antrag – unser Partner Pflegehase erledigt alles" },
+        { label: "Lieferung", wert: "Kostenlos, monatlich, direkt nach Hause" },
       ],
     },
     hausnotruf: {
-      titel: "Was ist ein Hausnotruf?",
-      intro: "Eine kleine Basisstation + Notrufknopf als Armband oder Halskette – Hilfe per Knopfdruck.",
+      titel: "Hausnotruf – 27 € / Monat von der Pflegekasse",
+      intro: "Ein Knopfdruck genügt – sofort ist Hilfe unterwegs. Die Pflegekasse zahlt 27 € pro Monat, bei günstigen Anbietern ohne Eigenanteil.",
       fakten: [
         { label: "Funktion", wert: "Notrufknopf als Armband oder Halskette – 24 h Bereitschaft" },
-        { label: "Zuschuss", wert: "Pflegekasse zahlt 27 € / Monat (§ 40 Abs. 4 SGB XI)" },
+        { label: "Zuschuss", wert: "Pflegekasse zahlt 27 € / Monat" },
         { label: "Eigenanteil", wert: "Bei günstigen Anbietern 0 € – kein Risiko" },
         { label: "Voraussetzung", wert: "Pflegegrad 1, 2, 3, 4 oder 5" },
         { label: "Einrichtung", wert: "Genehmigung in 3–5 Werktagen, Lieferung inklusive" },
