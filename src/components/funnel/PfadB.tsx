@@ -163,11 +163,11 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
       titel: "Was ist ein Hausnotruf?",
       intro: "Eine kleine Basisstation + Notrufknopf als Armband oder Halskette – Hilfe per Knopfdruck.",
       fakten: [
-        { label: "Funktion", wert: "Notruf per Knopfdruck, auch wenn man alleine ist" },
-        { label: "Zuschuss", wert: "Pflegekasse zahlt 27 € / Monat + einmalig bis zu 10,49 €" },
-        { label: "Eigenanteil", wert: "Bei günstigen Anbietern oft 0 €" },
-        { label: "Ab", wert: "Pflegegrad 1" },
-        { label: "Abwicklung", wert: "Unser geprüfter Partner Pflegehase" },
+        { label: "Funktion", wert: "Notrufknopf als Armband oder Halskette – 24 h Bereitschaft" },
+        { label: "Zuschuss", wert: "Pflegekasse zahlt 27 € / Monat (§ 40 Abs. 4 SGB XI)" },
+        { label: "Eigenanteil", wert: "Bei günstigen Anbietern 0 € – kein Risiko" },
+        { label: "Voraussetzung", wert: "Pflegegrad 1, 2, 3, 4 oder 5" },
+        { label: "Einrichtung", wert: "Genehmigung in 3–5 Werktagen, Lieferung inklusive" },
       ],
     },
   };

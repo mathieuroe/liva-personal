@@ -81,7 +81,7 @@ const LEISTUNGEN = [
     name: "Hausnotruf",
     betrag: "27 € / Monat",
     pg: "Ab PG 1",
-    text: "Kleine Basisstation mit Notrufknopf als Armband oder Halskette – ein Druck genügt, sofort antwortet jemand. Die Pflegekasse zahlt 27 € monatlich und einmalig bis zu 10,49 € für die Einrichtung. Bei günstigen Anbietern entstehen keine Kosten.",
+    text: "Kleine Basisstation mit Notrufknopf als Armband oder Halskette – ein Druck genügt, sofort antwortet jemand. Die Pflegekasse zahlt 27 € / Monat (§ 40 Abs. 4 SGB XI). Bei günstigen Anbietern entstehen keine Kosten.",
     beantragen: "Unser Partner Pflegehase stellt für dich den Antrag bei der Pflegekasse und liefert dir deinen Hausnotruf – Genehmigung in ca. 3–5 Werktagen.",
   },
 ];
