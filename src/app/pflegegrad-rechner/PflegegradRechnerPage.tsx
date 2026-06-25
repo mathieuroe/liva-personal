@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, Shield, Clock, Lock } from "lucide-react";
+import { ArrowRight, Shield, Clock, Lock, Mail } from "lucide-react";
 import PflegegradRechner from "@/components/funnel/PflegegradRechner";
+import { LeistungenListe, ErgebnisModal } from "@/components/funnel/ErgebnisModal";
 
 const PFLEGEGRAD_LABELS: Record<number, { titel: string; farbe: string; beschreibung: string }> = {
   0: { titel: "Kein Pflegegrad", farbe: "#6B7280", beschreibung: "Aktuell reicht die Punktzahl noch nicht – aber das kann sich ändern. Wir zeigen dir, was jetzt sinnvoll ist." },
@@ -14,49 +15,17 @@ const PFLEGEGRAD_LABELS: Record<number, { titel: string; farbe: string; beschrei
   5: { titel: "Pflegegrad 5", farbe: "#7C3AED", beschreibung: "Höchste Einstufung – mit dem vollen Leistungsumfang der Pflegeversicherung." },
 };
 
-const LEISTUNGEN: Record<number, string[]> = {
-  0: ["Noch kein Anspruch auf Pflegeleistungen", "Ggf. Widerspruch oder Neuantrag sinnvoll"],
-  1: ["Entlastungsbetrag: 125 € / Monat", "Pflegehilfsmittelbox: bis 42 € / Monat", "Hausnotruf-Zuschuss: 27,00 € / Monat"],
-  2: ["Pflegegeld: 332 € / Monat", "Pflegehilfsmittelbox: bis 42 € / Monat", "Entlastungsbetrag: 131 € / Monat", "Hausnotruf-Zuschuss: 27,00 € / Monat"],
-  3: ["Pflegegeld: 572 € / Monat", "Pflegesachleistung: bis 1.363 € / Monat", "Entlastungsbetrag: 131 € / Monat", "Kurzzeitpflege & Verhinderungspflege"],
-  4: ["Pflegegeld: 764 € / Monat", "Pflegesachleistung: bis 1.693 € / Monat", "Vollstationäre Pflege möglich", "Kurzzeitpflege & Verhinderungspflege"],
-  5: ["Pflegegeld: 946 € / Monat", "Pflegesachleistung: bis 2.095 € / Monat", "Besonderer Härtefall-Zuschuss möglich", "Vollstationäre Pflege mit Zuschlag"],
-};
 
 export default function PflegegradRechnerPage() {
   const [ergebnis, setErgebnis] = useState<{ pflegegrad: number; punkte: number } | null>(null);
-  const [form, setForm] = useState({ email: "", phone: "" });
-  const [submitted, setSubmitted] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   function handleErgebnis(pflegegrad: number, gesamtpunkte: number) {
     setErgebnis({ pflegegrad, punkte: gesamtpunkte });
     setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 100);
   }
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setSubmitting(true);
-    try {
-      await fetch("/api/submit-lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...form,
-          path: "/pflegegrad-rechner",
-          pflegegrad: ergebnis?.pflegegrad?.toString(),
-          punkte: ergebnis?.punkte,
-          timestamp: new Date().toISOString(),
-        }),
-      });
-      setSubmitted(true);
-    } finally {
-      setSubmitting(false);
-    }
-  }
-
   const pg = ergebnis ? PFLEGEGRAD_LABELS[ergebnis.pflegegrad] : null;
-  const leistungen = ergebnis ? LEISTUNGEN[ergebnis.pflegegrad] : [];
 
   return (
     <main className="min-h-screen bg-gray-50">
@@ -94,6 +63,9 @@ export default function PflegegradRechnerPage() {
         ) : (
           <div className="space-y-6">
 
+            {/* Hinweis */}
+            <p className="font-serif text-2xl text-gray-800">Gut, dass du dich jetzt kümmerst.</p>
+
             {/* Ergebnis-Card */}
             <div
               className="rounded-2xl p-7 text-white shadow-lg"
@@ -101,80 +73,25 @@ export default function PflegegradRechnerPage() {
             >
               <p className="text-sm font-semibold uppercase tracking-widest opacity-80 mb-2">Dein geschätztes Ergebnis</p>
               <h2 className="font-serif text-4xl font-bold mb-1">{pg!.titel}</h2>
-              <p className="opacity-90 mb-3">{pg!.beschreibung}</p>
               <p className="text-sm opacity-70">{ergebnis.punkte} von 100 Punkten</p>
             </div>
 
-            {/* Leistungsübersicht */}
-            {ergebnis.pflegegrad > 0 && (
-              <div className="bg-white rounded-2xl border border-[#E0EDE7] p-6">
-                <h3 className="font-semibold text-gray-900 mb-4">Deine wichtigsten Leistungsansprüche</h3>
-                <ul className="space-y-2.5">
-                  {leistungen.map((l) => (
-                    <li key={l} className="flex items-start gap-2.5 text-sm text-gray-700">
-                      <CheckCircle2 size={16} className="text-brand flex-shrink-0 mt-0.5" />
-                      {l}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
+            {/* Das steht dir zu */}
+            <LeistungenListe pflegegrad={ergebnis.pflegegrad} />
 
-            {/* ── Inline Opt-in ─────────────────────────────────── */}
-            <div className="bg-brand-light rounded-2xl border border-brand/20 p-7">
-              {!submitted ? (
-                <>
-                  <p className="text-xs font-bold text-brand uppercase tracking-widest mb-2">Nächster Schritt</p>
-                  <h3 className="font-serif text-2xl text-gray-900 mb-1.5">
-                    Wir schicken dir kostenlos deine persönliche Leistungsübersicht zu
-                  </h3>
-                  <p className="text-sm text-gray-500 mb-6 leading-relaxed">
-                    Konkret für {pg!.titel}: Welche Beträge dir zustehen, wie du sie beantragst – und was du noch diesen Monat tun solltest. In deinem Postfach, in wenigen Minuten.
-                  </p>
-                  <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
-                    <input
-                      type="email"
-                      required
-                      placeholder="E-Mail-Adresse"
-                      value={form.email}
-                      onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      className="input flex-1 min-w-0"
-                    />
-                    <input
-                      type="tel"
-                      required
-                      placeholder="Telefonnummer"
-                      value={form.phone}
-                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                      className="input flex-1 min-w-0"
-                    />
-                    <button
-                      type="submit"
-                      disabled={submitting}
-                      className="btn-primary whitespace-nowrap px-6 py-3"
-                    >
-                      {submitting ? "Wird gesendet…" : <>Kostenlos erhalten <ArrowRight size={16} /></>}
-                    </button>
-                  </form>
-                  <p className="text-xs text-gray-400 mt-3 flex items-center gap-1.5">
-                    <Lock size={11} /> DSGVO-konform · Kein Spam · Jederzeit abmeldbar
-                  </p>
-                </>
-              ) : (
-                <div className="text-center py-4">
-                  <div className="w-14 h-14 rounded-full bg-brand flex items-center justify-center mx-auto mb-4">
-                    <CheckCircle2 size={28} className="text-white" />
-                  </div>
-                  <h3 className="font-serif text-2xl text-gray-900 mb-2">Deine Übersicht ist unterwegs.</h3>
-                  <p className="text-sm text-gray-500">Schau in dein Postfach – du bekommst gleich alles für {pg!.titel}: Leistungen, Beträge, nächste Schritte. Wenn du Fragen hast, rufen wir dich auch gerne an.</p>
-                </div>
-              )}
-            </div>
+            {/* CTA: Ergebnis erhalten */}
+            <button
+              onClick={() => setShowModal(true)}
+              className="w-full bg-brand text-white font-semibold rounded-2xl py-4 px-6 flex items-center justify-center gap-2 hover:bg-brand-hover transition-colors text-base shadow-sm"
+            >
+              <Mail size={18} />
+              Ergebnis kostenlos erhalten
+            </button>
 
             {/* Neu berechnen */}
             <div className="text-center">
               <button
-                onClick={() => { setErgebnis(null); setSubmitted(false); setForm({ email: "", phone: "" }); }}
+                onClick={() => setErgebnis(null)}
                 className="text-sm text-gray-400 hover:text-brand underline underline-offset-2 transition-colors"
               >
                 Rechner neu starten
@@ -297,6 +214,10 @@ export default function PflegegradRechnerPage() {
             </button>
           </div>
         </section>
+      )}
+
+      {showModal && ergebnis && (
+        <ErgebnisModal pflegegrad={ergebnis.pflegegrad} path="/pflegegrad-rechner" onClose={() => setShowModal(false)} />
       )}
 
     </main>

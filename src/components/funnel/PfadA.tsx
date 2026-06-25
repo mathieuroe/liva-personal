@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Copy, Check, ClipboardList, HeartHandshake, Calculator, FileText } from "lucide-react";
+import { ArrowRight, Copy, Check, ClipboardList, HeartHandshake, Calculator, FileText, Mail } from "lucide-react";
 import LeadForm from "./LeadForm";
 import PflegegradRechner from "./PflegegradRechner";
+import { LeistungenListe, ErgebnisModal } from "./ErgebnisModal";
 
 const PFLEGEKASSEN = [
   { name: "TK – Techniker Krankenkasse", tel: "0800 285 8585", email: "pflege@tk.de" },
@@ -26,6 +27,7 @@ export default function PfadA() {
   const [weg, setWeg] = useState<"selbst" | "unterstuetzung" | null>(null);
   const [kasse, setKasse] = useState<typeof PFLEGEKASSEN[0] | null>(null);
   const [copied, setCopied] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const scriptText = "Ich moechte einen Pflegegrad beantragen. Koennen Sie mir bitte einen Antrag zusenden oder mir erklaeren wie ich das online beantragen kann?";
 
@@ -98,7 +100,8 @@ export default function PfadA() {
           <motion.div key="step1" {...fade} transition={{ duration: 0.3 }}>
             <p className="section-label">Schritt 2 von 2</p>
 
-            <div className="bg-brand-light rounded-xl p-5 mb-8">
+            {/* Ergebnis-Card */}
+            <div className="bg-brand-light rounded-xl p-5 mb-5">
               <p className="text-xs font-semibold text-brand uppercase tracking-wider mb-1">Deine Einschätzung</p>
               <p className="font-serif text-3xl text-brand">
                 {pflegegrad === 0 ? "Kein Pflegegrad" : `Pflegegrad ${pflegegrad}`}
@@ -106,10 +109,25 @@ export default function PfadA() {
               <p className="text-sm text-brand/70 mt-0.5">{gesamtpunkte.toFixed(1)} von 100 Punkten</p>
             </div>
 
-            <h2 className="font-serif text-3xl text-gray-900 mb-2">Wie möchtest du vorgehen?</h2>
-            <p className="text-gray-500 mb-6">Wähle was besser zu dir passt.</p>
+            {/* Das steht dir zu */}
+            <div className="mb-4">
+              <LeistungenListe pflegegrad={pflegegrad} />
+            </div>
 
-            <div className="grid sm:grid-cols-2 gap-4 mb-8">
+            {/* CTA: Alles zuschicken */}
+            <button
+              onClick={() => setShowModal(true)}
+              className="w-full bg-brand text-white font-semibold rounded-2xl py-4 px-6 flex items-center justify-center gap-2 hover:bg-brand-hover transition-colors mb-5 text-base shadow-sm"
+            >
+              <Mail size={18} />
+              Ergebnis kostenlos erhalten
+            </button>
+
+            {/* Wie vorgehen */}
+            <h2 className="font-serif text-2xl text-gray-900 mb-2">Wie möchtest du vorgehen?</h2>
+            <p className="text-gray-500 mb-5 text-sm">Wähle was besser zu dir passt.</p>
+
+            <div className="grid sm:grid-cols-2 gap-4 mb-6">
               <button
                 onClick={() => setWeg("selbst")}
                 className={`flex flex-col text-left p-5 rounded-[12px] border-2 transition-all ${
@@ -240,6 +258,10 @@ export default function PfadA() {
         )}
 
       </AnimatePresence>
+
+      {showModal && (
+        <ErgebnisModal pflegegrad={pflegegrad} path="/funnel/pflegegrad-vorhanden" onClose={() => setShowModal(false)} />
+      )}
     </div>
   );
 }
