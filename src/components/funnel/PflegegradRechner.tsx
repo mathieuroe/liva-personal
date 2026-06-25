@@ -378,7 +378,6 @@ function ModIntroScreen({ mod, onNext, onBack, isFirst }: any) {
 /* ─── Frage-Screen ────────────────────────────────────────────────────────── */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function QuestionScreen({ q, mod, selected, onSelect, onBack }: any) {
-  const qNum = ALL_Q.findIndex((x: any) => x.id === q.id) + 1; // eslint-disable-line @typescript-eslint/no-explicit-any
   return (
     <div style={{ padding:"26px 22px 20px" }}>
       <div style={{ display:"flex", alignItems:"center", gap:9, marginBottom:16,
@@ -386,8 +385,6 @@ function QuestionScreen({ q, mod, selected, onSelect, onBack }: any) {
         <span style={{ color:C.primary, textTransform:"uppercase", letterSpacing:".09em" }}>
           Modul {mod.n} · {mod.title}
         </span>
-        <span style={{ width:4, height:4, borderRadius:"50%", background:C.line, display:"inline-block" }}/>
-        <span>Frage {qNum} / {TOTAL_Q}</span>
       </div>
       <h2 style={{ fontFamily:"var(--font-dm-serif), Georgia, serif", fontWeight:700,
         fontSize:"clamp(1.4rem,4vw,1.8rem)", lineHeight:1.15, letterSpacing:"-.015em",
@@ -424,6 +421,19 @@ export default function PflegegradRechner({ onErgebnis }: Props) {
   const answered = ALL_Q.filter((q: any) => answers[q.id] != null).length; // eslint-disable-line @typescript-eslint/no-explicit-any
   const showProgress = cur.type === "q" || cur.type === "modIntro";
 
+  // Psychologischer Fortschritt: easeOut-Kurve (schnell am Anfang, langsam am Ende)
+  // + Modul-Boost: beim Starten eines Moduls springt der Balken sofort vor
+  const easeOut = (x: number) => 1 - (1 - x) ** 2.2;
+  const rawProgress = (() => {
+    if (cur.type === "modIntro" || cur.type === "q") {
+      const before = ALL_Q.filter((q: any) => q.mod < cur.mod.n).length; // eslint-disable-line @typescript-eslint/no-explicit-any
+      const inMod  = ALL_Q.filter((q: any) => q.mod === cur.mod.n).length; // eslint-disable-line @typescript-eslint/no-explicit-any
+      return Math.max(answered, before + inMod * 0.35) / TOTAL_Q;
+    }
+    return answered / TOTAL_Q;
+  })();
+  const displayPct = easeOut(rawProgress) * 100;
+
   const selectOpt = useCallback((qid: string, idx: number) => {
     setAnswers(a => ({ ...a, [qid]: idx }));
     // Wenn letzte Frage beantwortet → direkt Ergebnis übergeben
@@ -459,13 +469,13 @@ export default function PflegegradRechner({ onErgebnis }: Props) {
         <div style={{ marginBottom:16 }}>
           <div style={{ display:"flex", justifyContent:"space-between",
             fontSize:".78rem", fontWeight:500, color:C.inkFaint, marginBottom:5 }}>
-            <span>{cur.type === "q" ? `Modul ${cur.mod.n} · ${cur.mod.title}` : ""}</span>
-            <span style={{ fontWeight:700, color:C.primary }}>{answered} / {TOTAL_Q}</span>
+            <span>{`Modul ${cur.mod.n} · ${cur.mod.title}`}</span>
+            <span style={{ fontWeight:700, color:C.primary }}>{cur.mod.n} / 6</span>
           </div>
           <div style={{ height:5, background:C.line, borderRadius:99, overflow:"hidden" }}>
-            <div style={{ height:"100%", width:`${answered/TOTAL_Q*100}%`, borderRadius:99,
+            <div style={{ height:"100%", width:`${displayPct}%`, borderRadius:99,
               background:`linear-gradient(90deg,${C.primaryLight},${C.primary})`,
-              transition:"width .4s ease" }}/>
+              transition:"width .5s cubic-bezier(.25,.1,.25,1)" }}/>
           </div>
         </div>
       )}
