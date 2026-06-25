@@ -28,7 +28,7 @@ Das Problem: Die meisten Menschen wissen nicht, was sie jetzt tun sollen. Das Pf
 Als allererstes: Beantrage deine Pflegebox. Das ist der einfachste Schritt mit dem größten sofortigen Nutzen. Du bekommst monatlich bis zu 42 € für Einmalhandschuhe, Bettschutzeinlagen und Desinfektionsmittel – vollständig von der Pflegekasse bezahlt.
 
 **Hausnotruf prüfen**
-Falls die pflegebedürftige Person alleine ist oder alleine bleibt: Prüfe einen Hausnotruf. Die Pflegekasse zahlt 27,00 € pro Monat – bei günstigen Anbietern entstehen keine Kosten für dich.
+Falls die pflegebedürftige Person alleine ist oder alleine bleibt: Prüfe einen Hausnotruf. Die Pflegekasse zahlt 27 € pro Monat – bei günstigen Anbietern entstehen keine Kosten für dich.
 
 ### Woche 2: Leistungen beantragen
 
@@ -104,7 +104,7 @@ Das Besondere: **Nicht genutzte Beträge können ins nächste Quartal mitgenomme
   {
     slug: "hausnotruf",
     titel: "Hausnotruf – wann macht er Sinn und was kostet er wirklich?",
-    beschreibung: "Die Pflegekasse zahlt bis zu 27,00 € pro Monat. Bei vielen Anbietern zahlst du damit gar nichts.",
+    beschreibung: "Die Pflegekasse zahlt bis zu 27 € pro Monat. Bei vielen Anbietern zahlst du damit gar nichts.",
     kategorie: "Sicherheit",
     lesezeit: "4 Min. Lesezeit",
     datum: "April 2026",
@@ -122,7 +122,7 @@ Ein Hausnotruf ist ein kleines Gerät – oft ein Knopf am Handgelenk oder um de
 
 Die monatliche Gebühr liegt bei den meisten Anbietern zwischen 20 € und 40 €.
 
-Die Pflegekasse zahlt **27,00 € pro Monat** als Zuschuss – für alle Pflegegrade ab PG 1. Zusätzlich wird einmalig ein Zuschuss von bis zu **10,49 €** für die Einrichtung gezahlt.
+Die Pflegekasse zahlt **27 € pro Monat** als Zuschuss – für alle Pflegegrade ab PG 1. Zusätzlich wird einmalig ein Zuschuss von bis zu **10,49 €** für die Einrichtung gezahlt.
 
 Das bedeutet: Bei günstigen Anbietern entstehen **keine Kosten** für dich.
 
@@ -151,7 +151,7 @@ Der Unterschied zwischen PG 1 und PG 2 ist erheblich – besonders bei den Geldl
 
 ### Die konkreten Unterschiede
 
-Leistungen die beide haben: Entlastungsbetrag (131 €), Pflegehilfsmittel (42 €), Hausnotruf (27,00 € / Monat + einmalig bis zu 10,49 €)
+Leistungen die beide haben: Entlastungsbetrag (131 €), Pflegehilfsmittel (42 €), Hausnotruf (27 € / Monat + einmalig bis zu 10,49 €)
 
 **Ab PG 2 kommt dazu:**
 - Pflegegeld: **332 €/Monat**

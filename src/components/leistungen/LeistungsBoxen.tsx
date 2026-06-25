@@ -20,7 +20,7 @@ const INFO_CONTENT = {
     intro: "Ein Knopfdruck genügt – sofort ist Hilfe unterwegs. Die Pflegekasse zahlt 27 € pro Monat, bei günstigen Anbietern ohne Eigenanteil.",
     fakten: [
       { label: "Funktion", wert: "Notrufknopf als Armband oder Halskette – 24 h Bereitschaft" },
-      { label: "Zuschuss", wert: "Pflegekasse zahlt 27,00 € / Monat (§ 40 Abs. 4 SGB XI)" },
+      { label: "Zuschuss", wert: "Pflegekasse zahlt 27 € / Monat (§ 40 Abs. 4 SGB XI)" },
       { label: "Eigenanteil", wert: "Bei günstigen Anbietern 0 € – kein Risiko" },
       { label: "Voraussetzung", wert: "Pflegegrad 1, 2, 3, 4 oder 5" },
       { label: "Einrichtung", wert: "Genehmigung in 3–5 Werktagen, Lieferung inklusive" },

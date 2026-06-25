@@ -5,7 +5,7 @@ import HausnotrufLeadForm from "@/components/HausnotrufLeadForm";
 
 export const metadata: Metadata = {
   title: "Hausnotruf mit Pflegekasse-Zuschuss | liva",
-  description: "Die Pflegekasse zahlt 27,00 € pro Monat für deinen Hausnotruf. Bei vielen Anbietern entstehen keine Kosten für dich.",
+  description: "Die Pflegekasse zahlt 27 € pro Monat für deinen Hausnotruf. Bei vielen Anbietern entstehen keine Kosten für dich.",
 };
 
 export default function HausnotrufPage() {
@@ -17,7 +17,7 @@ export default function HausnotrufPage() {
             <div>
               <span className="inline-block bg-brand-light text-brand text-xs font-semibold px-4 py-1.5 rounded-full mb-6">Ab Pflegegrad 1 – oft zum Nulltarif</span>
               <h1 className="font-serif text-5xl text-gray-900 mb-4 leading-tight">Hausnotruf mit Pflegekasse-Zuschuss.</h1>
-              <p className="text-gray-500 text-lg leading-relaxed mb-6">Die Pflegekasse zahlt 27,00 € pro Monat für ein Hausnotruf-System. Bei günstigen Anbietern entstehen für dich keine Kosten.</p>
+              <p className="text-gray-500 text-lg leading-relaxed mb-6">Die Pflegekasse zahlt 27 € pro Monat für ein Hausnotruf-System. Bei günstigen Anbietern entstehen für dich keine Kosten.</p>
               {["Kein Eigenanteil bei günstigen Anbietern", "Sofort nach Pflegegrad-Anerkennung beantragbar", "Kein langfristiger Vertrag nötig"].map((item) => (
                 <div key={item} className="flex items-center gap-3 mt-3">
                   <CheckCircle2 size={18} className="text-brand flex-shrink-0" />
@@ -28,7 +28,7 @@ export default function HausnotrufPage() {
             <div className="flex justify-center">
               <div className="bg-brand-light rounded-[20px] p-8 text-center w-full max-w-sm">
                 <div className="text-7xl mb-4">🔔</div>
-                <p className="font-serif text-3xl text-brand mb-1">27,00 € / Monat</p>
+                <p className="font-serif text-3xl text-brand mb-1">27 € / Monat</p>
                 <p className="text-brand/70 text-sm mb-4">Zuschuss von der Pflegekasse</p>
                 <div className="bg-white rounded-xl p-4 text-left">
                   <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Das bekommst du</p>

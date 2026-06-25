@@ -60,13 +60,13 @@ const KATEGORIEN: ChecklistKategorie[] = [
       {
         id: "hausnotruf_item",
         titel: "Hausnotruf beantragen",
-        erklaerung: "Pflegekasse zahlt 27,00 € / Monat Zuschuss. Bei günstigen Anbietern entstehen keine Kosten. Gibt dir Sicherheit – du kannst auch mal kurz weg.",
+        erklaerung: "Pflegekasse zahlt 27 € / Monat Zuschuss. Bei günstigen Anbietern entstehen keine Kosten. Gibt dir Sicherheit – du kannst auch mal kurz weg.",
         punkte: [
           "Anbieter anfragen",
           "Antrag bei der Pflegekasse stellen (§40 SGB XI)",
           "Genehmigung in ca. 3–5 Werktagen",
         ],
-        empfehlung: { produkt: "hausnotruf", text: "Hausnotruf – ab 0 € / Monat", info: "Pflegekasse zahlt 27,00 € / Monat Zuschuss" },
+        empfehlung: { produkt: "hausnotruf", text: "Hausnotruf – ab 0 € / Monat", info: "Pflegekasse zahlt 27 € / Monat Zuschuss" },
         prioritaet: "sofort",
       },
       {
@@ -160,7 +160,7 @@ const KATEGORIEN: ChecklistKategorie[] = [
           "Türschwellen reduzieren",
           "Badumbau und Treppenlift prüfen",
         ],
-        empfehlung: { produkt: "hausnotruf", text: "Hausnotruf – Sicherheitsnetz für zuhause", info: "Pflegekasse zahlt 27,00 € / Monat Zuschuss" },
+        empfehlung: { produkt: "hausnotruf", text: "Hausnotruf – Sicherheitsnetz für zuhause", info: "Pflegekasse zahlt 27 € / Monat Zuschuss" },
         prioritaet: "sofort",
       },
       {

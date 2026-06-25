@@ -31,8 +31,8 @@ const LEISTUNGEN: Leistung[] = [
   {
     id: "hausnotruf",
     name: "Hausnotruf",
-    betrag: "27,00 € / Monat Zuschuss",
-    beschreibung: "Die Pflegekasse zahlt monatlich 27,00 € für ein Hausnotruf-System. Bei günstigen Anbietern entstehen keine Kosten.",
+    betrag: "27 € / Monat Zuschuss",
+    beschreibung: "Die Pflegekasse zahlt monatlich 27 € für ein Hausnotruf-System. Bei günstigen Anbietern entstehen keine Kosten.",
     pflegegrade: [1, 2, 3, 4, 5],
     icon: "🔔",
     antragsSchritte: [

@@ -101,7 +101,7 @@ const schemaFAQ = {
       name: "Was bekomme ich mit Pflegegrad 1?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Mit Pflegegrad 1 hast du Anspruch auf: Entlastungsbetrag (125 € / Monat für Alltagshilfe), die kostenlose Pflegehilfsmittelbox (bis 42 € / Monat) und den Hausnotruf-Zuschuss der Pflegekasse (27,00 € / Monat + einmalig bis zu 10,49 €). Pflegegeld gibt es erst ab Pflegegrad 2.",
+        text: "Mit Pflegegrad 1 hast du Anspruch auf: Entlastungsbetrag (125 € / Monat für Alltagshilfe), die kostenlose Pflegehilfsmittelbox (bis 42 € / Monat) und den Hausnotruf-Zuschuss der Pflegekasse (27 € / Monat + einmalig bis zu 10,49 €). Pflegegeld gibt es erst ab Pflegegrad 2.",
       },
     },
     {

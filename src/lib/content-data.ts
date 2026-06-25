@@ -26,7 +26,7 @@ Der Pflegegrad-Bescheid ist da. Herzlichen Glückwunsch – auch wenn das seltsa
 
 **Pflegebox beantragen** – geht in 5 Minuten, kostet nichts, kommt jeden Monat. 42 € für Handschuhe, Desinfektion, Bettschutz.
 
-**Hausnotruf prüfen** – ab PG 1, Pflegekasse zahlt 27,00 € / Monat. Bei vielen Anbietern: 0 € Eigenanteil.
+**Hausnotruf prüfen** – ab PG 1, Pflegekasse zahlt 27 € / Monat. Bei vielen Anbietern: 0 € Eigenanteil.
 
 ### Woche 2: Geld nicht verfallen lassen
 
@@ -110,7 +110,7 @@ Wichtig: Der Anbieter muss anerkannt sein (nach Landesrecht).
   {
     slug: "hausnotruf",
     titel: "Hausnotruf – wann macht er Sinn und was kostet er wirklich?",
-    beschreibung: "Die Pflegekasse zahlt 27,00 € pro Monat. Bei vielen Anbietern zahlst du damit gar nichts. Was du wissen musst.",
+    beschreibung: "Die Pflegekasse zahlt 27 € pro Monat. Bei vielen Anbietern zahlst du damit gar nichts. Was du wissen musst.",
     kategorie: "Sicherheit",
     lesezeit: "4 Min.",
     datum: "April 2026",
@@ -127,7 +127,7 @@ Ein Hausnotruf ist ein kleines Gerät – oft ein Knopf am Handgelenk oder um de
 
 ### Was kostet es?
 
-Monatliche Gebühr: meist 20–40 €. Die Pflegekasse zahlt **27,00 € / Monat** Zuschuss sowie einmalig bis zu **10,49 €** für die Einrichtung. Bei günstigen Anbietern: **0 € Eigenanteil**.
+Monatliche Gebühr: meist 20–40 €. Die Pflegekasse zahlt **27 € / Monat** Zuschuss sowie einmalig bis zu **10,49 €** für die Einrichtung. Bei günstigen Anbietern: **0 € Eigenanteil**.
 
 ### Wie beantrage ich den Zuschuss?
 

@@ -151,7 +151,7 @@ export default function PflegegradRechnerPage() {
                 },
                 {
                   q: "Was bekomme ich mit Pflegegrad 1?",
-                  a: "Mehr als die meisten erwarten: Entlastungsbetrag (125 € / Monat für Alltagshilfe), die kostenlose Pflegebox (bis 42 € / Monat), und den Hausnotruf-Zuschuss (27,00 € / Monat + einmalig bis zu 10,49 €). Pflegegeld gibt es erst ab Pflegegrad 2 – aber auch PG 1 bringt echte monatliche Entlastung.",
+                  a: "Mehr als die meisten erwarten: Entlastungsbetrag (125 € / Monat für Alltagshilfe), die kostenlose Pflegebox (bis 42 € / Monat), und den Hausnotruf-Zuschuss (27 € / Monat + einmalig bis zu 10,49 €). Pflegegeld gibt es erst ab Pflegegrad 2 – aber auch PG 1 bringt echte monatliche Entlastung.",
                 },
                 {
                   q: "Was, wenn das Ergebnis niedriger ist als erwartet?",

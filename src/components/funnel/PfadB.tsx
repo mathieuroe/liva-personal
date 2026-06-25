@@ -13,13 +13,13 @@ type PGLeistung = { name: string; betrag: string };
 const PG_LEISTUNGEN: Record<number, PGLeistung[]> = {
   1: [
     { name: "Pflegebox (Pflegehilfsmittel)", betrag: "42 € / Monat" },
-    { name: "Hausnotruf-Zuschuss", betrag: "27,00 € / Monat" },
+    { name: "Hausnotruf-Zuschuss", betrag: "27 € / Monat" },
     { name: "Entlastungsbetrag", betrag: "131 € / Monat" },
     { name: "Wohnraumanpassung", betrag: "bis 4.180 €" },
   ],
   2: [
     { name: "Pflegebox (Pflegehilfsmittel)", betrag: "42 € / Monat" },
-    { name: "Hausnotruf-Zuschuss", betrag: "27,00 € / Monat" },
+    { name: "Hausnotruf-Zuschuss", betrag: "27 € / Monat" },
     { name: "Pflegegeld", betrag: "332 € / Monat" },
     { name: "Pflegesachleistungen", betrag: "724 € / Monat" },
     { name: "Entlastungsbetrag", betrag: "131 € / Monat" },
@@ -27,7 +27,7 @@ const PG_LEISTUNGEN: Record<number, PGLeistung[]> = {
   ],
   3: [
     { name: "Pflegebox (Pflegehilfsmittel)", betrag: "42 € / Monat" },
-    { name: "Hausnotruf-Zuschuss", betrag: "27,00 € / Monat" },
+    { name: "Hausnotruf-Zuschuss", betrag: "27 € / Monat" },
     { name: "Pflegegeld", betrag: "572 € / Monat" },
     { name: "Pflegesachleistungen", betrag: "1.363 € / Monat" },
     { name: "Entlastungsbetrag", betrag: "131 € / Monat" },
@@ -36,7 +36,7 @@ const PG_LEISTUNGEN: Record<number, PGLeistung[]> = {
   ],
   4: [
     { name: "Pflegebox (Pflegehilfsmittel)", betrag: "42 € / Monat" },
-    { name: "Hausnotruf-Zuschuss", betrag: "27,00 € / Monat" },
+    { name: "Hausnotruf-Zuschuss", betrag: "27 € / Monat" },
     { name: "Pflegegeld", betrag: "764 € / Monat" },
     { name: "Pflegesachleistungen", betrag: "1.693 € / Monat" },
     { name: "Entlastungsbetrag", betrag: "131 € / Monat" },
@@ -45,7 +45,7 @@ const PG_LEISTUNGEN: Record<number, PGLeistung[]> = {
   ],
   5: [
     { name: "Pflegebox (Pflegehilfsmittel)", betrag: "42 € / Monat" },
-    { name: "Hausnotruf-Zuschuss", betrag: "27,00 € / Monat" },
+    { name: "Hausnotruf-Zuschuss", betrag: "27 € / Monat" },
     { name: "Pflegegeld", betrag: "946 € / Monat" },
     { name: "Pflegesachleistungen", betrag: "2.095 € / Monat" },
     { name: "Entlastungsbetrag", betrag: "131 € / Monat" },
@@ -164,7 +164,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
       intro: "Eine kleine Basisstation + Notrufknopf als Armband oder Halskette – Hilfe per Knopfdruck.",
       fakten: [
         { label: "Funktion", wert: "Notruf per Knopfdruck, auch wenn man alleine ist" },
-        { label: "Zuschuss", wert: "Pflegekasse zahlt 27,00 € / Monat + einmalig bis zu 10,49 €" },
+        { label: "Zuschuss", wert: "Pflegekasse zahlt 27 € / Monat + einmalig bis zu 10,49 €" },
         { label: "Eigenanteil", wert: "Bei günstigen Anbietern oft 0 €" },
         { label: "Ab", wert: "Pflegegrad 1" },
         { label: "Abwicklung", wert: "Unser geprüfter Partner Pflegehase" },
@@ -361,9 +361,9 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
               </div>
               <ul className="space-y-2 mb-3">
                 {[
-                  "Pflegekasse übernimmt alle Kosten",
-                  "Monatlich kostenlos nach Hause geliefert",
-                  "Antrag in unter 2 Minuten – ohne Papierkram",
+                  "Bis zu 42 € / Monat – vollständig von der Pflegekasse",
+                  "Monatliche Lieferung nach Hause – ohne Papierkram",
+                  "Antrag in unter 2 Minuten – unser Partner erledigt den Rest",
                 ].map((v) => (
                   <li key={v} className="flex items-center gap-2 text-sm text-gray-700">
                     <Check size={15} className="text-brand flex-shrink-0" />
@@ -405,9 +405,9 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
               </div>
               <ul className="space-y-2 mb-3">
                 {[
-                  "Sicherheit zuhause – rund um die Uhr",
-                  "Pflegekasse zahlt – kein Eigenanteil",
-                  "In wenigen Tagen eingerichtet",
+                  "27 € / Monat – komplett von der Pflegekasse übernommen",
+                  "Notrufknopf: 24/7 Hilfe auf Knopfdruck",
+                  "In 3–5 Werktagen eingerichtet – inkl. Lieferung",
                 ].map((v) => (
                   <li key={v} className="flex items-center gap-2 text-sm text-gray-700">
                     <Check size={15} className="text-brand flex-shrink-0" />
@@ -488,9 +488,9 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
               </div>
               <ul className="space-y-2 mb-3">
                 {[
-                  "Pflegekasse übernimmt alle Kosten",
-                  "Monatlich kostenlos nach Hause geliefert",
-                  "Antrag in unter 2 Minuten – ohne Papierkram",
+                  "Bis zu 42 € / Monat – vollständig von der Pflegekasse",
+                  "Monatliche Lieferung nach Hause – ohne Papierkram",
+                  "Antrag in unter 2 Minuten – unser Partner erledigt den Rest",
                 ].map((v) => (
                   <li key={v} className="flex items-center gap-2 text-sm text-gray-700">
                     <Check size={15} className="text-brand flex-shrink-0" />
@@ -531,9 +531,9 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
               </div>
               <ul className="space-y-2 mb-3">
                 {[
-                  "Sicherheit zuhause – rund um die Uhr",
-                  "Pflegekasse zahlt – kein Eigenanteil",
-                  "In wenigen Tagen eingerichtet",
+                  "27 € / Monat – komplett von der Pflegekasse übernommen",
+                  "Notrufknopf: 24/7 Hilfe auf Knopfdruck",
+                  "In 3–5 Werktagen eingerichtet – inkl. Lieferung",
                 ].map((v) => (
                   <li key={v} className="flex items-center gap-2 text-sm text-gray-700">
                     <Check size={15} className="text-brand flex-shrink-0" />
