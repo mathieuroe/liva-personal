@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 const COOKIE_KEY = "liva_cookie_consent";
-const GTM_ID = "GTM-NLT25JVG";
 
 function setCookie(value: "accepted" | "declined") {
   const expires = new Date();
@@ -18,33 +17,18 @@ function getCookie(): string | null {
   return match ? decodeURIComponent(match[1]) : null;
 }
 
-function injectGTM() {
-  if (document.getElementById("gtm-script")) return;
-  const w = window as any;
-  w.dataLayer = w.dataLayer || [];
-  w.dataLayer.push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-  const s = document.createElement("script");
-  s.id = "gtm-script";
-  s.async = true;
-  s.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`;
-  document.head.appendChild(s);
-}
-
 export default function CookieBanner() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const consent = getCookie();
-    if (consent === "accepted") {
-      injectGTM();
-    } else if (!consent) {
+    if (!consent) {
       setVisible(true);
     }
   }, []);
 
   function accept() {
     setCookie("accepted");
-    injectGTM();
     setVisible(false);
   }
 
