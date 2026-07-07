@@ -20,7 +20,7 @@ const LEISTUNGEN: Leistung[] = [
   {
     id: "pflegehilfsmittel",
     name: "Pflegebox (Pflegehilfsmittel)",
-    betrag: "42 € / Monat",
+    betrag: "42 € / Monat – kostenlos",
     beschreibung: "Einmalhandschuhe, Bettschutzeinlagen, Desinfektion – monatlich gratis nach Hause. Unser Partner übernimmt die Beantragung bei deiner Pflegekasse kostenlos für dich.",
     pflegegrade: [1, 2, 3, 4, 5],
     icon: "📦",
@@ -31,7 +31,7 @@ const LEISTUNGEN: Leistung[] = [
   {
     id: "hausnotruf",
     name: "Hausnotruf",
-    betrag: "27 € / Monat Zuschuss",
+    betrag: "27 € / Monat – kostenlos",
     beschreibung: "Die Pflegekasse zahlt bis zu 27 € pro Monat – bei unserem Partner entstehen für dich keine Kosten. Er stellt den Antrag bei deiner Pflegekasse und liefert das Gerät in 3–5 Werktagen.",
     pflegegrade: [1, 2, 3, 4, 5],
     icon: "🔔",
