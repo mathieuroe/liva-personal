@@ -101,20 +101,39 @@ export async function sendInternalLeadNotification(data: {
 export async function sendLeadConfirmation(data: {
   email: string;
   pflegegrad?: string;
+  einrichtung?: {
+    name: string;
+    adresse: string;
+    telefon?: string;
+    website?: string;
+    bewertung: number | null;
+    anzahlBewertungen: number;
+    leistungen: string[];
+    reaktionszeit: string;
+  };
 }) {
+  const { einrichtung } = data;
+
+  const einrichtungBlock = einrichtung ? `
+    <div style="margin:24px 0;background:#F6FAF8;border-radius:12px;padding:20px;border:1px solid #C8E6D8;">
+      <p style="margin:0 0 4px;font-size:12px;font-weight:700;color:${BRAND};text-transform:uppercase;letter-spacing:0.05em;">Deine angefragte Einrichtung</p>
+      <h3 style="margin:0 0 8px;font-size:17px;color:#0F1F1A;font-family:Georgia,serif;">${einrichtung.name}</h3>
+      ${einrichtung.bewertung ? `<p style="margin:0 0 8px;font-size:13px;color:#5C7A6F;">⭐ ${einrichtung.bewertung.toFixed(1)} / 5 (${einrichtung.anzahlBewertungen} Google-Bewertungen)</p>` : ""}
+      <p style="margin:0 0 4px;font-size:13px;color:#0F1F1A;">📍 ${einrichtung.adresse}</p>
+      ${einrichtung.telefon ? `<p style="margin:0 0 4px;font-size:13px;color:#0F1F1A;">📞 <a href="tel:${einrichtung.telefon}" style="color:${BRAND};text-decoration:none;">${einrichtung.telefon}</a></p>` : ""}
+      ${einrichtung.website ? `<p style="margin:0 0 4px;font-size:13px;color:#0F1F1A;">🌐 <a href="${einrichtung.website}" style="color:${BRAND};text-decoration:none;">${einrichtung.website}</a></p>` : ""}
+      ${einrichtung.leistungen.length ? `<p style="margin:8px 0 0;font-size:12px;color:#5C7A6F;">Leistungen: ${einrichtung.leistungen.join(" · ")}</p>` : ""}
+      <p style="margin:8px 0 0;font-size:12px;color:#5C7A6F;">Antwortet meist innerhalb von ${einrichtung.reaktionszeit}</p>
+    </div>` : "";
+
   const html = wrapEmail(`
-    <h2 style="margin:0 0 16px;font-size:20px;color:#0F1F1A;font-family:Georgia,serif;">Danke für deine Anfrage!</h2>
+    <h2 style="margin:0 0 16px;font-size:20px;color:#0F1F1A;font-family:Georgia,serif;">Dein Ergebnis von liva</h2>
     <p style="margin:0 0 16px;">
-      Wir haben deine Angaben erhalten und melden uns in Kürze bei dir, um deine Ansprüche${data.pflegegrad ? ` (Pflegegrad ${data.pflegegrad})` : ""} gemeinsam zu klären.
+      Hier sind die Informationen zur Einrichtung, die du angefragt hast${data.pflegegrad ? ` (Pflegegrad ${data.pflegegrad})` : ""}:
     </p>
-    <p style="margin:0 0 16px;">
-      In der Zwischenzeit kannst du dir schon einen Überblick verschaffen, welche Leistungen dir zustehen:
-    </p>
-    <div style="margin:24px 0;">
-      <a href="https://www.liva-pflege.de/leistungen" style="display:inline-block;background:${BRAND};color:#ffffff;text-decoration:none;padding:12px 28px;border-radius:100px;font-size:15px;font-weight:600;">Leistungen ansehen →</a>
-    </div>
-    <p style="margin:0;color:#5C7A6F;font-size:13px;">
-      Falls du Fragen hast, antworte einfach auf diese E-Mail.
+    ${einrichtungBlock}
+    <p style="margin:16px 0 0;color:#5C7A6F;font-size:13px;">
+      Falls du Fragen hast oder weitere Einrichtungen vergleichen möchtest, antworte einfach auf diese E-Mail oder besuche uns auf <a href="https://www.liva-pflege.de" style="color:${BRAND};">liva-pflege.de</a>.
     </p>
   `);
 
@@ -122,8 +141,20 @@ export async function sendLeadConfirmation(data: {
   await transporter.sendMail({
     from: `"liva" <${process.env.SMTP_USER}>`,
     to: data.email,
-    subject: "Deine Anfrage bei liva – das sind die nächsten Schritte",
+    subject: `Dein Ergebnis: ${einrichtung?.name ?? "Pflegeeinrichtung"}`,
     html,
-    text: `Danke für deine Anfrage! Wir melden uns in Kürze bei dir. In der Zwischenzeit: https://www.liva-pflege.de/leistungen`,
+    text: [
+      "Dein Ergebnis von liva",
+      "",
+      einrichtung ? [
+        einrichtung.name,
+        einrichtung.adresse,
+        einrichtung.telefon ?? "",
+        einrichtung.website ?? "",
+        `Leistungen: ${einrichtung.leistungen.join(", ")}`,
+      ].filter(Boolean).join("\n") : "",
+      "",
+      "liva-pflege.de",
+    ].join("\n"),
   });
 }

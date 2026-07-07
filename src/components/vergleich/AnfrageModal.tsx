@@ -2,16 +2,19 @@
 
 import { useEffect, useState } from "react";
 import { X, Phone, Mail, CheckCircle2, ArrowRight, Loader2 } from "lucide-react";
+import type { PflegedienstResult } from "@/app/pflegedienste/page";
 
 interface Props {
-  pflegedienstName: string;
-  pflegedienstOrt: string;
+  pd: PflegedienstResult;
   plz: string;
   pflegegrad: string;
+  activeLeistung?: string;
   onClose: () => void;
 }
 
-export default function AnfrageModal({ pflegedienstName, pflegedienstOrt, plz, pflegegrad, onClose }: Props) {
+export default function AnfrageModal({ pd, plz, pflegegrad, activeLeistung, onClose }: Props) {
+  const pflegedienstName = pd.name;
+  const pflegedienstOrt = pd.ort;
   const [tel, setTel] = useState("");
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -27,21 +30,36 @@ export default function AnfrageModal({ pflegedienstName, pflegedienstOrt, plz, p
     }
   }, []);
 
+  function buildPayload(emailVal: string, telVal: string) {
+    const leistungLabel = activeLeistung && activeLeistung !== "Alle Kategorien" ? activeLeistung : null;
+    return {
+      email: emailVal,
+      phone: telVal,
+      plz,
+      pflegegrad,
+      path: leistungLabel ? `pflegedienst-anfrage (${leistungLabel})` : "pflegedienst-anfrage",
+      tags: [pflegedienstName, leistungLabel].filter(Boolean).join(", "),
+      timestamp: new Date().toISOString(),
+      einrichtung: {
+        name: pd.name,
+        adresse: pd.adresse,
+        telefon: pd.telefon,
+        website: pd.website,
+        bewertung: pd.bewertung,
+        anzahlBewertungen: pd.anzahlBewertungen,
+        leistungen: pd.leistungen,
+        reaktionszeit: pd.reaktionszeit,
+      },
+    };
+  }
+
   async function autoSubmit(storedTel: string, storedEmail: string) {
     setSubmitting(true);
     try {
       await fetch("/api/submit-lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: storedEmail,
-          phone: storedTel,
-          plz,
-          pflegegrad,
-          path: "pflegedienst-anfrage",
-          tags: pflegedienstName,
-          timestamp: new Date().toISOString(),
-        }),
+        body: JSON.stringify(buildPayload(storedEmail, storedTel)),
       });
       setDone(true);
     } finally {
@@ -56,15 +74,7 @@ export default function AnfrageModal({ pflegedienstName, pflegedienstOrt, plz, p
       await fetch("/api/submit-lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email,
-          phone: tel,
-          plz,
-          pflegegrad,
-          path: "pflegedienst-anfrage",
-          tags: pflegedienstName,
-          timestamp: new Date().toISOString(),
-        }),
+        body: JSON.stringify(buildPayload(email, tel)),
       });
       sessionStorage.setItem("liva_tel", tel);
       sessionStorage.setItem("liva_email", email);
@@ -105,9 +115,9 @@ export default function AnfrageModal({ pflegedienstName, pflegedienstOrt, plz, p
               <div className="w-14 h-14 rounded-full bg-brand-light flex items-center justify-center mx-auto mb-3">
                 <CheckCircle2 size={28} className="text-brand" />
               </div>
-              <h3 className="font-serif text-xl text-gray-900 mb-2">Anfrage gesendet!</h3>
+              <h3 className="font-serif text-xl text-gray-900 mb-2">Ergebnis wird gesendet!</h3>
               <p className="text-sm text-gray-500 leading-relaxed mb-4">
-                Wir leiten deine Anfrage an <strong>{pflegedienstName}</strong> weiter und melden uns bei dir.
+                Die Infos zu <strong>{pflegedienstName}</strong> sind auf dem Weg in dein Postfach.
               </p>
               <button onClick={onClose} className="btn-primary w-full justify-center py-3 text-sm">
                 Weitere Pflegedienste ansehen
@@ -115,9 +125,9 @@ export default function AnfrageModal({ pflegedienstName, pflegedienstOrt, plz, p
             </div>
           ) : (
             <>
-              <h3 className="font-serif text-lg text-gray-900 mb-1">Kostenlos anfragen</h3>
+              <h3 className="font-serif text-lg text-gray-900 mb-1">Ergebnis per E-Mail erhalten</h3>
               <p className="text-sm text-gray-500 mb-4">
-                Wir leiten deine Anfrage direkt weiter. Kein Spam, kein Risiko.
+                Wir schicken dir alle Infos zu <strong className="text-gray-700">{pflegedienstName}</strong> direkt ins Postfach.
               </p>
               <form onSubmit={handleSubmit} className="space-y-3">
                 <div className="relative">
@@ -144,7 +154,7 @@ export default function AnfrageModal({ pflegedienstName, pflegedienstOrt, plz, p
                   />
                 </div>
                 <button type="submit" disabled={submitting} className="btn-primary w-full justify-center py-3 text-sm">
-                  {submitting ? "Wird gesendet…" : <><span>Anfrage senden</span> <ArrowRight size={15} /></>}
+                  {submitting ? "Wird gesendet…" : <><span>Ergebnis zusenden</span> <ArrowRight size={15} /></>}
                 </button>
               </form>
               <p className="text-[11px] text-gray-400 text-center mt-3">Kostenlos · Unverbindlich · DSGVO-konform</p>

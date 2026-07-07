@@ -146,13 +146,13 @@ export default function LeistungenGrid() {
                   {DEEPLINKS[l.id].label} <ArrowRight size={13} />
                 </a>
               ) : (
-                <Link
-                  href={`/?tab=${l.tabId}`}
+                <button
+                  onClick={() => setActiveLeistung(l.name)}
                   className="w-full flex items-center justify-center gap-2 bg-brand text-white text-xs font-semibold px-4 py-2.5 rounded-xl hover:bg-brand-hover transition-colors"
                 >
                   <Users size={13} />
                   Passenden Anbieter finden
-                </Link>
+                </button>
               )}
             </div>
           </div>

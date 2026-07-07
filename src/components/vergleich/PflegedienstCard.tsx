@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Star, MapPin, Clock, ArrowRight, ExternalLink, Globe, Phone } from "lucide-react";
+import { Star, MapPin, Clock, ArrowRight, Globe, Phone } from "lucide-react";
 import type { PflegedienstResult } from "@/app/pflegedienste/page";
 import AnfrageModal from "./AnfrageModal";
 
@@ -9,6 +9,7 @@ interface Props {
   pd: PflegedienstResult;
   plz: string;
   pflegegrad: string;
+  activeLeistung?: string;
   featured?: boolean;
 }
 
@@ -26,7 +27,7 @@ function Sterne({ wert }: { wert: number }) {
   );
 }
 
-export default function PflegedienstCard({ pd, plz, pflegegrad, featured }: Props) {
+export default function PflegedienstCard({ pd, plz, pflegegrad, activeLeistung, featured }: Props) {
   const [showModal, setShowModal] = useState(false);
   const [expanded, setExpanded] = useState(false);
 
@@ -34,10 +35,10 @@ export default function PflegedienstCard({ pd, plz, pflegegrad, featured }: Prop
     <>
       {showModal && (
         <AnfrageModal
-          pflegedienstName={pd.name}
-          pflegedienstOrt={pd.ort}
+          pd={pd}
           plz={plz}
           pflegegrad={pflegegrad}
+          activeLeistung={activeLeistung}
           onClose={() => setShowModal(false)}
         />
       )}
@@ -105,7 +106,7 @@ export default function PflegedienstCard({ pd, plz, pflegegrad, featured }: Prop
             ))}
           </div>
 
-          {/* Adresse & Telefon */}
+          {/* Adresse, Telefon & Website */}
           <div className="flex flex-wrap gap-x-4 gap-y-1.5 mb-3">
             {pd.adresse && (
               <span className="flex items-center gap-1.5 text-xs text-gray-500">
@@ -114,10 +115,16 @@ export default function PflegedienstCard({ pd, plz, pflegegrad, featured }: Prop
               </span>
             )}
             {pd.telefon && (
-              <span className="flex items-center gap-1.5 text-xs text-gray-500">
+              <a href={`tel:${pd.telefon}`} className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-brand transition-colors">
                 <Phone size={12} className="text-brand flex-shrink-0" />
                 {pd.telefon}
-              </span>
+              </a>
+            )}
+            {pd.website && (
+              <a href={pd.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs text-brand hover:underline">
+                <Globe size={12} className="flex-shrink-0" />
+                Website
+              </a>
             )}
           </div>
 
@@ -126,25 +133,13 @@ export default function PflegedienstCard({ pd, plz, pflegegrad, featured }: Prop
             Antwortet meist innerhalb von {pd.reaktionszeit}
           </div>
 
-          {/* CTAs */}
-          <div className="flex gap-2">
-            <button
-              onClick={() => setShowModal(true)}
-              className="flex-1 btn-primary justify-center py-3 text-sm"
-            >
-              Kostenlos anfragen <ArrowRight size={15} />
-            </button>
-            {pd.website && (
-              <a
-                href={pd.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 px-4 py-3 rounded-xl border border-[#E0EDE7] text-sm text-gray-600 hover:border-brand hover:text-brand transition-colors"
-              >
-                <ExternalLink size={14} />
-              </a>
-            )}
-          </div>
+          {/* CTA */}
+          <button
+            onClick={() => setShowModal(true)}
+            className="w-full btn-primary justify-center py-3 text-sm"
+          >
+            Ergebnis zusenden <ArrowRight size={15} />
+          </button>
         </div>
       </div>
     </>

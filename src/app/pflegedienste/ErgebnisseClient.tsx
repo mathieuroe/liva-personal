@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { MapPin, ArrowRight, Bell, Package, ChevronDown, X } from "lucide-react";
+import { MapPin, ArrowRight, Bell, Package } from "lucide-react";
 import Link from "next/link";
 import PflegedienstCard from "@/components/vergleich/PflegedienstCard";
 import type { PflegedienstResult } from "./page";
@@ -14,76 +13,47 @@ interface Props {
   results: PflegedienstResult[];
 }
 
-const LEISTUNG_OPTIONEN = [
-  "Alle Leistungen",
-  "Grundpflege",
-  "Betreuung",
-  "24h-Pflege",
-  "Stationäre Pflege",
-  "Demenzbetreuung",
-  "Senioren Residenz",
-];
+type Kategorie = "Ambulante Pflege" | "24/7 Pflege" | "Stationäre Pflege" | "Senioren Residenz";
 
-function FilterSelect({
-  value,
-  options,
-  onChange,
-}: {
-  value: string;
-  options: string[];
-  onChange: (v: string) => void;
-}) {
-  const isActive = value !== options[0];
-  return (
-    <div className="relative">
-      <select
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className={`appearance-none pl-3 pr-8 py-2 text-sm rounded-xl border cursor-pointer transition-colors outline-none ${
-          isActive
-            ? "border-brand bg-brand-light/60 text-brand font-semibold"
-            : "border-[#E0EDE7] bg-white text-gray-600 hover:border-brand/40"
-        }`}
-      >
-        {options.map((o) => (
-          <option key={o} value={o}>{o}</option>
-        ))}
-      </select>
-      <ChevronDown
-        size={13}
-        className={`pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 ${isActive ? "text-brand" : "text-gray-400"}`}
-      />
-    </div>
-  );
+const KATEGORIE_FILTER: Record<Kategorie, { include: string[]; exclude: string[] }> = {
+  "Ambulante Pflege":  { include: ["Grundpflege", "Betreuung", "Arztbegleitung", "Verhinderungspflege", "Demenzbetreuung"], exclude: ["Stationäre Pflege", "Senioren Residenz", "24h-Pflege"] },
+  "24/7 Pflege":       { include: ["24h-Pflege"], exclude: [] },
+  "Stationäre Pflege": { include: ["Stationäre Pflege", "Demenzbetreuung"], exclude: ["Senioren Residenz"] },
+  "Senioren Residenz": { include: ["Senioren Residenz"], exclude: [] },
+};
+
+function filterByKategorie(results: PflegedienstResult[], kategorie: Kategorie): PflegedienstResult[] {
+  const { include, exclude } = KATEGORIE_FILTER[kategorie];
+  return results.filter((pd) => {
+    if (exclude.some((l) => pd.leistungen.includes(l))) return false;
+    return include.some((l) => pd.leistungen.includes(l));
+  });
 }
 
 export default function ErgebnisseClient({ plz, pflegegrad, fuerWen, leistung, results }: Props) {
-  const initialLeistung =
-    leistung && leistung !== "Weiß ich noch nicht" ? leistung : "Alle Leistungen";
+  const kategorie = leistung as Kategorie;
+  const isKategorie = kategorie in KATEGORIE_FILTER;
 
-  const [filterLeistung, setFilterLeistung] = useState(initialLeistung);
-
-  const gefiltert = results.filter((pd) => {
-    if (filterLeistung !== "Alle Leistungen" && !pd.leistungen.includes(filterLeistung)) return false;
-    return true;
-  });
-
-  const hatAktiveFilter = filterLeistung !== "Alle Leistungen";
-
+  const gefiltert = isKategorie ? filterByKategorie(results, kategorie) : results;
   const noResults = results.length === 0;
+
+  const subtitle = isKategorie ? kategorie : "Pflegeeinrichtungen";
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8">
       {/* Header */}
-      <div className="mb-5">
+      <div className="mb-6">
         <div className="flex items-center gap-2 text-sm text-gray-500 mb-2 flex-wrap">
           <MapPin size={14} className="text-brand" />
           <span>PLZ {plz}</span>
           {pflegegrad && <><span>·</span><span>{pflegegrad}</span></>}
           {fuerWen && <><span>·</span><span>{fuerWen}</span></>}
+          {isKategorie && <><span>·</span><span className="text-brand font-medium">{kategorie}</span></>}
         </div>
         <h1 className="font-serif text-3xl text-gray-900 mb-1">
-          {noResults ? "Suche läuft…" : `${gefiltert.length} Pflegeeinrichtungen in deiner Nähe`}
+          {noResults
+            ? "Suche läuft…"
+            : `${gefiltert.length} ${subtitle} in deiner Nähe`}
         </h1>
         <p className="text-gray-500 text-sm flex items-center gap-1.5">
           {noResults ? (
@@ -97,27 +67,6 @@ export default function ErgebnisseClient({ plz, pflegegrad, fuerWen, leistung, r
         </p>
       </div>
 
-      {/* Filter */}
-      {!noResults && (
-        <div className="bg-white border border-[#E0EDE7] rounded-2xl p-3 sm:p-4 mb-6">
-          <div className="flex flex-wrap gap-2 items-center">
-            <FilterSelect
-              value={filterLeistung}
-              options={LEISTUNG_OPTIONEN}
-              onChange={setFilterLeistung}
-            />
-            {hatAktiveFilter && (
-              <button
-                onClick={() => setFilterLeistung("Alle Leistungen")}
-                className="flex items-center gap-1 text-xs text-gray-400 hover:text-brand transition-colors ml-auto"
-              >
-                <X size={13} /> Filter zurücksetzen
-              </button>
-            )}
-          </div>
-        </div>
-      )}
-
       {/* Ergebnisse */}
       <div className="space-y-4 mb-8">
         {noResults && (
@@ -128,10 +77,8 @@ export default function ErgebnisseClient({ plz, pflegegrad, fuerWen, leistung, r
         )}
         {!noResults && gefiltert.length === 0 && (
           <div className="text-center py-12 text-gray-400">
-            <p className="text-sm mb-2">Keine Einrichtungen für diesen Filter gefunden.</p>
-            <button onClick={() => setFilterLeistung("Alle Leistungen")} className="text-brand text-sm underline">
-              Filter zurücksetzen
-            </button>
+            <p className="text-sm mb-2">Keine passenden Einrichtungen gefunden.</p>
+            <Link href="/" className="text-brand text-sm underline">Neue Suche starten</Link>
           </div>
         )}
         {gefiltert.map((pd, i) => (
@@ -140,6 +87,7 @@ export default function ErgebnisseClient({ plz, pflegegrad, fuerWen, leistung, r
             pd={pd}
             plz={plz}
             pflegegrad={pflegegrad}
+            activeLeistung={isKategorie ? kategorie : undefined}
             featured={i === 0}
           />
         ))}

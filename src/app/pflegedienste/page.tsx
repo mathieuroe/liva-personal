@@ -116,6 +116,8 @@ async function googleTextSearch(query: string, lat: number, lng: number, apiKey:
 }
 
 async function fetchGooglePflegedienste(plz: string): Promise<PflegedienstResult[]> {
+  if (process.env.GOOGLE_PLACES_MOCK === "true") return MOCK_DATA;
+
   const apiKey = process.env.GOOGLE_PLACES_API_KEY;
   if (!apiKey) return [];
 
@@ -175,8 +177,21 @@ async function fetchGooglePflegedienste(plz: string): Promise<PflegedienstResult
     });
   }
 
-  return results.sort((a, b) => a.distanzKm - b.distanzKm).slice(0, 60);
+  return results.sort((a, b) => a.distanzKm - b.distanzKm).slice(0, 20);
 }
+
+const MOCK_DATA: PflegedienstResult[] = [
+  { id: "mock-1", name: "Caritas-Sozialstation München-Maxvorstadt", ort: "München", adresse: "Heßstraße 12, 80799 München", plz: "80799", distanzKm: 1.2, bewertung: 4.6, anzahlBewertungen: 142, beschreibung: "Ambulanter Pflegedienst in München. Alle Pflegekassen akzeptiert, individuelle Betreuung zu Hause.", leistungen: ["Grundpflege", "Betreuung", "Demenzbetreuung"], telefon: "+49 89 12345678", website: "https://caritas-muenchen.de", verfuegbar: true, reaktionszeit: "wenigen Stunden" },
+  { id: "mock-2", name: "AWO Pflege München Mitte", ort: "München", adresse: "Gollierstraße 56, 80339 München", plz: "80339", distanzKm: 2.1, bewertung: 4.3, anzahlBewertungen: 89, beschreibung: "Ambulanter Pflegedienst der AWO in München. Professionelle Pflege, faire Preise.", leistungen: ["Grundpflege", "Betreuung", "Verhinderungspflege"], telefon: "+49 89 87654321", website: undefined, verfuegbar: true, reaktionszeit: "wenigen Stunden" },
+  { id: "mock-3", name: "Diakonie Pflegedienst München-Schwabing", ort: "München", adresse: "Leopoldstraße 230, 80807 München", plz: "80807", distanzKm: 3.4, bewertung: 4.7, anzahlBewertungen: 203, beschreibung: "Ambulanter Pflegedienst in München-Schwabing. Erfahrenes Team, umfassende Betreuung.", leistungen: ["Grundpflege", "Betreuung", "Arztbegleitung"], telefon: "+49 89 99887766", website: "https://diakonie-muenchen.de", verfuegbar: true, reaktionszeit: "wenigen Stunden" },
+  { id: "mock-4", name: "Seniorenresidenz Schwabing am Park", ort: "München", adresse: "Ungererstraße 158, 80805 München", plz: "80805", distanzKm: 4.1, bewertung: 4.8, anzahlBewertungen: 234, beschreibung: "Seniorenresidenz in München-Schwabing. Komfortable Einzelzimmer, umfassende Betreuung.", leistungen: ["Senioren Residenz", "Stationäre Pflege", "Demenzbetreuung"], telefon: "+49 89 33221100", website: "https://seniorenresidenz-schwabing.de", verfuegbar: true, reaktionszeit: "1–2 Werktagen" },
+  { id: "mock-5", name: "DRK Pflegedienst München Süd", ort: "München", adresse: "Implerstraße 79, 81371 München", plz: "81371", distanzKm: 5.3, bewertung: 4.2, anzahlBewertungen: 67, beschreibung: "Ambulanter Pflegedienst des Deutschen Roten Kreuzes. Zuverlässig, kompetent, nah.", leistungen: ["Grundpflege", "Betreuung"], telefon: "+49 89 55443322", website: undefined, verfuegbar: true, reaktionszeit: "wenigen Stunden" },
+  { id: "mock-6", name: "Haus St. Josef – Stationäre Pflege", ort: "München", adresse: "Renatastraße 71, 80639 München", plz: "80639", distanzKm: 6.2, bewertung: 4.1, anzahlBewertungen: 54, beschreibung: "Vollstationäre Pflegeeinrichtung in München. Alle Pflegegrade, Kurzzeitpflege möglich.", leistungen: ["Stationäre Pflege", "Demenzbetreuung"], telefon: "+49 89 66554433", website: "https://haus-st-josef.de", verfuegbar: true, reaktionszeit: "1–2 Werktagen" },
+  { id: "mock-7", name: "Johanniter Pflegedienst München", ort: "München", adresse: "Dachauer Straße 21, 80335 München", plz: "80335", distanzKm: 7.0, bewertung: 4.5, anzahlBewertungen: 118, beschreibung: "Ambulanter Pflegedienst der Johanniter in München. 24h-Rufbereitschaft.", leistungen: ["Grundpflege", "24h-Pflege", "Betreuung"], telefon: "+49 89 77665544", website: "https://johanniter.de", verfuegbar: true, reaktionszeit: "wenigen Stunden" },
+  { id: "mock-8", name: "Malteser Hilfsdienst München", ort: "München", adresse: "Pfarrkirchener Str. 55, 81679 München", plz: "81679", distanzKm: 8.5, bewertung: null, anzahlBewertungen: 0, beschreibung: "Ambulanter Pflegedienst der Malteser. Individuelle Betreuung für Senioren in München.", leistungen: ["Grundpflege", "Betreuung"], telefon: "+49 89 88776655", website: undefined, verfuegbar: true, reaktionszeit: "wenigen Stunden" },
+  { id: "mock-9", name: "Seniorenzentrum Bogenhausen", ort: "München", adresse: "Ismaninger Straße 98, 81675 München", plz: "81675", distanzKm: 9.2, bewertung: 3.9, anzahlBewertungen: 38, beschreibung: "Vollstationäre Pflegeeinrichtung in München-Bogenhausen. Moderne Einrichtung.", leistungen: ["Stationäre Pflege", "Demenzbetreuung", "Senioren Residenz"], telefon: "+49 89 99006611", website: "https://seniorenzentrum-bogenhausen.de", verfuegbar: true, reaktionszeit: "1–2 Werktagen" },
+  { id: "mock-10", name: "Ambulante Pflege Neuhausen GmbH", ort: "München", adresse: "Nymphenburger Str. 145, 80634 München", plz: "80634", distanzKm: 10.1, bewertung: 4.4, anzahlBewertungen: 76, beschreibung: "Privater ambulanter Pflegedienst in Neuhausen. Kleine Teams, persönliche Betreuung.", leistungen: ["Grundpflege", "Arztbegleitung", "Verhinderungspflege"], telefon: "+49 89 00112233", website: undefined, verfuegbar: true, reaktionszeit: "wenigen Stunden" },
+];
 
 export default async function PflegedienstePage({
   searchParams,

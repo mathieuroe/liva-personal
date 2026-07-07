@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CheckCircle2, ArrowRight, Star, Trophy, Shield, Clock, Phone } from "lucide-react";
+import { CheckCircle2, ArrowRight, Star, Trophy, Shield, Clock, Phone, Bell, Package } from "lucide-react";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
@@ -470,7 +470,7 @@ export default function VergleichPage() {
           <div className="grid sm:grid-cols-2 gap-3 mb-10">
             <a href="#hausnotruf" className="card p-4 flex items-center gap-3 hover:border-brand transition-colors">
               <div className="w-10 h-10 rounded-xl bg-brand flex items-center justify-center flex-shrink-0">
-                <span className="text-white text-lg">🔔</span>
+                <Bell size={20} className="text-white" />
               </div>
               <div>
                 <p className="font-semibold text-gray-900 text-sm">Hausnotruf Vergleich</p>
@@ -480,7 +480,7 @@ export default function VergleichPage() {
             </a>
             <a href="#pflegebox" className="card p-4 flex items-center gap-3 hover:border-brand transition-colors">
               <div className="w-10 h-10 rounded-xl bg-brand flex items-center justify-center flex-shrink-0">
-                <span className="text-white text-lg">📦</span>
+                <Package size={20} className="text-white" />
               </div>
               <div>
                 <p className="font-semibold text-gray-900 text-sm">Pflegebox Vergleich</p>

@@ -37,12 +37,13 @@ export async function insertLead(data: {
   plz?: string | null;
   source?: string | null;
   pflegegrad?: string | null;
+  tags?: string | null;
 }) {
   if (!process.env.POSTGRES_URL) return;
   await initLeadsTable();
   await sql`
-    INSERT INTO leads (email, phone, plz, source, pflegegrad)
-    VALUES (${data.email}, ${data.phone ?? null}, ${data.plz ?? null}, ${data.source ?? null}, ${data.pflegegrad ?? null})
+    INSERT INTO leads (email, phone, plz, source, pflegegrad, tags)
+    VALUES (${data.email}, ${data.phone ?? null}, ${data.plz ?? null}, ${data.source ?? null}, ${data.pflegegrad ?? null}, ${data.tags ?? null})
   `;
 }
 
