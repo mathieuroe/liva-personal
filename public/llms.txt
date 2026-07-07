@@ -53,6 +53,14 @@ Beste Anbieter 2026: 1. Blubox, 2. Pflegehase, 3. Pflegetipp. Kosten: 0 € (bis
 - /vergleich – Hausnotruf & Pflegebox Anbietervergleich 2026
 - /leistungen – Übersicht aller Pflegeleistungen
 - /ratgeber – Ratgeber-Artikel zum Pflegesystem
+- /ratgeber/was-ist-pflegegrad-1 – Was ist Pflegegrad 1? Ansprüche und Leistungen
+- /ratgeber/pflegegrad-beantragen – Pflegegrad beantragen Schritt für Schritt
+- /ratgeber/hausnotruf-kosten – Was kostet ein Hausnotruf?
+- /ratgeber/verhinderungspflege-kurzzeitpflege-2026 – Verhinderungs- und Kurzzeitpflege 2026
+- /ratgeber/ambulante-pflege-kosten – Ambulante Pflege: Kosten und Finanzierung
 - /erste-schritte – Checkliste für die ersten 30 Tage mit Pflegegrad
+- /pflegedienste – Pflegedienst-Suche nach PLZ (ambulant, 24/7, stationär, Residenz)
+- /hausnotruf/[stadt] – Hausnotruf-Seiten für 70+ deutsche Städte
+- /pflegebox/[stadt] – Pflegebox-Seiten für 70+ deutsche Städte
 - /datenschutz – Datenschutzerklärung
 - /impressum – Impressum

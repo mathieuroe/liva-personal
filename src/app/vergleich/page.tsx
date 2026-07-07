@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, ArrowRight, Star, Trophy, Shield, Clock, Phone, Bell, Package } from "lucide-react";
 import Footer from "@/components/layout/Footer";
+import StickyCtaBar from "@/components/vergleich/StickyCtaBar";
 
 export const metadata: Metadata = {
   title: "Hausnotruf Vergleich 2026 & Pflegebox Vergleich – Beste Anbieter | liva",
@@ -448,14 +449,17 @@ export default function VergleichPage() {
             <h1 className="font-serif text-4xl sm:text-5xl text-gray-900 leading-tight mb-4">
               Hausnotruf & Pflegebox<br className="hidden sm:block" /> Vergleich 2026
             </h1>
-            <p className="text-gray-500 text-lg max-w-2xl leading-relaxed mb-8">
+            <p className="text-gray-500 text-lg max-w-2xl leading-relaxed mb-3">
               Du zahlst nichts – beide Leistungen werden ab Pflegegrad 1 vollständig von der Pflegekasse übernommen. Wir haben die wichtigsten Anbieter für dich verglichen.
+            </p>
+            <p className="text-brand font-semibold text-base mb-6">
+              Über 80 % der Berechtigten beantragen es nie. Hol dir, was dir zusteht.
             </p>
             <div className="flex flex-wrap gap-x-8 gap-y-2">
               {[
                 { icon: Shield, text: "100% von der Pflegekasse" },
-                { icon: Clock, text: "Lieferung in 3–5 Tagen" },
-                { icon: Phone, text: "Kostenloser Abschluss" },
+                { icon: Clock, text: "Dauert nur 3 Minuten" },
+                { icon: Phone, text: "Kein Papierkram" },
               ].map(({ icon: Icon, text }) => (
                 <span key={text} className="flex items-center gap-1.5 text-sm text-gray-500">
                   <Icon size={14} className="text-brand" /> {text}
@@ -614,6 +618,7 @@ export default function VergleichPage() {
 
         <Footer />
       </main>
+      <StickyCtaBar />
     </>
   );
 }

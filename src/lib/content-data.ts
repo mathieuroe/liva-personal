@@ -422,6 +422,302 @@ Das bedeutet in der Praxis: Maximal können bis zu **1.965 € auf einmal** abru
 
 Viele Familien denken: "Wir schaffen das selbst, wir brauchen keine Hilfe." Der Entlastungsbetrag ist aber kein Zeichen von Schwäche – er ist ein finanzielles Recht. Und die Dienstleister die ihn abrechnen, können echte Erleichterung in den Alltag bringen.`,
   },
+  {
+    slug: "was-ist-pflegegrad-1",
+    titel: "Was ist Pflegegrad 1? Ansprüche, Leistungen und was du jetzt tun solltest",
+    beschreibung: "Pflegegrad 1 ist der Einstieg ins Pflegesystem – und bringt mehr Leistungen als die meisten wissen. Hier erfährst du alles, was du als Betroffener oder Angehöriger wissen musst.",
+    kategorie: "Pflegegrad",
+    lesezeit: "6 Min.",
+    datum: "Juli 2026",
+    typ: "ratgeber",
+    affiliate: "https://t.adcell.com/p/click?promoId=307657&slotId=149760&subId=ratgeber_pg1_hausnotruf&param0=https%3A%2F%2Fpflegehase.de%2Fhausnotruf-bestellung%2F",
+    inhalt: `## Was ist Pflegegrad 1?
+
+Pflegegrad 1 bedeutet: Eine Person ist in ihrer Selbstständigkeit leicht beeinträchtigt. Der Medizinische Dienst (MD) hat bei der Begutachtung zwischen 12,5 und unter 27 Punkte vergeben.
+
+Das klingt wenig – bringt aber konkrete finanzielle Leistungen, die viele komplett ungenutzt lassen.
+
+## Welche Leistungen gibt es ab Pflegegrad 1?
+
+### Hausnotruf – kostenlos
+Die Pflegekasse zahlt bis zu 27 € pro Monat für einen Hausnotruf. Bei günstigen Anbietern entstehen keinerlei Kosten für dich. Ein Knopfdruck – und sofort ist jemand erreichbar.
+
+### Pflegehilfsmittelbox – kostenlos
+Bis zu 42 € pro Monat für Pflegeverbrauchsmittel: Einmalhandschuhe, Desinfektionsmittel, Mundschutz, Bettschutzeinlagen. Wird direkt vom Anbieter mit der Pflegekasse abgerechnet.
+
+### Entlastungsbetrag – 131 € monatlich
+Für Alltagsunterstützung durch anerkannte Dienste: Begleitung, Haushaltshilfe, Einkäufe. Nicht genutzte Beträge können ins nächste Quartal übertragen werden.
+
+### Wohnraumanpassung – bis 4.000 €
+Zuschuss für barrierefreie Umbauten: Haltegriffe, Duschumbau, Türverbreiterungen. Antrag muss vor Baubeginn gestellt werden.
+
+## Was gibt es bei Pflegegrad 1 nicht?
+
+- Kein Pflegegeld (das gibt es erst ab Pflegegrad 2)
+- Keine Pflegesachleistungen für ambulante Pflegedienste
+- Kein Anspruch auf stationäre Kurzzeitpflege
+
+## Wie wird Pflegegrad 1 festgestellt?
+
+Der Medizinische Dienst bewertet sechs Bereiche:
+1. Mobilität
+2. Kognitive und kommunikative Fähigkeiten
+3. Verhaltensweisen und psychische Problemlagen
+4. Selbstversorgung
+5. Umgang mit krankheitsbedingten Anforderungen
+6. Gestaltung des Alltagslebens und soziale Kontakte
+
+Für Pflegegrad 1 sind 12,5 bis unter 27 Punkte erforderlich.
+
+## Was sollte ich jetzt als erstes tun?
+
+Direkt zwei Leistungen beantragen – beide kosten dich nichts und gehen in wenigen Minuten:
+
+**1. Hausnotruf beantragen:** Online beim Anbieter bestellen, der stellt den Antrag bei deiner Pflegekasse.
+
+**2. Pflegebox bestellen:** Einmal anmelden, jeden Monat automatisch liefern lassen.
+
+Beide Leistungen können rückwirkend nicht beantragt werden – je früher du anfängst, desto besser.`,
+  },
+  {
+    slug: "pflegegrad-beantragen",
+    titel: "Pflegegrad beantragen – Schritt für Schritt erklärt",
+    beschreibung: "Wie du einen Pflegegrad beantragst, was beim Hausbesuch des MD wichtig ist und welche Fehler du vermeiden solltest. Mit konkreter Checkliste.",
+    kategorie: "Pflegegrad",
+    lesezeit: "7 Min.",
+    datum: "Juli 2026",
+    typ: "ratgeber",
+    inhalt: `## Pflegegrad beantragen – so funktioniert es
+
+Den Pflegegrad beantragst du bei der Pflegekasse der pflegebedürftigen Person. Die Pflegekasse ist immer an die Krankenkasse gekoppelt – wer also bei der AOK krankenversichert ist, wendet sich an die AOK-Pflegekasse.
+
+## Schritt 1: Antrag stellen
+
+Den Antrag kannst du:
+- **Telefonisch** stellen (der Anruf reicht, um das Datum zu sichern)
+- **Schriftlich** per Brief oder Fax
+- **Online** über das Portal der jeweiligen Kasse
+
+**Wichtig:** Das Antragsdatum ist entscheidend. Leistungen werden frühestens ab dem Monat der Antragstellung gewährt – also so früh wie möglich stellen, auch wenn noch nicht alles klar ist.
+
+## Schritt 2: Begutachtung durch den MD
+
+Innerhalb von 25 Arbeitstagen kommt ein Gutachter des Medizinischen Dienstes (MD) zu Besuch – meist zuhause, manchmal im Pflegeheim oder per Telefon.
+
+### Was wird bewertet?
+
+Der Gutachter schaut sich sechs Bereiche an:
+
+| Bereich | Gewichtung |
+|---|---|
+| Selbstversorgung (Waschen, Essen, Ankleiden) | 40 % |
+| Mobilität | 10 % |
+| Kognition und Kommunikation | 15 % |
+| Verhaltensweisen | 15 % |
+| Krankheitsbedingte Anforderungen | 20 % |
+| Alltagsgestaltung | – (fließt in andere Bereiche) |
+
+### Tipps für den Begutachtungstermin
+
+- **Pflegetagebuch führen** – mindestens zwei Wochen vor dem Termin. Was macht die Person alleine, wobei braucht sie Hilfe?
+- **Schlechtesten Tag beschreiben** – nicht den guten Tag, sondern wie es an einem schwierigen Tag aussieht
+- **Nichts übertreiben, aber auch nichts kleinreden** – ehrliche, konkrete Antworten
+- **Angehörige dabei haben** – sie können ergänzen und korrigieren
+
+## Schritt 3: Bescheid abwarten
+
+Nach der Begutachtung bekommt die pflegebedürftige Person schriftlich Bescheid – in der Regel innerhalb von 5 Wochen nach Antragstellung.
+
+## Was tun bei Ablehnung oder zu niedrigem Pflegegrad?
+
+Innerhalb von **einem Monat** nach Bescheid kann Widerspruch eingelegt werden. Viele Widersprüche sind erfolgreich – vor allem wenn beim Erstkontakt Einschränkungen nicht klar kommuniziert wurden.
+
+Kostenlose Unterstützung bieten:
+- Pflegestützpunkte (bundesweit)
+- Verbraucherzentralen
+- Sozialverbände (VdK, SoVD)
+
+## Nach dem Bescheid: Das Wichtigste zuerst
+
+Sobald der Pflegegrad festgestellt ist, beantrage sofort:
+- Hausnotruf (kostenlos ab PG 1)
+- Pflegebox (kostenlos ab PG 1)
+- Entlastungsbetrag (ab PG 1, 131 €/Monat)
+
+Diese drei Leistungen verfallen nicht rückwirkend – aber ungenutzte Monate sind verloren.`,
+  },
+  {
+    slug: "hausnotruf-kosten",
+    titel: "Was kostet ein Hausnotruf wirklich? Alle Kosten im Überblick",
+    beschreibung: "Hausnotruf-Kosten im Vergleich: Was zahlt die Pflegekasse, was bleibt als Eigenanteil? Und welche Anbieter sind wirklich kostenlos?",
+    kategorie: "Hausnotruf",
+    lesezeit: "5 Min.",
+    datum: "Juli 2026",
+    typ: "ratgeber",
+    affiliate: "https://t.adcell.com/p/click?promoId=307657&slotId=149760&subId=ratgeber_kosten_hausnotruf&param0=https%3A%2F%2Fpflegehase.de%2Fhausnotruf-bestellung%2F",
+    inhalt: `## Was kostet ein Hausnotruf?
+
+Ein Hausnotruf-System kostet je nach Anbieter zwischen 20 und 45 € pro Monat. Die gute Nachricht: Ab Pflegegrad 1 übernimmt die Pflegekasse einen Zuschuss von bis zu **27 € pro Monat** gemäß § 40 Abs. 4 SGB XI.
+
+Bei günstigen Anbietern bleibt damit kein Eigenanteil übrig – der Hausnotruf ist effektiv kostenlos.
+
+## Was zahlt die Pflegekasse?
+
+Die Pflegekasse zahlt bis zu 27 € monatlich für einen anerkannten Hausnotruf-Dienst. Voraussetzungen:
+- Mindestens **Pflegegrad 1**
+- Der Anbieter muss von der Pflegekasse anerkannt sein
+- Du musst **alleine** leben oder für eine Zeit alleine sein
+
+## Welche Kosten entstehen trotzdem?
+
+| Kostenart | Betrag |
+|---|---|
+| Grundgebühr Anbieter | 18–45 € / Monat |
+| Pflegekasse-Zuschuss | bis zu –27 € / Monat |
+| Dein Eigenanteil | 0–18 € / Monat |
+| Einrichtungsgebühr | 0–49 € (einmalig) |
+| Sturzsensor / GPS | 5–15 € / Monat extra |
+
+**Tipp:** Viele Anbieter verzichten auf die Einrichtungsgebühr, wenn du online bestellst.
+
+## Günstigste Anbieter ohne Eigenanteil
+
+Anbieter mit monatlichen Kosten unter 27 € bedeuten: du zahlst gar nichts. Dazu gehören:
+- Anbieter mit Basispaket unter 27 €/Monat
+- Direktabrechnung mit der Pflegekasse (kein Vorstrecken)
+- Keine Mindestlaufzeit
+
+## Einmaliger Kauf vs. monatliche Miete
+
+Manche Anbieter verkaufen das Gerät einmalig – das klingt günstig, aber die Pflegekasse erstattet nur monatliche Mietmodelle. Beim Kauf bekommst du den Zuschuss nicht.
+
+Immer das **Mietmodell** wählen, wenn du den Pflegekasse-Zuschuss nutzen willst.
+
+## So beantragst du den Hausnotruf kostenlos
+
+1. Anbieter online auswählen
+2. Formular ausfüllen (5 Minuten)
+3. Anbieter stellt den Antrag bei deiner Pflegekasse
+4. Gerät kommt per Post – meist innerhalb von 3–5 Werktagen
+5. Pflegekasse erstattet direkt an den Anbieter
+
+Du musst nichts vorstrecken und keinen Papierkram erledigen.`,
+  },
+  {
+    slug: "verhinderungspflege-kurzzeitpflege-2026",
+    titel: "Verhinderungs- und Kurzzeitpflege 2026: Das neue gemeinsame Budget",
+    beschreibung: "Seit Juli 2025 gibt es ein gemeinsames Budget für Verhinderungs- und Kurzzeitpflege: bis zu 3.539 € pro Jahr. Was das bedeutet und wie du es nutzt.",
+    kategorie: "Pflegeleistungen",
+    lesezeit: "6 Min.",
+    datum: "Juli 2026",
+    typ: "ratgeber",
+    inhalt: `## Die große Änderung ab Juli 2025
+
+Seit dem 1. Juli 2025 wurden Verhinderungspflege und Kurzzeitpflege zu einem **gemeinsamen Jahresbudget** zusammengefasst. Das Ergebnis: mehr Flexibilität und insgesamt mehr Geld.
+
+**Das neue Budget:** Bis zu **3.539 € pro Jahr** – frei zwischen Verhinderungs- und Kurzzeitpflege aufgeteilt.
+
+## Was ist Verhinderungspflege?
+
+Verhinderungspflege springt ein, wenn die Hauptpflegeperson ausfällt – durch Urlaub, Krankheit oder andere Verpflichtungen. Eine Vertretung übernimmt die Pflege zuhause.
+
+**Wer übernimmt?**
+- Professionelle Pflegedienste
+- Angehörige (mit Einschränkungen)
+- Nachbarn, Bekannte (mit Einschränkungen)
+
+## Was ist Kurzzeitpflege?
+
+Kurzzeitpflege findet vorübergehend **stationär** statt – in einem Pflegeheim oder einer spezialisierten Einrichtung. Typische Situationen: nach einem Krankenhausaufenthalt, zur Entlastung der Familie.
+
+## Voraussetzungen
+
+- **Pflegegrad 2 bis 5**
+- Mindestens 6 Monate häusliche Pflege durch eine Pflegeperson
+- Antrag bei der Pflegekasse vor der ersten Inanspruchnahme
+
+## So nutzt du das Budget
+
+Das Budget von 3.539 € kannst du frei aufteilen:
+
+| Nutzung | Beispiel |
+|---|---|
+| Nur Verhinderungspflege | 3.539 € für Vertretungspflege zuhause |
+| Nur Kurzzeitpflege | 3.539 € für stationären Aufenthalt |
+| Gemischt | 1.800 € Verhinderung + 1.739 € Kurzzeitpflege |
+
+## Wann verfällt das Budget?
+
+Das Budget gilt pro Kalenderjahr und verfällt zum 31. Dezember. Es gibt **keine** automatische Übertragung ins nächste Jahr.
+
+**Wichtig:** Nicht genutzte Beträge sind verloren. Plane vorausschauend – auch wenn gerade keine akute Situation da ist.
+
+## Praktischer Tipp
+
+Viele Pflegende unterschätzen, wie schnell sie selbst an ihre Grenzen kommen. Das Budget ist da, um Pausen zu ermöglichen – nicht erst in der Notlage, sondern regelmäßig präventiv genutzt.
+
+Sprich frühzeitig mit deiner Pflegekasse und halte gute Pflegedienste in deiner Region bereit.`,
+  },
+  {
+    slug: "ambulante-pflege-kosten",
+    titel: "Ambulante Pflege: Kosten, Finanzierung und was die Pflegekasse zahlt",
+    beschreibung: "Was kostet ein ambulanter Pflegedienst? Welchen Anteil übernimmt die Pflegekasse? Und wie findest du den richtigen Anbieter in deiner Nähe?",
+    kategorie: "Ambulante Pflege",
+    lesezeit: "6 Min.",
+    datum: "Juli 2026",
+    typ: "ratgeber",
+    inhalt: `## Was ist ambulante Pflege?
+
+Ambulante Pflege bedeutet: Ein Pflegedienst kommt zu dir nach Hause und übernimmt Pflegeleistungen – von der Körperpflege bis zur Medikamentengabe. Du bleibst in deiner gewohnten Umgebung.
+
+## Was kostet ein ambulanter Pflegedienst?
+
+Die Kosten hängen von Pflegegrad, Leistungsumfang und Region ab. Als grobe Orientierung:
+
+| Leistung | Stundensatz (ca.) |
+|---|---|
+| Grundpflege (Waschen, Anziehen) | 35–55 € / Stunde |
+| Behandlungspflege (Medikamente, Verbände) | 30–50 € / Stunde |
+| Hauswirtschaft | 25–40 € / Stunde |
+
+**Monatlich** entstehen je nach Bedarf Kosten zwischen 300 und 2.500 €.
+
+## Was zahlt die Pflegekasse?
+
+Die Pflegekasse erstattet ambulante Pflege über **Pflegesachleistungen** – das sind feste Monatsbudgets je nach Pflegegrad:
+
+| Pflegegrad | Pflegesachleistungen |
+|---|---|
+| PG 2 | bis 761 € / Monat |
+| PG 3 | bis 1.363 € / Monat |
+| PG 4 | bis 1.693 € / Monat |
+| PG 5 | bis 2.095 € / Monat |
+
+Der Pflegedienst rechnet direkt mit der Pflegekasse ab – du zahlst nur den Differenzbetrag.
+
+## Kombinationsmöglichkeiten
+
+Du kannst Pflegesachleistungen mit anderen Leistungen kombinieren:
+
+- **Pflegegeld + Pflegesachleistungen** (anteilig, "Kombileistung")
+- **Entlastungsbetrag** (131 €/Monat zusätzlich ab PG 1)
+- **Verhinderungspflege** wenn der Dienst die Hauptpflegeperson vertritt
+
+## Wie finde ich den richtigen Pflegedienst?
+
+Worauf du achten solltest:
+- MDK-Bewertung des Dienstes (öffentlich einsehbar)
+- Reaktionszeit bei Anfragen
+- Welche Leistungen werden angeboten?
+- Sind Fachkräfte ausreichend qualifiziert?
+- Gibt es feste Bezugspflegekräfte?
+
+Hol dir mindestens drei Angebote ein – die Preise variieren stark, auch bei gleicher Leistungsqualität.
+
+## Nächster Schritt
+
+Vergleiche Pflegedienste in deiner Region kostenlos und unverbindlich. Du bekommst passende Angebote direkt zu dir nach Hause.`,
+  },
 ];
 
 export function getBySlug(slug: string): ContentItem | undefined {
