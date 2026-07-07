@@ -151,8 +151,10 @@ export default function LeistungenCheckFunnel() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formData,
+          phone: formData.telefon,
           pflegegrad: pflegegrad !== null ? `PG ${pflegegrad}` : "Kein PG",
           funnel: "leistungen-check",
+          tags: relevantLeistungen.map((l) => l.name).join(", ") || "Leistungen-Check",
         }),
       });
       setSubmitted(true);

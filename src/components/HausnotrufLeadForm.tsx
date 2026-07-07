@@ -18,7 +18,7 @@ export default function HausnotrufLeadForm() {
       await fetch("/api/submit-lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, pflegegrad: pflegegrad !== null ? `PG ${pflegegrad}` : "", funnel: "hausnotruf" }),
+        body: JSON.stringify({ ...form, phone: form.telefon, pflegegrad: pflegegrad !== null ? `PG ${pflegegrad}` : "", funnel: "hausnotruf", tags: "Hausnotruf" }),
       });
       setSubmitted(true);
     } finally { setSubmitting(false); }

@@ -20,7 +20,7 @@ export default function PflegeboxFunnel() {
       await fetch("/api/submit-lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, plz, pflegegrad: pflegegrad !== null ? `PG ${pflegegrad}` : "Kein PG", funnel: "pflegebox" }),
+        body: JSON.stringify({ ...form, phone: form.telefon, plz, pflegegrad: pflegegrad !== null ? `PG ${pflegegrad}` : "Kein PG", funnel: "pflegebox", tags: "Pflegebox" }),
       });
       setSubmitted(true);
     } finally { setSubmitting(false); }

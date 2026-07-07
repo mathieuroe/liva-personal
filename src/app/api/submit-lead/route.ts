@@ -4,14 +4,15 @@ import { sendInternalLeadNotification, sendLeadConfirmation } from "@/lib/email"
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
-  const { email, phone, plz, path, pflegegrad, funnel, timestamp, einrichtung, tags } = body;
+  const { email, phone, plz, path, pflegegrad, funnel, timestamp, einrichtung, tags, interessen } = body;
 
   const ts = timestamp || new Date().toISOString();
   const source = path || funnel || "unbekannt";
+  const resolvedTags = tags || (Array.isArray(interessen) ? interessen.join(", ") : interessen) || null;
 
   // In Datenbank speichern
   try {
-    await insertLead({ email, phone, plz, source, pflegegrad, tags });
+    await insertLead({ email, phone, plz, source, pflegegrad, tags: resolvedTags });
   } catch (err) {
     console.error("[submit-lead] DB-Speicherung fehlgeschlagen:", err);
   }

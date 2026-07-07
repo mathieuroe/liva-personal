@@ -21,7 +21,7 @@ function NewsletterForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email,
-          interessen: ["Newsletter"],
+          tags: "Newsletter",
           path: "/news",
           timestamp: new Date().toISOString(),
         }),

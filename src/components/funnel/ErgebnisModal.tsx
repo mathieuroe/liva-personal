@@ -96,7 +96,7 @@ export function ErgebnisModal({ pflegegrad, path, onClose }: { pflegegrad: numbe
         body: JSON.stringify({
           ...form,
           pflegegrad: pflegegrad.toString(),
-          interessen: ["Ergebnis-PDF"],
+          tags: "Ergebnis-PDF",
           path,
           timestamp: new Date().toISOString(),
         }),
