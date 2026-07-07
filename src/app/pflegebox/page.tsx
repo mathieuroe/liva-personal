@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, ArrowRight } from "lucide-react";
 import Footer from "@/components/layout/Footer";
 import PflegeboxFunnel from "@/components/PflegeboxFunnel";
 
@@ -26,7 +26,7 @@ export default function PflegeboxPage() {
             <div>
               <span className="inline-block bg-brand-light text-brand text-xs font-semibold px-4 py-1.5 rounded-full mb-6">Kostenlos ab Pflegegrad 1</span>
               <h1 className="font-serif text-5xl text-gray-900 mb-4 leading-tight">Deine kostenlose Pflegebox – jeden Monat neu.</h1>
-              <p className="text-gray-500 text-lg leading-relaxed mb-6">Bis zu 42 € pro Monat für Pflegehilfsmittel – vollständig von der Pflegekasse übernommen. Du zahlst nichts.</p>
+              <p className="text-gray-500 text-lg leading-relaxed mb-6">Bis zu 42 € pro Monat für Pflegehilfsmittel – vollständig von der Pflegekasse übernommen. Bei unseren Partnern entstehen für dich keine Kosten.</p>
               <div className="space-y-2.5">
                 {boxInhalt.map((item) => (
                   <div key={item} className="flex items-center gap-3">
@@ -34,6 +34,19 @@ export default function PflegeboxPage() {
                     <span className="text-gray-700 text-sm">{item}</span>
                   </div>
                 ))}
+              </div>
+              <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                <a
+                  href="https://t.adcell.com/p/click?promoId=273407&slotId=149760&subId=pflegebox_page_hero&param0=https%3A%2F%2Fpflegehase.de%2Fpflegehilfsmittel-bestellung%2F"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary inline-flex items-center gap-2"
+                >
+                  Jetzt kostenlos bestellen <ArrowRight size={16} />
+                </a>
+                <a href="#anfrage" className="btn-secondary inline-flex items-center gap-2">
+                  Erst Fragen stellen
+                </a>
               </div>
             </div>
             <div className="flex justify-center">
@@ -69,10 +82,10 @@ export default function PflegeboxPage() {
           </div>
         </section>
 
-        <section className="py-16 px-4 sm:px-6 bg-white">
+        <section id="anfrage" className="py-16 px-4 sm:px-6 bg-white">
           <div className="max-w-xl mx-auto">
-            <h2 className="font-serif text-3xl text-gray-900 mb-2 text-center">Jetzt beantragen</h2>
-            <p className="text-gray-500 text-center mb-8 text-sm">100% kostenlos · Kein Spam · Keine Verpflichtung</p>
+            <h2 className="font-serif text-3xl text-gray-900 mb-2 text-center">Du hast noch Fragen?</h2>
+            <p className="text-gray-500 text-center mb-8 text-sm">Hinterlasse deine Kontaktdaten – wir melden uns bei dir.</p>
             <PflegeboxFunnel />
           </div>
         </section>
