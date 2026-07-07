@@ -1,13 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { Star, MapPin, Clock, ArrowRight, ExternalLink, Globe, ShieldCheck } from "lucide-react";
-import type { Pflegedienst } from "@/lib/pflegedienste-data";
-import { getSprachen, getVersicherung, getAlleLeistungen } from "@/lib/pflegedienste-utils";
+import { Star, MapPin, Clock, ArrowRight, ExternalLink, Globe, Phone } from "lucide-react";
+import type { PflegedienstResult } from "@/app/pflegedienste/page";
 import AnfrageModal from "./AnfrageModal";
 
 interface Props {
-  pd: Pflegedienst & { distanzKm: number };
+  pd: PflegedienstResult;
   plz: string;
   pflegegrad: string;
   featured?: boolean;
@@ -53,8 +52,8 @@ export default function PflegedienstCard({ pd, plz, pflegegrad, featured }: Prop
         )}
 
         <div className="p-5">
+          {/* Header */}
           <div className="flex items-start gap-3 mb-3">
-            {/* Logo-Placeholder */}
             <div className="w-12 h-12 rounded-xl bg-brand-light flex items-center justify-center flex-shrink-0">
               <span className="text-brand font-bold text-lg">{pd.name[0]}</span>
             </div>
@@ -63,13 +62,20 @@ export default function PflegedienstCard({ pd, plz, pflegegrad, featured }: Prop
               <h3 className="font-semibold text-gray-900 text-base leading-tight mb-0.5">{pd.name}</h3>
               <div className="flex items-center gap-2 flex-wrap">
                 <span className="flex items-center gap-1 text-xs text-gray-500">
-                  <MapPin size={11} /> {pd.ort} · ca. {pd.distanzKm} km
+                  <MapPin size={11} /> {pd.ort || pd.adresse.split(",")[0]} · ca. {pd.distanzKm} km
                 </span>
-                <span className="flex items-center gap-1.5">
-                  <Sterne wert={pd.bewertung} />
-                  <span className="text-xs font-semibold text-gray-700">{pd.bewertung.toFixed(1)}</span>
-                  <span className="text-xs text-gray-400">({pd.anzahlBewertungen})</span>
-                </span>
+                {pd.bewertung !== null ? (
+                  <span className="flex items-center gap-1.5">
+                    <Sterne wert={pd.bewertung} />
+                    <span className="text-xs font-semibold text-gray-700">{pd.bewertung.toFixed(1)}</span>
+                    {pd.anzahlBewertungen > 0 && (
+                      <span className="text-xs text-gray-400">({pd.anzahlBewertungen})</span>
+                    )}
+                    <span className="text-[10px] text-gray-400">Google</span>
+                  </span>
+                ) : (
+                  <span className="text-xs text-gray-400">Noch keine Bewertung</span>
+                )}
               </div>
             </div>
 
@@ -80,6 +86,7 @@ export default function PflegedienstCard({ pd, plz, pflegegrad, featured }: Prop
             )}
           </div>
 
+          {/* Beschreibung */}
           <p className="text-sm text-gray-600 leading-relaxed mb-3">
             {expanded ? pd.beschreibung : pd.beschreibung.slice(0, 100) + (pd.beschreibung.length > 100 ? "…" : "")}
             {pd.beschreibung.length > 100 && (
@@ -91,27 +98,25 @@ export default function PflegedienstCard({ pd, plz, pflegegrad, featured }: Prop
 
           {/* Leistungen */}
           <div className="flex flex-wrap gap-1.5 mb-3">
-            {getAlleLeistungen(pd.id, pd.leistungen).slice(0, 5).map((l) => (
+            {pd.leistungen.map((l) => (
               <span key={l} className="text-[11px] bg-gray-50 border border-gray-100 text-gray-600 px-2 py-0.5 rounded-full">
                 {l}
               </span>
             ))}
           </div>
 
-          {/* Sprachen & Versicherung & Adresse */}
+          {/* Adresse & Telefon */}
           <div className="flex flex-wrap gap-x-4 gap-y-1.5 mb-3">
-            <span className="flex items-center gap-1.5 text-xs text-gray-500">
-              <Globe size={12} className="text-brand flex-shrink-0" />
-              {getSprachen(pd.id).join(" · ")}
-            </span>
-            <span className="flex items-center gap-1.5 text-xs text-gray-500">
-              <ShieldCheck size={12} className="text-brand flex-shrink-0" />
-              {getVersicherung(pd.id)}
-            </span>
             {pd.adresse && (
               <span className="flex items-center gap-1.5 text-xs text-gray-500">
                 <MapPin size={12} className="text-brand flex-shrink-0" />
-                {pd.adresse}{pd.plz ? `, ${pd.plz}` : ""}
+                {pd.adresse}
+              </span>
+            )}
+            {pd.telefon && (
+              <span className="flex items-center gap-1.5 text-xs text-gray-500">
+                <Phone size={12} className="text-brand flex-shrink-0" />
+                {pd.telefon}
               </span>
             )}
           </div>

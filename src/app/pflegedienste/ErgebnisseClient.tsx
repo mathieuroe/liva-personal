@@ -4,25 +4,20 @@ import { useState } from "react";
 import { MapPin, ArrowRight, Bell, Package, ChevronDown, X } from "lucide-react";
 import Link from "next/link";
 import PflegedienstCard from "@/components/vergleich/PflegedienstCard";
-import { getPflegediensteFuerPlz } from "@/lib/pflegedienste-data";
-import { getSprachen, getVersicherung, getAlleLeistungen, type Versicherung } from "@/lib/pflegedienste-utils";
+import type { PflegedienstResult } from "./page";
 
 interface Props {
   plz: string;
   pflegegrad: string;
   fuerWen: string;
   leistung: string;
+  results: PflegedienstResult[];
 }
 
-const SPRACH_OPTIONEN = ["Alle Sprachen", "Deutsch", "Türkisch", "Russisch", "Polnisch", "Arabisch", "Kroatisch", "Vietnamesisch"];
-const VERSICHERUNG_OPTIONEN = ["Versicherungsart", "GKV", "Privat", "GKV & Privat"];
 const LEISTUNG_OPTIONEN = [
   "Alle Leistungen",
   "Grundpflege",
   "Betreuung",
-  "Arztbegleitung",
-  "Hauswirtschaft",
-  "Verhinderungspflege",
   "24h-Pflege",
   "Stationäre Pflege",
   "Demenzbetreuung",
@@ -30,12 +25,10 @@ const LEISTUNG_OPTIONEN = [
 ];
 
 function FilterSelect({
-  label,
   value,
   options,
   onChange,
 }: {
-  label: string;
   value: string;
   options: string[];
   onChange: (v: string) => void;
@@ -53,9 +46,7 @@ function FilterSelect({
         }`}
       >
         {options.map((o) => (
-          <option key={o} value={o}>
-            {o}
-          </option>
+          <option key={o} value={o}>{o}</option>
         ))}
       </select>
       <ChevronDown
@@ -66,42 +57,20 @@ function FilterSelect({
   );
 }
 
-export default function ErgebnisseClient({ plz, pflegegrad, fuerWen, leistung }: Props) {
-  const alle = getPflegediensteFuerPlz(plz);
-
+export default function ErgebnisseClient({ plz, pflegegrad, fuerWen, leistung, results }: Props) {
   const initialLeistung =
     leistung && leistung !== "Weiß ich noch nicht" ? leistung : "Alle Leistungen";
 
-  const [filterSprache, setFilterSprache] = useState("Alle Sprachen");
-  const [filterVersicherung, setFilterVersicherung] = useState<string>("Versicherungsart");
   const [filterLeistung, setFilterLeistung] = useState(initialLeistung);
 
-  const aktiveLeistung = filterLeistung !== "Alle Leistungen" ? filterLeistung : null;
+  const gefiltert = results.filter((pd) => {
+    if (filterLeistung !== "Alle Leistungen" && !pd.leistungen.includes(filterLeistung)) return false;
+    return true;
+  });
 
-  const gefiltert = alle
-    .filter((pd) => {
-      if (aktiveLeistung && !getAlleLeistungen(pd.id, pd.leistungen).includes(aktiveLeistung)) return false;
-      if (filterSprache !== "Alle Sprachen" && !getSprachen(pd.id).includes(filterSprache)) return false;
-      if (filterVersicherung !== "Versicherungsart") {
-        const v = getVersicherung(pd.id);
-        if (filterVersicherung === "GKV" && v !== "GKV" && v !== "GKV & Privat") return false;
-        if (filterVersicherung === "Privat" && v !== "Privat" && v !== "GKV & Privat") return false;
-        if (filterVersicherung === "GKV & Privat" && v !== "GKV & Privat") return false;
-      }
-      return true;
-    })
-    .slice(0, 50);
+  const hatAktiveFilter = filterLeistung !== "Alle Leistungen";
 
-  const hatAktiveFilter =
-    filterSprache !== "Alle Sprachen" ||
-    filterVersicherung !== "Versicherungsart" ||
-    filterLeistung !== "Alle Leistungen";
-
-  function resetFilter() {
-    setFilterSprache("Alle Sprachen");
-    setFilterVersicherung("Alle");
-    setFilterLeistung("Alle Leistungen");
-  }
+  const noResults = results.length === 0;
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8">
@@ -114,51 +83,53 @@ export default function ErgebnisseClient({ plz, pflegegrad, fuerWen, leistung }:
           {fuerWen && <><span>·</span><span>{fuerWen}</span></>}
         </div>
         <h1 className="font-serif text-3xl text-gray-900 mb-1">
-          {gefiltert.length} Pflegedienste in deiner Nähe
+          {noResults ? "Suche läuft…" : `${gefiltert.length} Pflegeeinrichtungen in deiner Nähe`}
         </h1>
-        <p className="text-gray-500 text-sm">
-          Kostenlose Anfragen direkt über liva
+        <p className="text-gray-500 text-sm flex items-center gap-1.5">
+          {noResults ? (
+            "Ergebnisse werden geladen"
+          ) : (
+            <>
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-green-400" />
+              Echte Google-Bewertungen · Kostenlose Anfragen über liva
+            </>
+          )}
         </p>
       </div>
 
       {/* Filter */}
-      <div className="bg-white border border-[#E0EDE7] rounded-2xl p-3 sm:p-4 mb-6">
-        <div className="flex flex-wrap gap-2 items-center">
-          <FilterSelect
-            label="Sprache"
-            value={filterSprache}
-            options={SPRACH_OPTIONEN}
-            onChange={setFilterSprache}
-          />
-          <FilterSelect
-            label="Versicherung"
-            value={filterVersicherung}
-            options={VERSICHERUNG_OPTIONEN}
-            onChange={setFilterVersicherung}
-          />
-          <FilterSelect
-            label="Leistung"
-            value={filterLeistung}
-            options={LEISTUNG_OPTIONEN}
-            onChange={setFilterLeistung}
-          />
-          {hatAktiveFilter && (
-            <button
-              onClick={resetFilter}
-              className="flex items-center gap-1 text-xs text-gray-400 hover:text-brand transition-colors ml-auto"
-            >
-              <X size={13} /> Filter zurücksetzen
-            </button>
-          )}
+      {!noResults && (
+        <div className="bg-white border border-[#E0EDE7] rounded-2xl p-3 sm:p-4 mb-6">
+          <div className="flex flex-wrap gap-2 items-center">
+            <FilterSelect
+              value={filterLeistung}
+              options={LEISTUNG_OPTIONEN}
+              onChange={setFilterLeistung}
+            />
+            {hatAktiveFilter && (
+              <button
+                onClick={() => setFilterLeistung("Alle Leistungen")}
+                className="flex items-center gap-1 text-xs text-gray-400 hover:text-brand transition-colors ml-auto"
+              >
+                <X size={13} /> Filter zurücksetzen
+              </button>
+            )}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Ergebnisse */}
       <div className="space-y-4 mb-8">
-        {gefiltert.length === 0 && (
+        {noResults && (
+          <div className="text-center py-16 text-gray-400">
+            <div className="w-10 h-10 border-2 border-brand border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+            <p className="text-sm">Pflegeeinrichtungen werden geladen…</p>
+          </div>
+        )}
+        {!noResults && gefiltert.length === 0 && (
           <div className="text-center py-12 text-gray-400">
-            <p className="text-sm mb-1">Keine Pflegedienste für diese Filter gefunden.</p>
-            <button onClick={resetFilter} className="text-brand text-sm underline">
+            <p className="text-sm mb-2">Keine Einrichtungen für diesen Filter gefunden.</p>
+            <button onClick={() => setFilterLeistung("Alle Leistungen")} className="text-brand text-sm underline">
               Filter zurücksetzen
             </button>
           </div>
@@ -192,8 +163,7 @@ export default function ErgebnisseClient({ plz, pflegegrad, fuerWen, leistung }:
             </ul>
             <a
               href="https://t.adcell.com/p/click?promoId=307657&slotId=149760&subId=pflegedienste_hausnotruf&param0=https%3A%2F%2Fpflegehase.de%2Fhausnotruf-bestellung%2F"
-              target="_blank"
-              rel="noopener noreferrer"
+              target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-brand text-white text-sm font-semibold px-4 py-2.5 rounded-xl hover:bg-brand/90 transition-colors"
             >
               Jetzt kostenlos beantragen <ArrowRight size={14} />
@@ -220,8 +190,7 @@ export default function ErgebnisseClient({ plz, pflegegrad, fuerWen, leistung }:
             </ul>
             <a
               href="https://t.adcell.com/p/click?promoId=273407&slotId=149760&subId=pflegedienste_box&param0=https%3A%2F%2Fpflegehase.de%2Fpflegehilfsmittel-bestellung%2F"
-              target="_blank"
-              rel="noopener noreferrer"
+              target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 border border-brand text-brand text-sm font-semibold px-4 py-2.5 rounded-xl hover:bg-brand hover:text-white transition-colors"
             >
               Pflegebox jetzt beantragen <ArrowRight size={14} />
@@ -230,7 +199,6 @@ export default function ErgebnisseClient({ plz, pflegegrad, fuerWen, leistung }:
         </div>
       </div>
 
-      {/* Back */}
       <div className="text-center">
         <Link href="/" className="text-sm text-gray-400 hover:text-brand transition-colors">
           ← Neue Suche starten
