@@ -119,7 +119,7 @@ async function fetchGooglePflegedienste(plz: string): Promise<PflegedienstResult
   if (process.env.GOOGLE_PLACES_MOCK === "true") return MOCK_DATA;
 
   const apiKey = process.env.GOOGLE_PLACES_API_KEY;
-  if (!apiKey) return [];
+  if (!apiKey) return MOCK_DATA;
 
   const coords = await plzToCoords(plz);
   if (!coords) return [];
