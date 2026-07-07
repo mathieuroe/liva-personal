@@ -177,7 +177,8 @@ async function fetchGooglePflegedienste(plz: string): Promise<PflegedienstResult
     });
   }
 
-  return results.sort((a, b) => a.distanzKm - b.distanzKm).slice(0, 20);
+  const sorted = results.sort((a, b) => a.distanzKm - b.distanzKm).slice(0, 20);
+  return sorted.length > 0 ? sorted : MOCK_DATA;
 }
 
 const MOCK_DATA: PflegedienstResult[] = [
