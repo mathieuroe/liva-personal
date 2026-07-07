@@ -6,6 +6,7 @@ import { Menu, X, ArrowRight, Calculator } from "lucide-react";
 
 const links = [
   { href: "/leistungen", label: "Leistungen" },
+  { href: "/vergleich", label: "Vergleich" },
   { href: "/ratgeber", label: "Ratgeber" },
   { href: "/news", label: "News aus der Pflege" },
 ];

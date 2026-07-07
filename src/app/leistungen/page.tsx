@@ -42,17 +42,17 @@ export default function LeistungenPage() {
       <main>
 
         {/* ── Hero ────────────────────────────────────────────────── */}
-        <section className="bg-white py-16 px-4 sm:px-6 border-b border-[#E0EDE7]">
-          <div className="max-w-6xl mx-auto">
+        <section className="bg-white py-12 sm:py-16 px-4 sm:px-6 border-b border-[#E0EDE7]">
+          <div className="max-w-4xl mx-auto">
             <p className="section-label">Pflegeleistungen 2026</p>
-            <h1 className="font-serif text-5xl text-gray-900 mb-4 leading-tight">
+            <h1 className="font-serif text-4xl sm:text-5xl text-gray-900 mb-4 leading-tight">
               Was dir mit deinem<br className="hidden sm:block" /> Pflegegrad zusteht
             </h1>
             <p className="text-gray-500 text-lg max-w-xl leading-relaxed mb-6">
               Die Pflegeversicherung zahlt mehr als die meisten wissen – viele Leistungen werden nie beantragt. Hier ist alles erklärt, ohne Bürokratie-Deutsch.
             </p>
             {/* Trust Stats */}
-            <div className="flex flex-wrap gap-4 mb-8">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
               {[
                 { zahl: "6 Mio.", text: "Menschen haben aktuell einen Pflegegrad in Deutschland" },
                 { zahl: "86 %", text: "der Pflegebedürftigen werden zu Hause gepflegt" },
@@ -64,7 +64,7 @@ export default function LeistungenPage() {
                 </div>
               ))}
             </div>
-            <Link href="/pflegegrad-rechner" className="btn-secondary inline-flex text-sm px-5 py-2.5">
+            <Link href="/pflegegrad-rechner" className="btn-secondary">
               Pflegegrad noch unklar? Jetzt kostenlos ermitteln <ArrowRight size={15} />
             </Link>
           </div>

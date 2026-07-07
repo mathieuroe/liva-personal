@@ -378,7 +378,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                 onClick={() => pushDataLayerEvent("has_pg_leistungen_pflegebox_click")}
                 className="btn-primary w-full justify-center py-3 text-sm text-center"
               >
-                Pflegebox jetzt kostenlos beantragen <ArrowRight size={16} />
+                Jetzt kostenlos beantragen <ArrowRight size={16} />
               </a>
               <p className="text-center text-[11px] text-gray-400 mt-2">Über unseren geprüften Partner Pflegehase</p>
             </div>
@@ -422,7 +422,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                 onClick={() => pushDataLayerEvent("has_pg_leistungen_hausnotruf_click")}
                 className="btn-primary w-full justify-center py-3 text-sm text-center"
               >
-                Hausnotruf kostenlos bestellen <ArrowRight size={16} />
+                Jetzt kostenlos beantragen <ArrowRight size={16} />
               </a>
               <p className="text-center text-[11px] text-gray-400 mt-2">Über unseren geprüften Partner Pflegehase</p>
             </div>
@@ -505,7 +505,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                 onClick={() => pushDataLayerEvent("has_pg_checklist_pflegebox_click")}
                 className="btn-primary w-full justify-center py-3 text-sm text-center"
               >
-                Pflegebox jetzt kostenlos beantragen <ArrowRight size={16} />
+                Jetzt kostenlos beantragen <ArrowRight size={16} />
               </a>
               <p className="text-center text-[11px] text-gray-400 mt-2">Über unseren geprüften Partner Pflegehase</p>
             </div>
@@ -548,7 +548,7 @@ export default function PfadB({ onStepChange }: PfadBProps = {}) {
                 onClick={() => pushDataLayerEvent("has_pg_checklist_hausnotruf_click")}
                 className="btn-primary w-full justify-center py-3 text-sm text-center"
               >
-                Hausnotruf kostenlos bestellen <ArrowRight size={16} />
+                Jetzt kostenlos beantragen <ArrowRight size={16} />
               </a>
               <p className="text-center text-[11px] text-gray-400 mt-2">Über unseren geprüften Partner Pflegehase</p>
             </div>

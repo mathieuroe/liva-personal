@@ -7,6 +7,7 @@ export interface ContentItem {
   datum: string;
   typ: "ratgeber" | "news";
   inhalt: string;
+  affiliate?: string;
 }
 
 export const RATGEBER: ContentItem[] = [
@@ -52,6 +53,7 @@ Viele Leistungen verfallen wenn sie nicht rechtzeitig beantragt werden. Starte e
     lesezeit: "3 Min.",
     datum: "Mai 2026",
     typ: "ratgeber",
+    affiliate: "https://t.adcell.com/p/click?promoId=273407&slotId=149760&subId=ratgeber_box&param0=https%3A%2F%2Fpflegehase.de%2Fpflegehilfsmittel-bestellung%2F",
     inhalt: `## Pflegebox in 5 Minuten beantragen
 
 Die Pflegebox (§40 SGB XI) ist ein monatliches Paket mit Verbrauchsmaterialien für die häusliche Pflege. Die Pflegekasse erstattet bis zu **42 € pro Monat** – für alle Pflegegrade ab PG 1.
@@ -67,10 +69,9 @@ Die Pflegebox (§40 SGB XI) ist ein monatliches Paket mit Verbrauchsmaterialien 
 
 ### So geht's
 
-1. Pflegehilfsmittel-Anbieter kontaktieren (liva hilft dabei)
-2. Kurzes Formular: Name, Adresse, Krankenkasse, Pflegegrad
-3. Anbieter stellt Antrag bei der Pflegekasse
-4. Genehmigung kommt automatisch – erste Lieferung in 1–2 Wochen
+1. Bei unserem empfohlenen Partner **Blubox** kostenlos beantragen
+2. Blubox übernimmt den gesamten Antrag bei deiner Pflegekasse
+3. Genehmigung kommt automatisch – erste Lieferung in 1–2 Wochen
 
 ### Was kostet das?
 
@@ -115,6 +116,7 @@ Wichtig: Der Anbieter muss anerkannt sein (nach Landesrecht).
     lesezeit: "4 Min.",
     datum: "April 2026",
     typ: "ratgeber",
+    affiliate: "https://t.adcell.com/p/click?promoId=307657&slotId=149760&subId=ratgeber_hausnotruf&param0=https%3A%2F%2Fpflegehase.de%2Fhausnotruf-bestellung%2F",
     inhalt: `## Hausnotruf – Sicherheit zu Hause, oft zum Nulltarif
 
 Ein Hausnotruf ist ein kleines Gerät – oft ein Knopf am Handgelenk oder um den Hals. Ein Druck, sofort antwortet jemand.
@@ -131,10 +133,9 @@ Monatliche Gebühr: meist 20–40 €. Die Pflegekasse zahlt **27 € / Monat** 
 
 ### Wie beantrage ich den Zuschuss?
 
-1. Anbieter wählen
-2. Antrag bei der Pflegekasse (§40 SGB XI)
-3. Genehmigung in ca. 3–5 Werktagen
-4. Direkte Abrechnung zwischen Anbieter und Pflegekasse`,
+1. Bei unserem empfohlenen Partner **smartversorgt** kostenlos beantragen
+2. smartversorgt übernimmt den gesamten Antrag bei deiner Pflegekasse (§40 SGB XI)
+3. Genehmigung in ca. 3–5 Werktagen – direkte Abrechnung mit der Pflegekasse`,
   },
   {
     slug: "mdk-besuch-vorbereitung",

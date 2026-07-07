@@ -37,9 +37,20 @@ E-Mail: info@liva-pflege.de
 Telefon: 0761 88785990
 Geschäftsführer: Fabian Schröteler & Joshua Denz
 
+## Vergleiche (Stand Juli 2026)
+
+liva betreibt einen unabhängigen Anbietervergleich für Hausnotruf und Pflegebox:
+
+**Hausnotruf Vergleich** – URL: /vergleich#hausnotruf
+Beste Anbieter 2026: 1. smartversorgt, 2. Pflegehase, 3. Gardia. Kosten: 0 € (Pflegekasse übernimmt 27 €/Monat ab PG 1).
+
+**Pflegebox Vergleich** – URL: /vergleich#pflegebox
+Beste Anbieter 2026: 1. Blubox, 2. Pflegehase, 3. Pflegetipp. Kosten: 0 € (bis 42 €/Monat ab PG 1 kassenfinanziert).
+
 ## Wichtige Seiten
 
 - /pflegegrad-rechner – Kostenloser Pflegegrad-Rechner (Hauptprodukt)
+- /vergleich – Hausnotruf & Pflegebox Anbietervergleich 2026
 - /leistungen – Übersicht aller Pflegeleistungen
 - /ratgeber – Ratgeber-Artikel zum Pflegesystem
 - /erste-schritte – Checkliste für die ersten 30 Tage mit Pflegegrad

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { ArrowUpRight, ArrowRight, Users } from "lucide-react";
 import dynamic from "next/dynamic";
 
@@ -9,33 +10,36 @@ const LeistungsLeadModal = dynamic(() => import("./LeistungsLeadModal"), { ssr: 
 const DEEPLINKS: Record<string, { href: string; label: string }> = {
   "pflegebox-karte": {
     href: "https://t.adcell.com/p/click?promoId=273407&slotId=149760&subId=leistungen_box&param0=https%3A%2F%2Fpflegehase.de%2Fpflegehilfsmittel-bestellung%2F",
-    label: "Pflegebox kostenlos bestellen",
+    label: "Jetzt kostenlos beantragen",
   },
   "hausnotruf-karte": {
     href: "https://t.adcell.com/p/click?promoId=307657&slotId=149760&subId=leistungen_hausnotruf&param0=https%3A%2F%2Fpflegehase.de%2Fhausnotruf-bestellung%2F",
-    label: "Hausnotruf kostenlos bestellen",
+    label: "Jetzt kostenlos beantragen",
   },
 };
 
 const LEISTUNGEN = [
   {
     id: "entlastung",
+    tabId: "grundpflege",
     name: "Entlastungsbetrag",
     betrag: "131 € / Monat",
     pg: "Ab PG 1",
-    text: "Monatlich 131 € für qualifizierte Unterstützung im Alltag – Alltagsbegleitung, Haushaltshilfe, Fahrdienste oder Betreuungsgruppen. Nicht genutzte Beträge können quartalsweise mitgenommen werden, insgesamt bis zu 1.572 € im Jahr. Der Anbieter muss nach Landesrecht anerkannt sein.",
+    text: "Monatlich 131 € für qualifizierte Unterstützung im Alltag – Alltagsbegleitung, Haushaltshilfe, Fahrdienste oder Betreuungsgruppen. Nicht genutzte Beträge können quartalsweise mitgenommen werden, insgesamt bis zu 1.572 € im Jahr.",
     beantragen: "Anerkannten Anbieter kontaktieren, Leistungen in Anspruch nehmen, Rechnung bei der Pflegekasse einreichen.",
   },
   {
     id: "tagespflege",
+    tabId: "stationaer",
     name: "Tagespflege",
     betrag: "bis 1.995 € / Monat",
     pg: "Ab PG 2",
-    text: "Tagesbetreuung in einer Pflegeeinrichtung – tagsüber betreut, abends wieder zuhause. Wird zusätzlich zu ambulanten Leistungen und Pflegegeld gewährt und kürzt diese nicht. PG 2: bis 689 €, PG 3: bis 1.298 €, PG 4: bis 1.612 €, PG 5: bis 1.995 € monatlich.",
+    text: "Tagesbetreuung in einer Pflegeeinrichtung – tagsüber betreut, abends wieder zuhause. Wird zusätzlich zu ambulanten Leistungen und Pflegegeld gewährt. PG 2: bis 689 €, PG 3: bis 1.298 €, PG 4: bis 1.612 €, PG 5: bis 1.995 € monatlich.",
     beantragen: "Tagespflegeeinrichtung in der Nähe finden, Platz anfragen – die Einrichtung rechnet direkt mit der Pflegekasse ab.",
   },
   {
     id: "sachleistung",
+    tabId: "grundpflege",
     name: "Pflegesachleistungen",
     betrag: "bis 2.095 € / Monat",
     pg: "Ab PG 2",
@@ -44,36 +48,47 @@ const LEISTUNGEN = [
   },
   {
     id: "verhinderung",
+    tabId: "stationaer",
     name: "Verhinderungs- & Kurzzeitpflege",
     betrag: "bis 3.539 € / Jahr",
     pg: "Ab PG 2",
     highlight: true,
-    text: "Seit 01.07.2025 gibt es ein gemeinsames Budget aus Verhinderungs- und Kurzzeitpflege: bis zu 3.539 € pro Jahr. Verhinderungspflege greift wenn die Hauptpflegeperson Urlaub oder eine Auszeit braucht, Kurzzeitpflege für vorübergehende stationäre Aufenthalte. Beides flexibel kombinierbar.",
+    text: "Seit 01.07.2025 gemeinsames Budget: bis zu 3.539 € pro Jahr. Verhinderungspflege wenn die Hauptpflegeperson Urlaub braucht, Kurzzeitpflege für vorübergehende stationäre Aufenthalte. Beides flexibel kombinierbar.",
     beantragen: "Vertretung oder Einrichtung organisieren, Antrag mit Nachweis bei der Pflegekasse einreichen – Erstattung in 2–4 Wochen.",
   },
   {
-    id: "pflegegeld",
-    name: "Pflegegeld",
-    betrag: "332 – 946 € / Monat",
-    pg: "Ab PG 2",
-    highlight: true,
-    text: "Direktzahlung an dich, wenn Angehörige oder nahestehende Personen die Pflege übernehmen. Kein Nachweis einzelner Leistungen nötig – einfach bei der Pflegekasse beantragen. PG 2: 332 €, PG 3: 572 €, PG 4: 764 €, PG 5: 946 € pro Monat.",
-    beantragen: "Formloser Antrag bei der Pflegekasse – schriftlich, telefonisch oder online über das Kassenportal.",
-  },
-  {
     id: "wohnraum",
+    tabId: "grundpflege",
     name: "Wohnraumanpassung",
     betrag: "bis 4.180 € / Maßnahme",
     pg: "Ab PG 1",
-    text: "Zuschuss für barrierefreie Umbauten: Haltegriffe, Duschumbau, Türverbreiterung, Treppenlifte. Bis zu 4.180 € je Maßnahme, mehrere Maßnahmen möglich. Wichtig: Antrag muss vor Beginn der Umbaumaßnahme gestellt werden.",
+    text: "Zuschuss für barrierefreie Umbauten: Haltegriffe, Duschumbau, Türverbreiterung, Treppenlifte. Bis zu 4.180 € je Maßnahme, mehrere Maßnahmen möglich. Antrag muss vor Beginn gestellt werden.",
     beantragen: "Antrag bei der Pflegekasse stellen, Kostenvoranschlag beifügen – erst nach Genehmigung mit dem Umbau beginnen.",
+  },
+  {
+    id: "24h-pflege",
+    tabId: "24h",
+    name: "24/7 Pflege",
+    betrag: "individuell",
+    pg: "Ab PG 3",
+    text: "Rund-um-die-Uhr-Betreuung zuhause – meist durch osteuropäische Betreuungskräfte. Kombinierbar mit Pflegegeld und Pflegesachleistungen. Die Kosten variieren je nach Anbieter und Pflegebedarf.",
+    beantragen: "Seriösen 24h-Pflegeanbieter vergleichen, Bedarfseinschätzung anfragen – liva hilft dir bei der Auswahl.",
+  },
+  {
+    id: "residenz-karte",
+    tabId: "residenz",
+    name: "Senioren Residenz",
+    betrag: "ab 2.500 € / Monat",
+    pg: "Ab PG 2",
+    text: "Vollstationäre Pflege in einer Pflegeeinrichtung oder Seniorenresidenz. Die Pflegekasse übernimmt einen festen Anteil (PG 2–5: 770–2.005 €). Komfortangebote und Hotelleistungen werden separat berechnet.",
+    beantragen: "Einrichtung besichtigen, Heimvertrag abschließen – die Einrichtung stellt den Antrag bei der Pflegekasse.",
   },
   {
     id: "pflegebox-karte",
     name: "Pflegehilfsmittelbox",
     betrag: "bis 42 € / Monat",
     pg: "Ab PG 1",
-    text: "Monatlich bis zu 42 € für Pflegeverbrauchsmittel – Einmalhandschuhe, Desinfektionsmittel, Bettschutzeinlagen, Mundschutz. Die Pflegekasse erstattet direkt an den Anbieter, für dich entstehen keine Kosten. Beantragung dauert unter 5 Minuten.",
+    text: "Monatlich bis zu 42 € für Pflegeverbrauchsmittel – Einmalhandschuhe, Desinfektionsmittel, Bettschutzeinlagen, Mundschutz. Die Pflegekasse erstattet direkt an den Anbieter, für dich entstehen keine Kosten.",
     beantragen: "Unser Partner Pflegehase stellt für dich den Antrag bei der Pflegekasse und liefert kostenfrei monatlich zu dir nachhause.",
   },
   {
@@ -85,6 +100,14 @@ const LEISTUNGEN = [
     beantragen: "Unser Partner Pflegehase stellt für dich den Antrag bei der Pflegekasse und liefert dir deinen Hausnotruf – Genehmigung in ca. 3–5 Werktagen.",
   },
 ];
+
+const PFLEGEGELD = {
+  name: "Pflegegeld",
+  betrag: "332 – 946 € / Monat",
+  pg: "Ab PG 2",
+  text: "Direktzahlung an dich, wenn Angehörige oder nahestehende Personen die Pflege übernehmen. Kein Nachweis einzelner Leistungen nötig – einfach bei der Pflegekasse beantragen. PG 2: 332 €, PG 3: 572 €, PG 4: 764 €, PG 5: 946 € pro Monat.",
+  beantragen: "Formloser Antrag bei der Pflegekasse – schriftlich, telefonisch oder online über das Kassenportal.",
+};
 
 export default function LeistungenGrid() {
   const [activeLeistung, setActiveLeistung] = useState<string | null>(null);
@@ -112,18 +135,8 @@ export default function LeistungenGrid() {
               <p className="text-xs text-brand leading-relaxed">{l.beantragen}</p>
             </div>
 
-            {/* Lead CTA */}
-            <div className="mt-auto space-y-2">
-              {!DEEPLINKS[l.id] && (
-                <button
-                  onClick={() => setActiveLeistung(l.name)}
-                  className="w-full flex items-center justify-center gap-2 bg-brand text-white text-xs font-semibold px-4 py-2.5 rounded-xl hover:bg-brand-hover transition-colors"
-                >
-                  <Users size={13} />
-                  Passenden Anbieter finden
-                </button>
-              )}
-              {DEEPLINKS[l.id] && (
+            <div className="mt-auto">
+              {DEEPLINKS[l.id] ? (
                 <a
                   href={DEEPLINKS[l.id].href}
                   target="_blank"
@@ -132,10 +145,35 @@ export default function LeistungenGrid() {
                 >
                   {DEEPLINKS[l.id].label} <ArrowRight size={13} />
                 </a>
+              ) : (
+                <Link
+                  href={`/?tab=${l.tabId}`}
+                  className="w-full flex items-center justify-center gap-2 bg-brand text-white text-xs font-semibold px-4 py-2.5 rounded-xl hover:bg-brand-hover transition-colors"
+                >
+                  <Users size={13} />
+                  Passenden Anbieter finden
+                </Link>
               )}
             </div>
           </div>
         ))}
+      </div>
+
+      {/* Pflegegeld – Zusätzliche Info */}
+      <div className="mt-5 card p-5 border-dashed flex flex-col sm:flex-row gap-5">
+        <div className="flex-1">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-xs bg-brand-light text-brand px-2 py-0.5 rounded-full font-semibold">{PFLEGEGELD.pg}</span>
+            <span className="text-xs text-gray-400">Zusätzliche Info</span>
+          </div>
+          <h3 className="font-semibold text-gray-900 text-sm mb-1">{PFLEGEGELD.name}</h3>
+          <p className="text-brand font-bold text-base mb-2">{PFLEGEGELD.betrag}</p>
+          <p className="text-gray-500 text-xs leading-relaxed">{PFLEGEGELD.text}</p>
+        </div>
+        <div className="flex items-start gap-1.5 bg-brand-light/60 rounded-lg px-3 py-2 sm:max-w-xs">
+          <ArrowUpRight size={12} className="text-brand flex-shrink-0 mt-0.5" />
+          <p className="text-xs text-brand leading-relaxed">{PFLEGEGELD.beantragen}</p>
+        </div>
       </div>
 
       {activeLeistung && (

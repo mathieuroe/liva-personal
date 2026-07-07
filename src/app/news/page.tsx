@@ -65,11 +65,9 @@ export default function NewsPage() {
       />
 
       {/* Hero – warm & willkommen */}
-      <section className="py-12 px-4 sm:px-6 border-b border-neutral-200 bg-gradient-to-br from-[#F0F8F4] to-white">
-        <div className="max-w-3xl mx-auto">
-          <p className="text-[11px] font-bold uppercase tracking-widest text-brand mb-3">
-            News aus der Pflege
-          </p>
+      <section className="bg-white py-12 sm:py-16 px-4 sm:px-6 border-b border-[#E0EDE7]">
+        <div className="max-w-4xl mx-auto">
+          <p className="section-label">News aus der Pflege</p>
           <h1 className="font-serif text-4xl sm:text-5xl text-gray-900 mb-4 leading-tight">
             Willkommen in unserem<br className="hidden sm:block" /> Pflege-Newsroom
           </h1>

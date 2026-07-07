@@ -86,16 +86,16 @@ export default function RatgeberPage() {
       <main>
 
         {/* ── Hero ────────────────────────────────────────────────── */}
-        <section className="bg-white py-16 px-4 sm:px-6 border-b border-[#E0EDE7]">
+        <section className="bg-white py-12 sm:py-16 px-4 sm:px-6 border-b border-[#E0EDE7]">
           <div className="max-w-4xl mx-auto">
             <p className="section-label">Ratgeber & Erste Schritte</p>
-            <h1 className="font-serif text-5xl text-gray-900 mb-4 leading-tight">
+            <h1 className="font-serif text-4xl sm:text-5xl text-gray-900 mb-4 leading-tight">
               Pflege verstehen –<br className="hidden sm:block" /> von Anfang an.
             </h1>
             <p className="text-gray-500 text-lg max-w-xl leading-relaxed mb-6">
               Wie beantrage ich einen Pflegegrad? Was passiert beim MDK? Welche Leistungen stehen mir zu? Hier findest du alles – in einfacher Sprache, ohne Bürokratie-Deutsch.
             </p>
-            <Link href="/pflegegrad-rechner" className="btn-secondary inline-flex text-sm px-5 py-2.5">
+            <Link href="/pflegegrad-rechner" className="btn-secondary">
               Pflegegrad kostenlos einschätzen <ArrowRight size={15} />
             </Link>
           </div>
@@ -138,17 +138,39 @@ export default function RatgeberPage() {
             <h2 className="font-serif text-3xl text-gray-900 mb-2">Alle Themen im Detail</h2>
             <p className="text-sm text-gray-500 mb-8">Pflegebox, MDK, Entlastungsbetrag, Verhinderungspflege – verständlich und aktuell erklärt.</p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {RATGEBER.map((a) => (
-                <Link key={a.slug} href={`/ratgeber/${a.slug}`} className="card bg-white p-5 flex flex-col group hover:shadow-card-hover transition-shadow">
-                  <span className="text-xs font-semibold bg-brand-light text-brand px-3 py-1 rounded-full self-start mb-3">{a.kategorie}</span>
-                  <h3 className="font-semibold text-gray-900 leading-snug mb-2 text-sm group-hover:text-brand transition-colors">{a.titel}</h3>
-                  <p className="text-gray-500 text-xs leading-relaxed flex-1 mb-4">{a.beschreibung}</p>
-                  <div className="flex items-center justify-between text-xs text-gray-400">
-                    <span className="flex items-center gap-1.5"><Clock size={11} /> {a.lesezeit}</span>
-                    <span>{a.datum}</span>
+              {RATGEBER.map((a) =>
+                a.affiliate ? (
+                  <div key={a.slug} className="card bg-white p-5 flex flex-col">
+                    <span className="text-xs font-semibold bg-brand-light text-brand px-3 py-1 rounded-full self-start mb-3">{a.kategorie}</span>
+                    <Link href={`/ratgeber/${a.slug}`} className="group flex-1">
+                      <h3 className="font-semibold text-gray-900 leading-snug mb-2 text-sm group-hover:text-brand transition-colors">{a.titel}</h3>
+                      <p className="text-gray-500 text-xs leading-relaxed mb-4">{a.beschreibung}</p>
+                    </Link>
+                    <a
+                      href={a.affiliate}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-primary w-full justify-center text-xs mb-3"
+                    >
+                      Jetzt kostenlos beantragen <ArrowRight size={13} />
+                    </a>
+                    <div className="flex items-center justify-between text-xs text-gray-400">
+                      <span className="flex items-center gap-1.5"><Clock size={11} /> {a.lesezeit}</span>
+                      <span>{a.datum}</span>
+                    </div>
                   </div>
-                </Link>
-              ))}
+                ) : (
+                  <Link key={a.slug} href={`/ratgeber/${a.slug}`} className="card bg-white p-5 flex flex-col group hover:shadow-card-hover transition-shadow">
+                    <span className="text-xs font-semibold bg-brand-light text-brand px-3 py-1 rounded-full self-start mb-3">{a.kategorie}</span>
+                    <h3 className="font-semibold text-gray-900 leading-snug mb-2 text-sm group-hover:text-brand transition-colors">{a.titel}</h3>
+                    <p className="text-gray-500 text-xs leading-relaxed flex-1 mb-4">{a.beschreibung}</p>
+                    <div className="flex items-center justify-between text-xs text-gray-400">
+                      <span className="flex items-center gap-1.5"><Clock size={11} /> {a.lesezeit}</span>
+                      <span>{a.datum}</span>
+                    </div>
+                  </Link>
+                )
+              )}
             </div>
           </div>
         </section>

@@ -19,9 +19,9 @@ const dmSerif = DM_Serif_Display({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://liva-pflege.de"),
-  title: "liva – Orientierung im Pflegesystem",
-  description: "In 2 Minuten weißt du genau was dir zusteht – und was du jetzt tun musst. Kostenlos, bundesweit.",
-  keywords: "Pflegegrad, Pflegebox, Hausnotruf, Entlastungsbetrag, Pflegeberatung, kostenlos",
+  title: "Pflegedienste vergleichen & Pflegeleistungen beantragen | liva",
+  description: "Pflegedienste in deiner Nähe vergleichen, Hausnotruf & Pflegebox kostenlos beantragen. Pflegegrad ermitteln – in 2 Minuten. Bundesweit, unverbindlich.",
+  keywords: "Pflegedienst Vergleich, Pflegebox beantragen, Hausnotruf Vergleich, Pflegegrad ermitteln, ambulante Pflege",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
