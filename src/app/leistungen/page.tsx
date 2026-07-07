@@ -64,9 +64,14 @@ export default function LeistungenPage() {
                 </div>
               ))}
             </div>
-            <Link href="/pflegegrad-rechner" className="btn-secondary">
-              Pflegegrad noch unklar? Jetzt kostenlos ermitteln <ArrowRight size={15} />
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link href="/leistungen-check" className="btn-primary inline-flex items-center gap-2">
+                Was steht mir zu? <ArrowRight size={15} />
+              </Link>
+              <Link href="/pflegegrad-rechner" className="btn-secondary inline-flex items-center gap-2">
+                Pflegegrad noch unklar? Jetzt ermitteln <ArrowRight size={15} />
+              </Link>
+            </div>
           </div>
         </section>
 
