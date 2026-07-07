@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown, ChevronUp, ArrowRight, CheckCircle2 } from "lucide-react";
+import { ChevronDown, ChevronUp, ArrowRight, CheckCircle2, ExternalLink } from "lucide-react";
+import Link from "next/link";
 
 interface Leistung {
   id: string;
@@ -11,6 +12,8 @@ interface Leistung {
   pflegegrade: number[];
   antragsSchritte: string[];
   icon: string;
+  affiliateUrl?: string;
+  affiliateCta?: string;
 }
 
 const LEISTUNGEN: Leistung[] = [
@@ -18,29 +21,23 @@ const LEISTUNGEN: Leistung[] = [
     id: "pflegehilfsmittel",
     name: "Pflegebox (Pflegehilfsmittel)",
     betrag: "42 € / Monat",
-    beschreibung: "Monatliche Erstattung für Verbrauchsmaterialien wie Einmalhandschuhe, Bettschutzeinlagen und Desinfektionsmittel.",
+    beschreibung: "Einmalhandschuhe, Bettschutzeinlagen, Desinfektion – monatlich gratis nach Hause. Unser Partner übernimmt die Beantragung bei deiner Pflegekasse kostenlos für dich.",
     pflegegrade: [1, 2, 3, 4, 5],
     icon: "📦",
-    antragsSchritte: [
-      "Pflegehilfsmittel-Anbieter kontaktieren (z.B. über liva)",
-      "Formular ausfüllen: Name, Adresse, Krankenkasse, Pflegegrad",
-      "Pflegekasse genehmigt automatisch – Lieferung startet",
-      "Monatlich wird die Box zugeschickt, Pflegekasse zahlt direkt",
-    ],
+    affiliateUrl: "https://t.adcell.com/p/click?promoId=273407&slotId=149760&subId=leistungen_check_pflegebox&param0=https%3A%2F%2Fpflegehase.de%2Fpflegehilfsmittel-bestellung%2F",
+    affiliateCta: "Pflegebox kostenlos bestellen",
+    antragsSchritte: [],
   },
   {
     id: "hausnotruf",
     name: "Hausnotruf",
     betrag: "27 € / Monat Zuschuss",
-    beschreibung: "Die Pflegekasse zahlt monatlich 27 € für ein Hausnotruf-System. Bei günstigen Anbietern entstehen keine Kosten.",
+    beschreibung: "Die Pflegekasse zahlt bis zu 27 € pro Monat – bei unserem Partner entstehen für dich keine Kosten. Er stellt den Antrag bei deiner Pflegekasse und liefert das Gerät in 3–5 Werktagen.",
     pflegegrade: [1, 2, 3, 4, 5],
     icon: "🔔",
-    antragsSchritte: [
-      "Hausnotruf-Anbieter wählen (liva empfiehlt geprüfte Partner)",
-      "Antrag bei der Pflegekasse stellen (§40 SGB XI)",
-      "Genehmigung dauert ca. 3–5 Werktage",
-      "Gerät wird installiert, Zuschuss wird direkt mit Anbieter abgerechnet",
-    ],
+    affiliateUrl: "https://t.adcell.com/p/click?promoId=307657&slotId=149760&subId=leistungen_check_hausnotruf&param0=https%3A%2F%2Fpflegehase.de%2Fhausnotruf-bestellung%2F",
+    affiliateCta: "Hausnotruf kostenlos beantragen",
+    antragsSchritte: [],
   },
   {
     id: "entlastungsbetrag",
@@ -193,8 +190,12 @@ export default function LeistungenCheckFunnel() {
           ))}
         </div>
         {pflegegrad === 0 && (
-          <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-800">
-            <strong>Noch kein Pflegegrad?</strong> Kein Problem – wir helfen dir dabei, einen zu beantragen. Melde dich einfach unten.
+          <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
+            <p className="text-sm text-amber-800 font-semibold mb-1">Noch kein Pflegegrad?</p>
+            <p className="text-sm text-amber-700 mb-3">Mit unserem kostenlosen Rechner siehst du sofort, welcher Pflegegrad dir zusteht.</p>
+            <Link href="/pflegegrad-rechner" className="inline-flex items-center gap-2 bg-amber-700 text-white text-sm font-semibold px-4 py-2 rounded-full hover:bg-amber-800 transition-colors">
+              Zum Pflegegrad-Rechner <ArrowRight size={14} />
+            </Link>
           </div>
         )}
       </div>
@@ -229,15 +230,28 @@ export default function LeistungenCheckFunnel() {
                     {expandedId === l.id && (
                       <div className="px-4 pb-4 border-t border-[#E0EDE7]">
                         <p className="text-gray-500 text-sm leading-relaxed mt-3 mb-4">{l.beschreibung}</p>
-                        <h4 className="text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">So beantragst du es:</h4>
-                        <ol className="space-y-2">
-                          {l.antragsSchritte.map((schritt, i) => (
-                            <li key={i} className="flex gap-3 text-sm text-gray-600">
-                              <span className="w-5 h-5 rounded-full bg-brand-light text-brand text-xs flex items-center justify-center flex-shrink-0 mt-0.5 font-semibold">{i + 1}</span>
-                              {schritt}
-                            </li>
-                          ))}
-                        </ol>
+                        {l.affiliateUrl ? (
+                          <a
+                            href={l.affiliateUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn-primary inline-flex items-center gap-2 text-sm"
+                          >
+                            {l.affiliateCta} <ExternalLink size={14} />
+                          </a>
+                        ) : (
+                          <>
+                            <h4 className="text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">So beantragst du es:</h4>
+                            <ol className="space-y-2">
+                              {l.antragsSchritte.map((schritt, i) => (
+                                <li key={i} className="flex gap-3 text-sm text-gray-600">
+                                  <span className="w-5 h-5 rounded-full bg-brand-light text-brand text-xs flex items-center justify-center flex-shrink-0 mt-0.5 font-semibold">{i + 1}</span>
+                                  {schritt}
+                                </li>
+                              ))}
+                            </ol>
+                          </>
+                        )}
                       </div>
                     )}
                   </div>
