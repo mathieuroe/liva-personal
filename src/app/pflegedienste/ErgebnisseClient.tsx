@@ -15,7 +15,7 @@ interface Props {
 }
 
 const SPRACH_OPTIONEN = ["Alle Sprachen", "Deutsch", "Türkisch", "Russisch", "Polnisch", "Arabisch", "Kroatisch", "Vietnamesisch"];
-const VERSICHERUNG_OPTIONEN = ["Versicherungsart", "GKV", "Privat", "GKV & Privat"] as const;
+const VERSICHERUNG_OPTIONEN = ["Versicherungsart", "GKV", "Privat", "GKV & Privat"];
 const LEISTUNG_OPTIONEN = [
   "Alle Leistungen",
   "Grundpflege",
