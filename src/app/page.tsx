@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Link from "next/link";
 import { ArrowRight, Star } from "lucide-react";
 import Footer from "@/components/layout/Footer";
@@ -32,7 +33,9 @@ export default function HomePage() {
   return (
     <main>
       {/* ── Hero mit Leistungsauswahl ─────────────────────────── */}
-      <HeroClient />
+      <Suspense fallback={<div className="h-64" />}>
+        <HeroClient />
+      </Suspense>
 
       {/* ── Trust Stats ──────────────────────────────────────────── */}
       <section className="bg-white border-b border-[#E0EDE7] py-6 px-4 sm:px-6">
